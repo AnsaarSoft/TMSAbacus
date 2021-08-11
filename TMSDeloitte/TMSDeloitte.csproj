@@ -1,0 +1,1674 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73D2E508-7512-4CE0-BA06-51A832AB92DE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TMSDeloitte</RootNamespace>
+    <AssemblyName>TMSDeloitte</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\CrystalDecisions.ReportAppServer.1.0.0\lib\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\CrystalDecisions.ReportAppServer.1.0.0\lib\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\CrystalDecisions.ReportAppServer.1.0.0\lib\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dashboard.v19.2.Web.Mvc">
+      <HintPath>..\..\..\..\dll\DevExpress.Dashboard.v19.2.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.2">
+      <HintPath>..\..\..\..\dll\DevExpress.Data.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v19.2.Core.resources">
+      <HintPath>..\..\..\..\dll\DevExpress.Printing.v19.2.Core.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v19.2.resources">
+      <HintPath>..\..\..\..\dll\DevExpress.Utils.v19.2.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v19.2.resources">
+      <HintPath>..\..\..\..\dll\DevExpress.Xpo.v19.2.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v19.2">
+      <HintPath>..\..\..\..\dll\DevExpress.XtraReports.v19.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v19.2.Service">
+      <HintPath>..\..\..\..\dll\DevExpress.XtraReports.v19.2.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExtreme.AspNet.Data">
+      <HintPath>..\..\..\..\dll\DevExtreme.AspNet.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExtreme.AspNet.Mvc">
+      <HintPath>..\..\..\..\dll\DevExtreme.AspNet.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sap.Data.Hana.v4.5, Version=1.0.120.0, Culture=neutral, PublicKeyToken=0326b8ea63db4bc4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>HANA_DLL\Ref\Sap.Data.Hana.v4.5.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ReportService.mdf" />
+    <Content Include="assets\css\customizer.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\fonts\cryptofont.css" />
+    <Content Include="assets\fonts\feather.css" />
+    <Content Include="assets\fonts\feather\feathere8ab.svg" />
+    <Content Include="assets\fonts\font-awsome-pro\css\pro.min.css" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.10-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.10-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.10-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.10-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.10.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.10d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.11-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.11-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.11-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.11-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.11.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.11d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.12-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.12-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.12-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.12-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.12.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.12d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.5-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.5-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.5-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.5-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.5d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.9-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.9-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.9-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.9-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.9.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.0.9d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.1.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.1.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.1.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.1.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.1.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.1.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.10.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.10.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.10.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.10.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.10.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.10.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.11.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.12.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.2.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.2.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.2.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.2.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.2.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.2.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.3.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.3.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.3.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.3.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.3.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.3.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.4.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.6.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.6.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.6.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.6.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.6.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.6.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.7.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.7.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.7.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.7.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.7.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.7.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.8.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.9.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.9.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.9.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.9.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.9.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-brands-400-5.9.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.10-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.10-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.10-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.10-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.10.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.10d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.11-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.11-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.11-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.11-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.11.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.11d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.13-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.13-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.13-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.13-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.13.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.13d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.5-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.5-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.5-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.5-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.5d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.7-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.7-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.7-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.7-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.7.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.7d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.9-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.9-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.9-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.9-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.9.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.0.9d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.1.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.10.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.11.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.12.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.2.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.2.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.2.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.2.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.2.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.2.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.3.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.3.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.3.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.3.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.3.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.3.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.4.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.5.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.5.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.5.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.5.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.5.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.5.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.6.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.7.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.8.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.9.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.9.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.9.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.9.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.9.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-duotone-900-5.9.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.10-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.10-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.10-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.10-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.10.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.10d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.11-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.11-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.11-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.11-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.11.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.11d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.13-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.13-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.13-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.13-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.13.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.13d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.5-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.5-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.5-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.5-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.5d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.7-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.7-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.7-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.7-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.7.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.7d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.9-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.9-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.9-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.9-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.9.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.0.9d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.1.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.10.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.11.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.12.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.2.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.2.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.2.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.2.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.2.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.2.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.3.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.3.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.3.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.3.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.3.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.3.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.4.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.5.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.5.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.5.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.5.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.5.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.5.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.6.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.7.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.8.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.9.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.9.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.9.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.9.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.9.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-light-300-5.9.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.10-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.10-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.10-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.10-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.10.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.10d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.11-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.11-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.11-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.11-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.11.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.11d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.13-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.13-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.13-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.13-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.13.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.13d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.5-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.5-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.5-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.5-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.5d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.7-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.7-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.7-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.7-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.7.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.7d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.9-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.9-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.9-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.9-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.9.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.0.9d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.1.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.10.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.11.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.12.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.2.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.2.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.2.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.2.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.2.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.2.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.3.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.3.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.3.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.3.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.3.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.3.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.4.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.5.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.5.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.5.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.5.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.5.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.5.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.6.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.7.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.8.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.9.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.9.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.9.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.9.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.9.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-regular-400-5.9.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.10-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.10-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.10-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.10-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.10.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.10d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.11-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.11-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.11-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.11-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.11.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.11d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.13-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.13-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.13-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.13-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.13.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.13d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.5-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.5-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.5-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.5-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.5d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.7-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.7-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.7-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.7-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.7.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.7d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.9-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.9-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.9-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.9-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.9.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.0.9d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.1.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.10.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.11.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.12.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.2.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.2.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.2.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.2.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.2.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.2.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.3.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.3.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.3.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.3.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.3.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.3.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.4.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.5.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.5.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.5.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.5.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.5.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.5.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.3-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.3-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.3-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.3-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.6.3d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.1-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.1-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.1-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.1-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.1.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.7.1d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.0d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.2-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.2-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.2-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.2-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.8.2d41d.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.9.0-2.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.9.0-3.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.9.0-4.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.9.0-5.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.9.0.html" />
+    <Content Include="assets\fonts\font-awsome-pro\webfonts\pro-fa-solid-900-5.9.0d41d.html" />
+    <Content Include="assets\fonts\fontawesome.css" />
+    <Content Include="assets\fonts\fontawesome\fa-brands-400.html" />
+    <Content Include="assets\fonts\fontawesome\fa-brands-400.svg" />
+    <Content Include="assets\fonts\fontawesome\fa-regular-400.html" />
+    <Content Include="assets\fonts\fontawesome\fa-regular-400.svg" />
+    <Content Include="assets\fonts\fontawesome\fa-solid-900.html" />
+    <Content Include="assets\fonts\fontawesome\fa-solid-900.svg" />
+    <Content Include="assets\images\avatar-1.jpg" />
+    <Content Include="assets\images\avatar-2.jpg" />
+    <Content Include="assets\images\eye.png" />
+    <Content Include="assets\images\innerLogo.png" />
+    <Content Include="assets\images\loginBg.jpg" />
+    <Content Include="assets\images\loginLogo.png" />
+    <Content Include="assets\images\Logo\innerLogo.png" />
+    <Content Include="assets\images\Logo\loginLogo.png" />
+    <Content Include="assets\images\news\img-news-2.jpg" />
+    <Content Include="assets\images\news\img-news-1.jpg" />
+    <Content Include="assets\images\slider\img-slide-7.jpg" />
+    <Content Include="assets\images\slider\img-slide-3.jpg" />
+    <Content Include="assets\images\user\avatar-1.jpg" />
+    <Content Include="assets\images\user\avatar-2.jpg" />
+    <Content Include="assets\images\user\avatar-3.jpg" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\pcoded.min.js" />
+    <Content Include="assets\js\plugins\apexcharts.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-datepicker.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-maxlength.js" />
+    <Content Include="assets\js\plugins\bootstrap-multiselectsplitter.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-notify.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-select.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-slider.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-tagsinput.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-timepicker.min.js" />
+    <Content Include="assets\js\plugins\bootstrap.min.js" />
+    <Content Include="assets\js\plugins\buttons.bootstrap4.min.js" />
+    <Content Include="assets\js\plugins\buttons.colVis.min.js" />
+    <Content Include="assets\js\plugins\buttons.html5.min.js" />
+    <Content Include="assets\js\plugins\buttons.print.min.js" />
+    <Content Include="assets\js\plugins\Chart.min.js" />
+    <Content Include="assets\js\plugins\ckeditor.js" />
+    <Content Include="assets\js\plugins\clipboard.min.js" />
+    <Content Include="assets\js\plugins\cropper.min.js" />
+    <Content Include="assets\js\plugins\dataTables.bootstrap4.min.js" />
+    <Content Include="assets\js\plugins\dataTables.buttons.min.js" />
+    <Content Include="assets\js\plugins\dataTables.colReorder.min.js" />
+    <Content Include="assets\js\plugins\dataTables.fixedColumns.min.js" />
+    <Content Include="assets\js\plugins\dataTables.fixedHeader.min.js" />
+    <Content Include="assets\js\plugins\dataTables.keyTable.min.js" />
+    <Content Include="assets\js\plugins\dataTables.responsive.min.js" />
+    <Content Include="assets\js\plugins\dataTables.select.min.js" />
+    <Content Include="assets\js\plugins\daterangepicker.js" />
+    <Content Include="assets\js\plugins\dropzone-amd-module.min.js" />
+    <Content Include="assets\js\plugins\ekko-lightbox.min.js" />
+    <Content Include="assets\js\plugins\feather.min.js" />
+    <Content Include="assets\js\plugins\flipclock.min.js" />
+    <Content Include="assets\js\plugins\fullcalendar.min.js" />
+    <Content Include="assets\js\plugins\gmaps.min.js" />
+    <Content Include="assets\js\plugins\highcharts-3d.js" />
+    <Content Include="assets\js\plugins\highcharts.js" />
+    <Content Include="assets\js\plugins\ion.rangeSlider.min.js" />
+    <Content Include="assets\js\plugins\isotope.pkgd.min.js" />
+    <Content Include="assets\js\plugins\jquery-ui.min.js" />
+    <Content Include="assets\js\plugins\jquery.barrating.min.js" />
+    <Content Include="assets\js\plugins\jquery.bootstrap.wizard.min.js" />
+    <Content Include="assets\js\plugins\jquery.dataTables.min.js" />
+    <Content Include="assets\js\plugins\jquery.knob.min.js" />
+    <Content Include="assets\js\plugins\jquery.mask.min.js" />
+    <Content Include="assets\js\plugins\jquery.minicolors.min.js" />
+    <Content Include="assets\js\plugins\jquery.peity.min.js" />
+    <Content Include="assets\js\plugins\jquery.smartWizard.min.js" />
+    <Content Include="assets\js\plugins\jquery.validate.min.js" />
+    <Content Include="assets\js\plugins\jszip.min.js" />
+    <Content Include="assets\js\plugins\lightbox.min.js" />
+    <Content Include="assets\js\plugins\moment.js" />
+    <Content Include="assets\js\plugins\moment.min.js" />
+    <Content Include="assets\js\plugins\pdfmake.min.js" />
+    <Content Include="assets\js\plugins\PNotify.js" />
+    <Content Include="assets\js\plugins\PNotifyButtons.js" />
+    <Content Include="assets\js\plugins\PNotifyCallbacks.js" />
+    <Content Include="assets\js\plugins\PNotifyConfirm.js" />
+    <Content Include="assets\js\plugins\PNotifyDesktop.js" />
+    <Content Include="assets\js\plugins\prism.js" />
+    <Content Include="assets\js\plugins\select.bootstrap4.min.js" />
+    <Content Include="assets\js\plugins\select2.full.min.js" />
+    <Content Include="assets\js\plugins\sweetalert.min.js" />
+    <Content Include="assets\js\plugins\trumbowyg.min.js" />
+    <Content Include="assets\js\uikit.min.js" />
+    <Content Include="assets\js\vendor-all.min.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dx-diagram.css" />
+    <Content Include="Content\dx-diagram.min.css" />
+    <Content Include="Content\dx-gantt.css" />
+    <Content Include="Content\dx-gantt.min.css" />
+    <Content Include="Content\dx.carmine.compact.css" />
+    <Content Include="Content\dx.carmine.css" />
+    <Content Include="Content\dx.common.css" />
+    <Content Include="Content\dx.contrast.compact.css" />
+    <Content Include="Content\dx.contrast.css" />
+    <Content Include="Content\dx.dark.compact.css" />
+    <Content Include="Content\dx.dark.css" />
+    <Content Include="Content\dx.darkmoon.compact.css" />
+    <Content Include="Content\dx.darkmoon.css" />
+    <Content Include="Content\dx.darkviolet.compact.css" />
+    <Content Include="Content\dx.darkviolet.css" />
+    <Content Include="Content\dx.greenmist.compact.css" />
+    <Content Include="Content\dx.greenmist.css" />
+    <Content Include="Content\dx.ios7.default.css" />
+    <Content Include="Content\dx.light.compact.css" />
+    <Content Include="Content\dx.light.css" />
+    <Content Include="Content\dx.material.blue.dark.compact.css" />
+    <Content Include="Content\dx.material.blue.dark.css" />
+    <Content Include="Content\dx.material.blue.light.compact.css" />
+    <Content Include="Content\dx.material.blue.light.css" />
+    <Content Include="Content\dx.material.lime.dark.compact.css" />
+    <Content Include="Content\dx.material.lime.dark.css" />
+    <Content Include="Content\dx.material.lime.light.compact.css" />
+    <Content Include="Content\dx.material.lime.light.css" />
+    <Content Include="Content\dx.material.orange.dark.compact.css" />
+    <Content Include="Content\dx.material.orange.dark.css" />
+    <Content Include="Content\dx.material.orange.light.compact.css" />
+    <Content Include="Content\dx.material.orange.light.css" />
+    <Content Include="Content\dx.material.purple.dark.compact.css" />
+    <Content Include="Content\dx.material.purple.dark.css" />
+    <Content Include="Content\dx.material.purple.light.compact.css" />
+    <Content Include="Content\dx.material.purple.light.css" />
+    <Content Include="Content\dx.material.teal.dark.compact.css" />
+    <Content Include="Content\dx.material.teal.dark.css" />
+    <Content Include="Content\dx.material.teal.light.compact.css" />
+    <Content Include="Content\dx.material.teal.light.css" />
+    <Content Include="Content\dx.softblue.compact.css" />
+    <Content Include="Content\dx.softblue.css" />
+    <Content Include="Content\jquery.toast.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="HANA_DLL\Local\policy.1.0.Sap.Data.Hana.v4.5.dll" />
+    <Content Include="HANA_DLL\Local\Sap.Data.Hana.v4.5.dll" />
+    <Content Include="HANA_DLL\Local\Sap.Data.Hana.v4.5.xml" />
+    <Content Include="HANA_DLL\Local\SetupNet.v4.5.exe" />
+    <Content Include="HANA_DLL\Local\SSDLToHana.sql" />
+    <Content Include="HANA_DLL\Local\SSDLToHana.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SSDLToHana1.sql</LastGenOutput>
+    </Content>
+    <Content Include="HANA_DLL\Local\SSDLToHana1.sql">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSDLToHana.tt</DependentUpon>
+    </Content>
+    <Content Include="HANA_DLL\Ref\Sap.Data.Hana.v4.5.dll" />
+    <Content Include="ReportViewer.aspx" />
+    <Content Include="Scripts\aspnet\dx.aspnet.data.js" />
+    <Content Include="Scripts\aspnet\dx.aspnet.mvc.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr.min.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\event.min.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\supplemental.min.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\cldr\unresolved.min.js" />
+    <Content Include="Scripts\customjs\ApprovalDecision.js" />
+    <Content Include="Scripts\customjs\AssignmentForm.js" />
+    <Content Include="Scripts\customjs\base.js" />
+    <Content Include="Scripts\customjs\ChangeApprover.js" />
+    <Content Include="Scripts\customjs\WIPRecordingForm.js" />
+    <Content Include="Scripts\dx-diagram.js" />
+    <Content Include="Scripts\dx-diagram.min.js" />
+    <Content Include="Scripts\dx-gantt.js" />
+    <Content Include="Scripts\dx-gantt.min.js" />
+    <Content Include="Scripts\dx.all.debug.js" />
+    <Content Include="Scripts\dx.all.js" />
+    <Content Include="Scripts\dx.viz-web.debug.js" />
+    <Content Include="Scripts\dx.viz-web.js" />
+    <Content Include="Scripts\dx.viz.debug.js" />
+    <Content Include="Scripts\dx.viz.js" />
+    <Content Include="Scripts\dx.web.debug.js" />
+    <Content Include="Scripts\dx.web.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize.min.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\currency.min.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\date.min.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\message.min.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\number.min.js" />
+    <Content Include="assets\fonts\feather\feathere8ab.eot" />
+    <Content Include="assets\fonts\feather\feathere8ab.ttf" />
+    <Content Include="assets\fonts\feather\feathere8ab.woff" />
+    <Content Include="assets\fonts\fontawesome\fa-brands-400.eot" />
+    <Content Include="assets\fonts\fontawesome\fa-brands-400.ttf" />
+    <Content Include="assets\fonts\fontawesome\fa-brands-400.woff" />
+    <Content Include="assets\fonts\fontawesome\fa-brands-400d41d.eot" />
+    <Content Include="assets\fonts\fontawesome\fa-regular-400.eot" />
+    <Content Include="assets\fonts\fontawesome\fa-regular-400.ttf" />
+    <Content Include="assets\fonts\fontawesome\fa-regular-400.woff" />
+    <Content Include="assets\fonts\fontawesome\fa-regular-400d41d.eot" />
+    <Content Include="assets\fonts\fontawesome\fa-solid-900.eot" />
+    <Content Include="assets\fonts\fontawesome\fa-solid-900.ttf" />
+    <Content Include="assets\fonts\fontawesome\fa-solid-900.woff" />
+    <Content Include="assets\fonts\fontawesome\fa-solid-900d41d.eot" />
+    <Content Include="HANA_DLL\Local\Sap.Data.Hana.v4.5.dll.config" />
+    <Content Include="HANA_DLL\Ref\Sap.Data.Hana.v4.5.dll.config" />
+    <None Include="Properties\PublishProfiles\Jawwad.pubxml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.toast.js" />
+    <Content Include="Scripts\jszip.js" />
+    <Content Include="Scripts\jszip.min.js" />
+    <Content Include="Scripts\localization\dx.messages.cs.js" />
+    <Content Include="Scripts\localization\dx.messages.de.js" />
+    <Content Include="Scripts\localization\dx.messages.el.js" />
+    <Content Include="Scripts\localization\dx.messages.en.js" />
+    <Content Include="Scripts\localization\dx.messages.es.js" />
+    <Content Include="Scripts\localization\dx.messages.fi.js" />
+    <Content Include="Scripts\localization\dx.messages.fr.js" />
+    <Content Include="Scripts\localization\dx.messages.hu.js" />
+    <Content Include="Scripts\localization\dx.messages.it.js" />
+    <Content Include="Scripts\localization\dx.messages.ja.js" />
+    <Content Include="Scripts\localization\dx.messages.nl.js" />
+    <Content Include="Scripts\localization\dx.messages.pt.js" />
+    <Content Include="Scripts\localization\dx.messages.ru.js" />
+    <Content Include="Scripts\localization\dx.messages.sl.js" />
+    <Content Include="Scripts\localization\dx.messages.sv.js" />
+    <Content Include="Scripts\localization\dx.messages.tr.js" />
+    <Content Include="Scripts\localization\dx.messages.vi.js" />
+    <Content Include="Scripts\localization\dx.messages.zh.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\toastNotifications.js" />
+    <Content Include="Scripts\vectormap-data\africa.js" />
+    <Content Include="Scripts\vectormap-data\canada.js" />
+    <Content Include="Scripts\vectormap-data\eurasia.js" />
+    <Content Include="Scripts\vectormap-data\europe.js" />
+    <Content Include="Scripts\vectormap-data\usa.js" />
+    <Content Include="Scripts\vectormap-data\world.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\AssignmentCostSetup\Index.cshtml" />
+    <Content Include="Views\Home\UpdatePassword.cshtml" />
+    <Content Include="Views\ResourceBillingRate\Index.cshtml" />
+    <Content Include="Views\AssignmentNatureSetup\Index.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Views\TypeOfClaimSetup\GetTypeOfClaim.cshtml" />
+    <Content Include="Views\AssignmentCostSetup\GetMaster_Task.cshtml" />
+    <Content Include="Views\TaskMasterSetup\GetTaskMasterSetup.cshtml" />
+    <Content Include="Views\TaskMasterSetup\TaskMasterSetup.cshtml" />
+    <Content Include="Views\TravelRates\Index.cshtml" />
+    <Content Include="Views\TravelRates\TravelRates.cshtml" />
+    <Content Include="Views\UserAuthorization\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\AssignmentCostSetup\AssignmentNatureSetup.cshtml" />
+    <Content Include="Views\NonChargeableSetup\GetNonChargeable.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\UserDataAccess\Index.cshtml" />
+    <Content Include="Views\ApprovalStage\Index.cshtml" />
+    <Content Include="Views\TravelLocation\Index.cshtml" />
+    <Content Include="Views\GroupSetup\Index.cshtml" />
+    <Content Include="Views\TimeSheetPeriodSetup\Index.cshtml" />
+    <Content Include="Views\AlertSetup\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\ApprovalSetup\Index.cshtml" />
+    <Content Include="Views\ApprovalDecision\Index.cshtml" />
+    <Content Include="Views\TimeSheetForm\Index.cshtml" />
+    <Content Include="Views\TimeSheetView\Index.cshtml" />
+    <Content Include="Views\MonthlyTravelSheet\Index.cshtml" />
+    <Content Include="Views\ClaimForm\Index.cshtml" />
+    <Content Include="Views\AssignmentForm\Index.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Notification\Detail.cshtml" />
+    <Content Include="Views\Home\UploadLogo.cshtml" />
+    <Content Include="Views\WIPRecordingForm\Index.cshtml" />
+    <Content Include="Views\NCTaskAssignment\Index.cshtml" />
+    <Content Include="Views\ChangeApprover\Index.cshtml" />
+    <Content Include="Views\TraineesDashboard\Index.cshtml" />
+    <Content Include="Views\EncDec\Index.cshtml" />
+    <Content Include="Views\ReportUploader\Index.cshtml" />
+    <Content Include="Views\Holiday\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-300.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-300.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-300.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-400.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-400.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-400.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-500.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-500.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-500.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-700.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-700.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Roboto-700.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxicons.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxicons.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxicons.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxiconsios.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxiconsios.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxiconsios.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxiconsmaterial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxiconsmaterial.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\dxiconsmaterial.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DevExtremeBundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BAL\ApprovalSetupManagement.cs" />
+    <Compile Include="BAL\AssignmentFormManagement.cs" />
+    <Compile Include="BAL\cAssignmentNatureSetup.cs" />
+    <Compile Include="BAL\DashboardManagement.cs" />
+    <Compile Include="BAL\HoliDayManagement.cs" />
+    <Compile Include="BAL\NCTaskAssignmentManagement.cs" />
+    <Compile Include="BAL\ClaimFormManagement.cs" />
+    <Compile Include="BAL\Common.cs" />
+    <Compile Include="BAL\GroupSetupManagement.cs" />
+    <Compile Include="BAL\HCMOneManagement.cs" />
+    <Compile Include="BAL\MonthlyTravelSheetManagement.cs" />
+    <Compile Include="BAL\NonChargableSetupManagement.cs" />
+    <Compile Include="BAL\NotificationManagement.cs" />
+    <Compile Include="BAL\ReportManagement.cs" />
+    <Compile Include="BAL\ResourceBillingRatesSetupManagement.cs" />
+    <Compile Include="BAL\SetupManagement.cs" />
+    <Compile Include="BAL\ApprovalDecisionManagement.cs" />
+    <Compile Include="BAL\StageSetupManagement.cs" />
+    <Compile Include="BAL\TaskMasterManagement.cs" />
+    <Compile Include="BAL\TimeSheetFormManagement.cs" />
+    <Compile Include="BAL\TimeSheetPeriodManagement.cs" />
+    <Compile Include="BAL\TimeSheetViewManagement.cs" />
+    <Compile Include="BAL\TravelLocationManagement.cs" />
+    <Compile Include="BAL\TravelRatesManagement.cs" />
+    <Compile Include="BAL\TypeOfClaimManagement.cs" />
+    <Compile Include="BAL\AlertSetupManagement.cs" />
+    <Compile Include="BAL\UserAuthorization.cs" />
+    <Compile Include="BAL\UserDataAccess.cs" />
+    <Compile Include="BAL\UserManagement.cs" />
+    <Compile Include="BAL\ChangeApproverManagement.cs" />
+    <Compile Include="BAL\WIPRecordingFormManagement.cs" />
+    <Compile Include="Controllers\AlertSetupController.cs" />
+    <Compile Include="Controllers\ApprovalDecisionController.cs" />
+    <Compile Include="Controllers\AssignmentFormController.cs" />
+    <Compile Include="Controllers\ApprovalStageController.cs" />
+    <Compile Include="Controllers\AssignmentNatureSetupController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ChangeApproverController.cs" />
+    <Compile Include="Controllers\ClaimFormController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ApprovalSetupController.cs" />
+    <Compile Include="Controllers\EncDecController.cs" />
+    <Compile Include="Controllers\GroupSetupController.cs" />
+    <Compile Include="Controllers\HolidayController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\MonthlyTravelSheetController.cs" />
+    <Compile Include="Controllers\NCTaskAssignmentController.cs" />
+    <Compile Include="Controllers\NonChargeableSetupController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ReportUploaderController.cs" />
+    <Compile Include="Controllers\ResourceBillingRateController.cs" />
+    <Compile Include="Controllers\AssignmentCostSetupController.cs" />
+    <Compile Include="Controllers\TaskMasterSetupController.cs" />
+    <Compile Include="Controllers\TimeSheetFormController.cs" />
+    <Compile Include="Controllers\TimeSheetPeriodSetupController.cs" />
+    <Compile Include="Controllers\TimeSheetViewController.cs" />
+    <Compile Include="Controllers\TraineesDashboardController.cs" />
+    <Compile Include="Controllers\TravelLocationController.cs" />
+    <Compile Include="Controllers\TravelRatesController.cs" />
+    <Compile Include="Controllers\TypeOfClaimSetupController.cs" />
+    <Compile Include="Controllers\UserDataAccessController.cs" />
+    <Compile Include="Controllers\UserAuthorizationController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WIPRecordingFormController.cs" />
+    <Compile Include="DAL\HANA_DAL_ODBC.cs" />
+    <Compile Include="DAL\HANA_DAL.cs" />
+    <Compile Include="DAL\Hana_DataContext_ODBC.cs" />
+    <Compile Include="DAL\Hana_DataContext.cs" />
+    <Compile Include="DAL\SQL_DAL.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Email.cs" />
+    <Compile Include="Helper\Encrypt_Decrypt.cs" />
+    <Compile Include="Helper\Enums.cs" />
+    <Compile Include="Helper\Log.cs" />
+    <Compile Include="Helper\PropertyCompare.cs" />
+    <Compile Include="Helper\PropertyCompareResult.cs" />
+    <Compile Include="Helper\TaskScheduler.cs" />
+    <Compile Include="Models\AlertSetup.cs" />
+    <Compile Include="Models\AssignmentFormGeneral.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\EmployeeLeaves.cs" />
+    <Compile Include="Models\HCM_EmployeeLeaves.cs" />
+    <Compile Include="Models\Holiday.cs" />
+    <Compile Include="Models\HolidayDetails.cs" />
+    <Compile Include="Models\ReportInfo.cs" />
+    <Compile Include="Models\StaffPendingTimeStatus.cs" />
+    <Compile Include="Models\WIPRecordingForm.cs" />
+    <Compile Include="Models\ChangeApprover.cs" />
+    <Compile Include="Models\WIPRecordingFormChild.cs" />
+    <Compile Include="Models\AssignmentFormChild.cs" />
+    <Compile Include="Models\AssignmentFormCost.cs" />
+    <Compile Include="Models\Attachement.cs" />
+    <Compile Include="Models\ClaimForm.cs" />
+    <Compile Include="Models\ClaimFormDetails.cs" />
+    <Compile Include="Models\Director.cs" />
+    <Compile Include="Models\Documents.cs" />
+    <Compile Include="Models\ApprovalDecision.cs" />
+    <Compile Include="Models\DropDown.cs" />
+    <Compile Include="Models\NCTaskAssignmentDetails.cs" />
+    <Compile Include="Models\NCTaskAssignment.cs" />
+    <Compile Include="Models\MonthlyTravelSheet.cs" />
+    <Compile Include="Models\MonthlyTravelSheetDetails.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\StageSetupChildInfo.cs" />
+    <Compile Include="Models\AssignmentForm.cs" />
+    <Compile Include="Models\StageSetupInfo.cs" />
+    <Compile Include="Models\AssignmentCostSetup.cs" />
+    <Compile Include="Models\AssignmentNatureSetup.cs" />
+    <Compile Include="Models\B1SP_Parameter.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Dependencies.cs" />
+    <Compile Include="Models\Designation.cs" />
+    <Compile Include="Models\EnumUserAuthorizationViewModel.cs" />
+    <Compile Include="Models\Function.cs" />
+    <Compile Include="Models\GenerateTimeSheet.cs" />
+    <Compile Include="Models\ApprovalSetupChildInfo.cs" />
+    <Compile Include="Models\GroupSetupChildInfo.cs" />
+    <Compile Include="Models\ApprovalSetupInfo.cs" />
+    <Compile Include="Models\GroupSetupInfo.cs" />
+    <Compile Include="Models\HCM_Designation.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Master_Task_Detail.cs" />
+    <Compile Include="Models\HCM_Employee.cs" />
+    <Compile Include="Models\ResourceBillingRatesDetail.cs" />
+    <Compile Include="Models\AssignmentFormSummary.cs" />
+    <Compile Include="Models\TimeSheetForm.cs" />
+    <Compile Include="Models\TimeSheetFormDetails.cs" />
+    <Compile Include="Models\TimeSheetPeriods.cs" />
+    <Compile Include="Models\TimeSheetView.cs" />
+    <Compile Include="Models\TimseSheetStatus.cs" />
+    <Compile Include="Models\TMS_Menu.cs" />
+    <Compile Include="Models\TravelLocationInfo.cs" />
+    <Compile Include="Models\TravelRatesInfo.cs" />
+    <Compile Include="Models\TaskMasterSetupInfo.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\ResourceBillingRates.cs" />
+    <Compile Include="Models\SampleData.cs" />
+    <Compile Include="Models\SAP_Function.cs" />
+    <Compile Include="Models\NonChargableSetupInfo.cs" />
+    <Compile Include="Models\TypeOfClaimSetupInfo.cs" />
+    <Compile Include="Models\UserDataAccess_Menu.cs" />
+    <Compile Include="Models\UserPermissions.cs" />
+    <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\UserSession.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportViewer.aspx.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportViewer.aspx.designer.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Rpt\" />
+    <Folder Include="TMS\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Log\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52822</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52837/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties TemplateFeatures="NET CS BASELINE" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

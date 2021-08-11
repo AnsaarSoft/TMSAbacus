@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "ReportViewer";
+}
+
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h4> Report Viewer </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"> Reports </a></li>
+                            <li class="breadcrumb-item"> Report Viewer </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div id="mvcpartial" style="width:600px;height:400px"></div>
+        </div>
+            <!-- [ Main Content ] end -->
+        </div> <!-- [ Card Content ] end -->
+    </div>
+<script>
+    $('document').ready(function () {
+        var rptName = "ApprovalReport.rpt";
+        $.ajax(
+            {
+                type: "GET",
+                url: "../ReportViewer.aspx?ReportName=" + rptName,
+                success: function (msg) { $("#mvcpartial").append(msg); }
+            });
+    });
+
+
+</script>

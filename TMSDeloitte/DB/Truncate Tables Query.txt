@@ -1,0 +1,106 @@
+truncate Table "AlertSetup" ;
+truncate Table  "AlertSetup_Log" ;
+truncate Table  "Approval_Decision" ;
+truncate  Table "Approval_Decision_Comments" ;
+truncate Table  "Approval_Setup" ;
+truncate Table  "Approval_SetupLog" ;
+truncate  Table  "Approval_Setup_Child";
+truncate Table "Approval_Setup_ChildLog" ;
+truncate Table "ASSIGNMENTCOSTSETUP" ;
+truncate Table "ASSIGNMENTCOSTSETUP_LOG" ;
+truncate Table "AssignmentForm" ;
+truncate Table  "AssignmentFormCost";
+truncate Table  "AssignmentFormCostLog";
+truncate Table  "AssignmentFormGeneral";
+truncate Table  "AssignmentFormGeneralLog";
+truncate Table  "AssignmentFormLog";
+truncate Table  "AssignmentFormResource";
+truncate Table "AssignmentFormResourceLog" ;
+truncate Table  "AssignmentFormSummary";
+truncate Table  "AssignmentFormSummaryLog";
+truncate Table "AssignmentNatureSetup" ;
+truncate Table  "AssignmentNatureSetup_Log";
+truncate Table  "Authorization";
+truncate Table  "AuthorizationList";
+truncate Table  "AuthorizationList_Log";
+
+truncate Table  "ClaimForm";
+truncate Table  "ClaimFormDetail";
+truncate Table  "ClaimFormDetail_Log";
+truncate Table  "ClaimForm_Log";
+truncate Table  "DataAccess";
+truncate Table  "DataAccessList";
+truncate Table  "DataAccessList_Log";
+truncate Table  "Group_Setup";
+truncate Table  "Group_SetupLog";
+truncate Table  "Group_Setup_Child";
+truncate Table  "Group_Setup_ChildLog";
+truncate Table  "LOGS";
+
+truncate Table "Master_Task" ;
+truncate Table  "Master_TaskSetup_LOG";
+truncate Table  "Master_Task_Detail";
+truncate Table  "MonthlyTravelSheet";
+truncate Table  "MonthlyTravelSheetDetail";
+truncate Table  "MonthlyTravelSheetDetail_Log";
+truncate Table  "MonthlyTravelSheet_Log";
+truncate Table  "NCTaskAssignment";
+truncate Table  "NCTaskAssignmentDetail";
+truncate Table  "NCTaskAssignmentDetail_Log";
+truncate Table  "NCTaskAssignment_Log";
+truncate Table  "NonChargeableSetup";
+truncate Table  "NonChargeableSetup_LOG";
+truncate Table  "Notification";
+
+truncate Table  "ResourceBillingRates";
+truncate Table  "ResourceBillingRatesDetails";
+truncate Table  "ResourceBillingRatesDetail_Log";
+truncate Table  "ResourceBillingRates_Log";
+truncate Table  "Stage_Setup";
+truncate Table  "Stage_SetupLog";
+truncate Table  "Stage_Setup_Child";
+truncate Table  "Stage_Setup_ChildLog";
+truncate Table "TimeSheetForm" ;
+truncate Table  "TimeSheetFormDetail";
+truncate Table  "TimeSheetFormDetail_Log";
+truncate Table  "TimeSheetForm_Log";
+truncate Table  "TimeSheetPeriod";
+truncate Table  "TimeSheetPeriodDetail";
+truncate Table  "Travel_Location_LOG";
+truncate Table  "Travel_Location_Setup";
+truncate Table  "Travel_Rates";
+truncate Table  "TRAVEL_RATES";
+truncate Table  "Travel_Rates_LOG";
+truncate Table  "TypeOfClaimSetup";
+truncate Table  "TypeOfClaimSetup_LOG";
+
+truncate Table  "UserAlertSetup";
+truncate Table "UserAlertSetup_Log" ;
+truncate Table  "UserAuthorization";
+truncate Table  "UserAuthorization_Log";
+truncate Table  "UserGroupAlertSetup";
+truncate Table  "UserGroupAlertSetup_Log";
+truncate Table  "UserGroupAuthorization";
+truncate Table  "UserGroupAuthorization_Log";
+truncate Table  "USERPROFILE";
+truncate Table  "USERPROFILE_LOG";
+truncate Table  "WIPRecordingForm";
+truncate Table  "WIPRecordingFormDetail";
+truncate Table  "WIPRecordingFormDetail_Log";
+truncate Table  "WIPRecordingForm_Log";
+
+insert into 
+"USERPROFILE" 
+values(
+1,--Table Unique ID
+1, -- HCMOne ID
+'1',-- HCM One Emp Code
+'admin', -- TMS User name
+'T+4Ai6O3CR0kJYxCgXy2jA==', --TMA password
+true, --Is Super
+true, --Is Active
+false, --Is Deleted
+1, -- Created By
+'2021-02-17', -- Created Date
+1, -- Updated By
+'2021-02-17'); -- Updated Date

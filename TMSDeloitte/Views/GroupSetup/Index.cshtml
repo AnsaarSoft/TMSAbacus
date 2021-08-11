@@ -1,0 +1,1099 @@
+﻿@model TMSDeloitte.Models.GroupSetupInfo
+@{
+    ViewBag.Title = "GroupSetup";
+}
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h4> Group Setup</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"> Administration </a></li>
+                            <li class="breadcrumb-item"> Setup </li>
+                            <li class="breadcrumb-item"> Group Setup</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div class="text-right">
+                        <button id="new" class="plus-icon"> <i class="fas fa-plus-square"></i> </button>
+                        @*<button id="find" class="find-icon"> <i class="fas fa-search"></i> </button>*@
+                        <button id="find" class="find-icon" data-toggle="modal" onclick='GeneratePopupFindGrid();' data-target="#myModal_Find"> <i class="fas fa-search"></i> </button>
+                        <button id="first" class="step-backword-icon"> <i class="fas fa-step-backward"></i></button>
+                        <button id="previous" class="backword-icon"> <i class="fas fa-backward"></i> </button>
+                        <button id="next" class="forward-icon"> <i class="fas fa-forward"></i> </button>
+                        <button id="last" class="step-forward-icon"> <i class="fas fa-step-forward"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Group Code </label>
+                    <input type="text" class="form-control frm-cstm" id="GroupCode" placeholder="Group Code" />
+
+                </div>
+            </div>
+
+            <div class="dx-field">
+                <br />
+
+                <div class="dx-field-value">
+                    <div id="IsActive"></div>
+                </div>
+                <label for=""> </label>
+                <div class="dx-field-label"></div>
+            </div>
+
+            @*<div class="col-sm-1">
+                    <div class="form-group">
+                        <label for=""> </label>
+                        <input type="checkbox" class="form-check-label" id="IsActive" /> ACTIVE
+                    </div>
+                </div>*@
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Group Name </label>
+                    <input type="text" class="form-control frm-cstm" id="GroupName" placeholder="Group Name">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="typeCost"> Document Number: </label>
+                    <input type="text" class="form-control frm-cstm" id="docNumber" placeholder="DocNum" disabled="disabled">
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <div id="gridContainer"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12 text-right mt-3">
+                <button type="button" id="add_update" class="btn btn-primary mr-2"> Add & Update </button>
+                @{
+                    TMSDeloitte.Models.UserSession sess = null;
+                    if ((TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"] != null)
+                    {
+                        sess = (TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"];
+                        if (sess.SessionUser.ISSUPER)
+                        {
+                            <button type="button" class="btn btn-success" data-toggle="modal" onclick='loadAuthLogData("/GroupSetup/GetLogByDocID");' data-target="#myLogModal" > Show Log </button>
+                        }
+
+                        var menu = sess.pagelist.Where(x => x.ID == (int)TMSDeloitte.Helper.Enums.FormsName.GroupSetup).FirstOrDefault();
+                        if (menu != null)
+                        {
+                            <input type="hidden" id="AuthID" name="AuthID" value="@menu.Role">
+                        }
+                        else
+                        {
+                            <input type="hidden" id="AuthID" name="AuthID" value="-1">
+                        }
+                    }
+
+                }
+
+
+            </div>
+        </div>
+
+        <!-- [ Main Content ] end -->
+    </div> <!-- [ Card Content ] end -->
+</div>
+
+
+<div id="myModal_Users" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="userContainer"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOkUser" class="btn btn-primary">Ok</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal_Find" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+            </div>
+            <div class="modal-body">
+                <div id="FindContainer"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOk" class="btn btn-primary">Ok</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="myLogModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<h4 class="modal-title">Log</h4>*@
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <div class="modal-body">
+                <h8>Header Log</h8>
+                <div id="HeaderLogContainer"></div>
+            </div>
+            <div class="modal-body">
+                <h8>Detail Log</h8>
+                <div id="DetailLogContainer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    var Task = {};
+    var KEYMain;
+    var Table = [];
+    var GroupSetupList = [];
+
+    var serialNo = 0;
+    index = 0;
+    var DocNum = "";
+    var BRANCHID = 0;
+    var CLIENTID = 0;
+    var DEPARTMENTNAME;
+    var productsDataSource = null;
+
+    var USER_NAME;
+    var DESIGNATIONNAME;
+    var BRANCHNAME;
+    var AllEmployees;
+    var SaveEditedData = -1;
+    var ISACTIVE;
+    var DocId = 0;
+    var isPageDataLoaded = false;
+
+    function stopLoading() {
+        if (isPageDataLoaded == false) {
+            setTimeout(function () { stopLoading(); }, 500);
+        }
+        else {
+            loadPanel.hide();
+        }
+    }
+    $('#docNumber').prop("disabled", true);
+   
+    function GenerateGrid(JSON_Response) {
+        $(function () {
+            $("#gridContainer").dxDataGrid({
+                dataSource: JSON_Response,
+                keyExpr: "KEY",
+                columnAutoWidth: true,
+                allowColumnResizing: true,
+                allowColumnReordering: true,
+                showBorders: true,
+                showScrollbar: 'always',
+                filterRow: { visible: true },
+                scrolling: {
+                    mode: "horizontal",
+                    showScrollbar: 'always'
+                },
+                editing: {
+                    mode: "batch",
+                    allowUpdating: true,
+                    allowDeleting: true,
+                    allowAdding: true
+                },
+                columns: [
+                     {
+                         dataField: "ID",
+                         caption: "ID",
+                         allowEditing: false,
+                         visible: false
+                     },
+                    {
+                        dataField: "SNO",
+                        caption: "S.No",
+                        dataType: "Number",
+                        allowEditing: false,
+                    },
+                     {
+                         dataField: "USER_CODE",
+                         caption: "User Code",
+                         allowEditing: true,
+                         validationRules: [{ type: "required" }],
+                         setCellValue: function (rowData, value, currentRowData) {
+
+                             rowData.USER_CODE = value;
+                             currentRowData.USER_CODE = value;
+
+                             rowData.USER_CODE = value;
+
+                             var SelectedEmp = AllEmployees.filter(x=>x.ID == value)[0];
+                             if (SelectedEmp != undefined)
+                             {
+                                 rowData.UserID = SelectedEmp.ID;
+
+                                 rowData.DEPARTMENTID = SelectedEmp.DEPARTMENTID;
+
+                                 rowData.DEPARTMENTNAME = SelectedEmp.DEPARTMENTNAME;
+
+                                 rowData.USER_NAME = SelectedEmp.FULLNAME;
+
+                                 rowData.DESIGNATIONID = SelectedEmp.DESIGNATIONID;
+
+                                 rowData.DESIGNATIONNAME = SelectedEmp.DESIGNATIONNAME;
+
+                                 rowData.BRANCHID = SelectedEmp.BRANCHID;
+
+                                 rowData.BRANCHNAME = SelectedEmp.BRANCHNAME != "" ? SelectedEmp.BRANCHNAME : 'N/A';
+                               
+                             }
+                            
+
+
+                         },
+                         
+                         lookup: {
+                             dataSource: AllEmployees,
+                             valueExpr: "ID",
+                             displayExpr: "EMPLOYEECODE",
+
+                         }
+                     },
+                    {
+                        caption: "User Name",
+                        dataField: "USER_NAME",
+                        width: "140",
+                        allowEditing: false,
+                        customizeText: function (rowData) {
+                            return rowData.value;
+                        }
+                    },
+                    {
+                        caption: "Branch",
+                        dataField: "BRANCHNAME",
+                        width: "100",
+                        allowEditing: false,
+                        customizeText: function (rowData) {
+                            return rowData.value;
+                        }
+                    },
+                    {
+                        caption: "Designation",
+                        dataField: "DESIGNATIONNAME",
+                        width: "auto",
+                        allowEditing: false,
+                        customizeText: function (rowData) {
+                            return rowData.value;
+                        }
+                    },
+                    {
+                        dataField: "DEPARTMENTNAME",
+                        caption: "Department",
+                        width: "auto",
+                        allowEditing: false,
+                        customizeText: function (rowData) {
+                            return rowData.value;
+                        }
+                    }
+                ],
+                onEditorPreparing: function (e) {
+                    
+                },
+                onEditorPrepared: function (e) {
+                    //dxSelectBox
+                    if (e.dataField == "USER_CODE") {
+                        $(e.editorElement).dxSelectBox("instance").on("valueChanged", function (args) {
+                            var grid = $("#gridContainer").dxDataGrid("instance");
+                            var index = e.row.rowIndex;
+                            //var result = "new description " + args.value;
+                            //grid.cellValue(index, "DEPARTMENTNAME", result);
+
+                            var SelectedEmp = AllEmployees.filter(x=>x.ID == args.value)[0];
+                            console.log(SelectedEmp);
+                            if (SelectedEmp != null) {
+                                grid.cellValue(index, "USER_CODE", SelectedEmp.EMPLOYEECODE);
+                                grid.cellValue(index, "DEPARTMENTID", SelectedEmp.DEPARTMENTID);
+                                grid.cellValue(index, "DEPARTMENTNAME", SelectedEmp.DEPARTMENTNAME);
+                                grid.cellValue(index, "USER_NAME", SelectedEmp.FULLNAME);
+                                grid.cellValue(index, "DESIGNATIONID", SelectedEmp.DESIGNATIONID);
+                                grid.cellValue(index, "DESIGNATIONNAME", SelectedEmp.DESIGNATIONNAME);
+                                grid.cellValue(index, "BRANCHID", SelectedEmp.BRANCHID);
+                                grid.cellValue(index, "BRANCHNAME", SelectedEmp.BRANCHNAME);
+                            }
+
+                        });
+                    }
+                },
+                onEditingStart: function (e) {
+                },
+                onInitNewRow: function (e) {
+                    e.data.ID = 0;
+                    e.data.ISDELETED = false;
+                    e.data.ISACTIVE = true;
+                    serialNo = serialNo + 1;
+                    e.data.SNO = serialNo;
+
+                    window.setTimeout(function () { e.component.cancelEditData(); }, 0)
+
+                    GeneratePopupUserGrid();
+
+                },
+                onRowInserting: function (e) {
+                },
+                onRowInserted: function (e) {
+
+                    var dataExist = Table.filter(x=>x.USER_CODE == e.data.USER_CODE);
+                    if (dataExist.length == 0)
+                    {
+                        var Details = {
+                            //KEYMain: e.key + 1,
+                            KEY: e.key,
+                            ID: 0,
+                            SNO: e.data.SNO,
+
+                            BRANCHID: e.data.BRANCHID,
+                            BRANCHNAME: e.data.BRANCHNAME,
+
+                            DEPARTMENTID: e.data.DEPARTMENTID,
+                            DEPARTMENTNAME: e.data.DEPARTMENTNAME,
+
+                            DESIGNATIONID: e.data.DESIGNATIONID,
+                            DESIGNATIONNAME: e.data.DESIGNATIONNAME,
+
+                            USER_NAME: e.data.USER_NAME,
+                            UserID: e.data.ID,
+                            //ISACTIVE: e.data.ISACTIVE,
+                            USER_CODE: e.data.USER_CODE,
+                            ISDELETED: false
+                        };
+                        Table.push(Details);
+                    }
+                    else {
+                        $.each(Table, function (index, val) {
+                          
+                            if (val.USER_CODE == e.data.USER_CODE) {
+                                val.KEY= e.key;
+                                val.ID= 0;
+                                val.SNO= e.data.SNO;
+                                val.BRANCHID = e.data.BRANCHID;
+                                val.BRANCHNAME = e.data.BRANCHNAME;
+                                val.DEPARTMENTID = e.data.DEPARTMENTID;
+                                val.DEPARTMENTNAME = e.data.DEPARTMENTNAME;
+                                val.DESIGNATIONID = e.data.DESIGNATIONID;
+                                val.DESIGNATIONNAME = e.data.DESIGNATIONNAME;
+                                val.USER_NAME = e.data.USER_NAME;
+                                val.UserID= e.data.ID;
+                                val.USER_CODE= e.data.USER_CODE;
+                                val.ISDELETED= false;
+                            }
+
+                        });
+                    }
+                  
+
+
+                   
+
+                },
+                onRowUpdating: function (e) {
+                },
+                onRowUpdated: function (e) {
+                    $.each(Table, function (index, val) {
+                        if (val.KEY == e.data.KEY) {
+
+                            val.UserID = e.data.UserID;
+                            val.LOCATION = e.data.LOCATION;
+                            val.BRANCHID = e.data.BRANCHID;
+                            val.CLIENTID = e.data.CLIENTID;
+                            val.ISACTIVE = e.data.ISACTIVE;
+                            val.ISDELETED = e.data.ISDELETED;
+                        }
+
+                    });
+                },
+                onRowRemoving: function (e) {
+                },
+                onRowRemoved: function (e) {
+                    $.each(Table, function (index, val) {
+                        if (val.KEY == e.data.KEY) {
+                            val.ISDELETED = true;
+                        }
+                    });
+                }
+            });
+
+        });
+    }
+
+    function GetGroup_Setup() {
+        var url = "/GroupSetup/GetGroupSetup";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+            AllEmployees = data.response;
+            GroupSetupList = data.GroupSetup;
+            console.log(GroupSetupList);
+            console.log(AllEmployees);
+            var abc = [];
+            GenerateGrid(abc);
+            //if (GroupSetupList.length>0) {
+
+            //    if (GroupSetupList[0].Table) {
+            //        Table = GroupSetupList[0].Table;
+            //    }
+
+            //}
+            isPageDataLoaded = true;
+        }).fail(function (data) {
+            isPageDataLoaded = true;
+            loadPanel.hide();
+        });
+    }
+
+    function ValidateAuthorization() {
+        var id = $("#AuthID").val();
+        var isSuccess = false;
+
+        if (id == -1)
+            isSuccess = true;
+        if (id == 2)
+            isSuccess = true;
+
+        if (isSuccess) {
+            $("#add_update").remove();
+            $("#gridContainer").dxDataGrid({ disabled: true });
+        }
+    }
+
+    function AddUpdate() {
+        var notSaved = $('#gridContainer').dxDataGrid('instance').getController('editing').hasChanges();
+        var ID = 0;
+        if (notSaved)
+            setTimeout(function () { AddUpdate(); }, 2000);
+
+        else {
+            if (Table.length > 0) {
+                FilteredRecordForID = GroupSetupList.filter(x=>x.DOCNUM == $("#docNumber").val());
+                if (FilteredRecordForID.length > 0) {
+                    ID = FilteredRecordForID[0].ID;
+                }
+               
+                if ($("#GroupCode").val() == "")
+                {
+                    loadPanel.hide();
+                    AlertToast('error', "Please enter group code!");
+                    return;
+                }
+                if ($("#GroupName").val() == "") {
+                    loadPanel.hide();
+                    AlertToast('error', "Please enter group name!");
+                    return;
+                }
+
+                var ISACTIVE = $("#IsActive").dxCheckBox("instance").option('value');
+                loadPanel.show();
+                var url = "/GroupSetup/AddUpdateGroupSetup";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                       
+                        GROUPCODE: $("#GroupCode").val(),
+                        GROUPNAME: $("#GroupName").val(),
+                        DOCNUM: $("#docNumber").val(),
+                        ISACTIVE: ISACTIVE,
+                        GroupSetupInfo: Table,
+                        ID: ID
+                    }),
+                    dataType: "json",
+                    async: false,
+                    success: function (response) {
+                        loadPanel.hide();
+                        if (response.Success) {
+                            AlertToast('success', response.Message);
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 5000);
+                        }
+                        else
+                            AlertToast('error', response.Message);
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        loadPanel.hide();
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                        loadPanel.hide();
+                    }
+
+                })
+            }
+            else {
+                loadPanel.hide();
+                AlertToast('error', "Please add atleast one new record");
+            }
+        }
+    }
+
+    function GeneratePopupUserGrid() {
+        loadPanel.show();
+
+        popupUserInstance = $("#userContainer").dxDataGrid({
+            dataSource: AllEmployees,
+            keyExpr: "ID",
+            paging: { pageSize: 10 },
+            columnAutoWidth: true,
+            pager: { showInfo: true },
+            allowColumnResizing: true,
+            allowColumnReordering: true,
+            showBorders: true,
+            showScrollbar: 'always',
+            filterRow: { visible: true },
+            scrolling: {
+                mode: "horizontal",
+                showScrollbar: 'always'
+            },
+            selection: {
+                mode: "multiple",
+                showCheckBoxesMode: "always",
+                allowSelectAll: true,
+                selectAllMode: 'page'
+            },
+            columns: [
+                {
+                    dataField: "EMPLOYEECODE",
+                    caption: "User Code"
+                },
+                {
+                    dataField: "FULLNAME",
+                    caption: "User Name"
+                },
+                {
+                    dataField: "DESIGNATIONNAME",
+                    caption: "Designation"
+                },
+                {
+                    dataField: "DEPARTMENTNAME",
+                    caption: "Department"
+                },
+                {
+                    dataField: "BRANCHNAME",
+                    caption: "Branch"
+                }
+            ]
+        }).dxDataGrid("instance");
+
+        $("#select-all-mode").dxSelectBox({
+            dataSource: ["allPages", "page"],
+            value: "allPages",
+            onValueChanged: function (data) {
+                dataGrid.option("selection.selectAllMode", data.value);
+            }
+        });
+
+        $("#show-checkboxes-mode").dxSelectBox({
+            dataSource: ["none", "onClick", "onLongTap", "always"],
+            value: "onClick",
+            onValueChanged: function (data) {
+                dataGrid.option("selection.showCheckBoxesMode", data.value);
+                $("#select-all-mode").dxSelectBox("instance").option("disabled", data.value === "none");
+            }
+        });
+
+        var popupUser_Table = [];
+        var popupUsersList = Table;
+        popupUserInstance.clearSelection();
+        $.each(popupUsersList, function (index, val) {
+            popupUser_Table.push(val.UserID);
+        });
+        popupUserInstance.selectRows(popupUser_Table, true);
+
+        loadPanel.hide();
+
+        $('#myModal_Users').modal('show');
+    }
+
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+    $('document').ready(function () {
+        DocId = 0;
+        serialNo = 0;
+        loadPanel.show();
+        setTimeout(function () { GetGroup_Setup(); }, 100);
+        stopLoading();
+        ValidateAuthorization();
+        $('#add_update').click(function () {
+            var gridContainer = $("#gridContainer").dxDataGrid("instance");
+            loadPanel.show();
+            gridContainer.getController('validating').validate(true).done(function (result) {
+                if (result) {
+                    SaveEditedData = gridContainer.saveEditData();
+                    setTimeout(function () { AddUpdate(); }, 2000);
+                }
+                else {
+                    loadPanel.hide();
+                    AlertToast('error', "Please fill required fields!");
+                }
+                
+            });
+        });
+
+
+    });
+
+    $("#IsActive").dxCheckBox({
+        text: "IsActive",
+        value: true,
+        onValueChanged: function (e) {
+            console.log(e.value);
+            ISACTIVE = e.value;
+        }
+    });
+
+    $("#docNumber").blur(function () {
+        var DN = $("#docNumber").val()
+        if (DN) {
+            Table = GroupSetupList.filter(x=>x.DOCNUM == DN);
+
+        } else {
+            Table = GroupSetupList;
+        }
+
+        GenerateGrid(Table);
+        //GetMaster_TaskByDocNum($("#docNumber").val());
+    });
+
+
+    $('#new').click(function () {
+
+        $("#docNumber").val("");
+        $('#docNumber').prop("disabled", true);
+        var abc = [];
+        GenerateGrid(abc);
+        //GetGroup_Setup();//GenerateGrid(null);
+        Table = [];
+        $("#GroupCode").val("");
+        $("#GroupName").val("");
+        serialNo = 0;
+        DocId = 0;
+    });
+    $('#find').click(function () {
+        $("#docNumber").val("");
+        $('#docNumber').prop("disabled", true);
+
+    });
+    $('#first').click(function () {
+        $('#docNumber').prop("disabled", true);
+        getFilteredData($("#docNumber").val(), 'DOCNUM', 'first');
+    });
+    $('#last').click(function () {
+
+        $('#docNumber').prop("disabled", true);
+        getFilteredData($("#docNumber").val(), 'DOCNUM', 'last');
+    });
+    $('#previous').click(function () {
+        $('#docNumber').prop("disabled", true);
+        getFilteredData($("#docNumber").val(), 'DOCNUM', 'previous');
+    });
+    $('#next').click(function () {
+        $('#docNumber').prop("disabled", true);
+        getFilteredData($("#docNumber").val(), 'DOCNUM', 'next');
+
+    });
+
+
+    function getFilteredData(id, type, Action) {
+        DocId = 0;
+        idCopy = id;
+        var GroupSetupListCopy = [];
+        let DocNum = '';
+        if (type == 'BRANCHID') {
+            Table = GroupSetupList.filter(x=>x.BRANCHID == id);
+        }
+        else if (type == 'DOCNUM') {
+
+            if (Action == 'next') {
+
+
+                let l1 = GroupSetupList.map(m=> { return m.DOCNUM });
+                l1 = l1.sort();
+
+                var unique = l1.filter((v, i, a) => a.indexOf(v) === i);
+
+                FilteredRecord = GroupSetupList.filter(x=>x.DOCNUM == unique[0]);
+
+                FilteredRecord.forEach(function (obj) {
+                    Table = obj.Table;
+                })
+
+                if ($("#docNumber").val() == "") {
+                    DocNum = unique[0];
+                    id = DocNum;
+                    //DocNum = GroupSetupList[0].DOCNUM;
+                    //id = DocNum;
+                }
+                else {
+                    DocNum = $("#docNumber").val().substr(4, $("#docNumber").val().length);
+                    DocNum = parseInt(DocNum) + 1;
+                    if (DocNum > unique.length) {
+                        return;
+                    }
+                    DocNum = DocNum.toString();
+                    DocNum = 'Doc-' + DocNum.padStart(5, '0');
+                    FilteredRecord = GroupSetupList.filter(x=>x.DOCNUM == DocNum);
+                    FilteredRecord.forEach(function (obj) {
+                        Table = obj.Table;
+                    })
+                    id = DocNum;
+                }
+
+            }
+            else if (Action == 'previous') {
+
+                let l1 = GroupSetupList.map(m=> { return m.DOCNUM });
+                l1 = l1.sort();
+
+                var unique = l1.filter((v, i, a) => a.indexOf(v) === i);
+
+                FilteredRecord = GroupSetupList.filter(x=>x.DOCNUM == unique[unique.length - 1]);
+                FilteredRecord.forEach(function (obj) {
+                    Table = obj.Table;
+                })
+                if ($("#docNumber").val() == "") {
+                    DocNum = unique[unique.length - 1];
+                    id = DocNum;
+                    //DocNum = GroupSetupList[0].DOCNUM;
+                    //id = DocNum;
+                }
+                else {
+                    DocNum = $("#docNumber").val().substr(4, $("#docNumber").val().length);
+                    DocNum = parseInt(DocNum) - 1;
+                    if (DocNum == 0) {
+                        return;
+                    }
+                    DocNum = DocNum.toString();
+                    DocNum = 'Doc-' + DocNum.padStart(5, '0');
+                    FilteredRecord = GroupSetupList.filter(x=>x.DOCNUM == DocNum);
+                    FilteredRecord.forEach(function (obj) {
+                        Table = obj.Table;
+                    })
+                    id = DocNum;
+                }
+            }
+
+            else if (Action == 'last') {
+                let l1 = GroupSetupList.map(m=> { return m.DOCNUM });
+                l1 = l1.sort();
+
+                var unique = l1.filter((v, i, a) => a.indexOf(v) === i);
+
+                id = GroupSetupList.filter(x=>x.DOCNUM == unique[unique.length - 1]);
+                if (id.length > 0) {
+                    id = id[0].DOCNUM;
+                    FilteredRecord = GroupSetupList.filter(x=>x.DOCNUM == id);
+                    FilteredRecord.forEach(function (obj) {
+                        Table = obj.Table;
+                    })
+                }
+
+            }
+
+            else if (Action == 'first') {
+                id = GroupSetupList[0].DOCNUM;
+                FilteredRecord = GroupSetupList.filter(x=>x.DOCNUM == id);
+                FilteredRecord.forEach(function (obj) {
+                    Table = obj.Table;
+                })
+                if (id == "") {
+                    console.log("null id");
+                }
+            }
+
+            //Table = GroupSetupList.filter(x=>x.DOCNUM == id);
+            //if (Table.length == 0) {
+            //    Table = GroupSetupList.filter(x=>x.DOCNUM == idCopy);
+            //}
+        }
+
+        var GC;
+        var GN;
+        FilteredRecord.forEach(function (obj) {
+            GC = obj.GROUPCODE;
+            GN = obj.GROUPNAME;
+            DocId = obj.ID;
+            GenerateGrid(obj.Table);
+
+        })
+
+
+        if (Table.length > 0) {
+           
+            DocNum = Table[0].DOCNUM;
+            BRANCHID = Table[0].BRANCHID;
+        }
+
+        $("#GroupCode").val(GC);
+        $("#GroupName").val(GN);
+
+        $('#docNumber').prop("disabled", true);
+        $("#IsActive").dxCheckBox({
+            value: FilteredRecord[0].ISACTIVE
+        });
+        if (id != undefined) {
+            $("#docNumber").val(id);
+        }
+
+        serialNo = Table.length;
+    }
+
+    function GetLogData(name) {
+        loadData("/GroupSetup/GetTravelLocationLog?docNum=" + DocNum);
+    }
+
+
+    function GeneratePopupFindGrid() {
+        loadPanel.show();
+        var ur = "/GroupSetup/GetGroupSetupHeader";
+        $.ajax({
+            url: ur,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+            var JSON_Response1 = [];
+            JSON_Response1 = JSON.parse(data.GroupSetup.Data);
+            popupFindInstance = $("#FindContainer").dxDataGrid({
+                dataSource: JSON_Response1,
+                keyExpr: "DOCNUM",
+                paging: { pageSize: 10 },
+                columnAutoWidth: true,
+                pager: { showInfo: true },
+                allowColumnResizing: true,
+                allowColumnReordering: true,
+                showBorders: true,
+                showScrollbar: 'always',
+                filterRow: { visible: true },
+                scrolling: {
+                    mode: "horizontal",
+                    showScrollbar: 'always'
+                },
+                selection: {
+                    mode: "single"
+                },
+                columns: [
+                    {
+                        dataField: "DOCNUM",
+                        caption: "Document #"
+                    },
+                    {
+                        dataField: "GROUPCODE",
+                        caption: "Group Code"
+                    },
+                    {
+                        dataField: "GROUPNAME",
+                        caption: "Group Name"
+                    },
+                    {
+                        dataField: "ISACTIVE",
+                        caption: "IsActive"
+                    },
+
+
+                    {
+                        dataField: "CREATEDATE",
+                        caption: "Created Date"
+                    }
+                ]
+            }).dxDataGrid("instance");
+
+            $("#select-all-mode").dxSelectBox({
+                dataSource: ["allPages", "page"],
+                value: "allPages",
+                onValueChanged: function (data) {
+                    dataGrid.option("selection.selectAllMode", data.value);
+                }
+            });
+
+            $("#show-checkboxes-mode").dxSelectBox({
+                dataSource: ["none", "onClick", "onLongTap", "always"],
+                value: "onClick",
+                onValueChanged: function (data) {
+                    dataGrid.option("selection.showCheckBoxesMode", data.value);
+                    $("#select-all-mode").dxSelectBox("instance").option("disabled", data.value === "none");
+                }
+            });
+
+            popupFindInstance.clearSelection();
+
+            loadPanel.hide();
+
+        }).fail(function (data) {
+            console.log(data);
+            loadPanel.hide();
+        });
+
+    }
+
+    function loadAuthLogData(url) {
+
+        if (DocId != 0) {
+            url = url + "?docid=" + DocId;
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                data: {},
+                async: false,
+            }).done(function (data) {
+                $("#HeaderLogContainer").dxDataGrid({
+                    dataSource: JSON.parse(data.Header.Data),
+                    paging: { pageSize: 10 },
+                    columnAutoWidth: true,
+                    pager: { showInfo: true },
+                    allowColumnResizing: true,
+                    allowColumnReordering: true,
+                    showBorders: true,
+                    showScrollbar: 'always',
+                    filterRow: { visible: true },
+                    scrolling: {
+                        mode: "horizontal",
+                        showScrollbar: 'always'
+                    },
+                });
+                $("#DetailLogContainer").dxDataGrid({
+                    dataSource: JSON.parse(data.Detail.Data),
+                    paging: { pageSize: 10 },
+                    columnAutoWidth: true,
+                    pager: { showInfo: true },
+                    allowColumnResizing: true,
+                    allowColumnReordering: true,
+                    showBorders: true,
+                    showScrollbar: 'always',
+                    filterRow: { visible: true },
+                    scrolling: {
+                        mode: "horizontal",
+                        showScrollbar: 'always'
+                    },
+                });
+
+            }).fail(function (data) {
+                console.log(data);
+            });
+        }
+
+
+
+    }
+
+    $('#btnOk').click(function () {
+        var selectedRow = popupFindInstance.getSelectedRowsData();
+        if (selectedRow.length > 0) {
+            $("#GroupCode").val(selectedRow[0].GROUPCODE);
+            $("#GroupName").val(selectedRow[0].GROUPNAME);
+
+            $("#IsActive").dxCheckBox({
+                value: selectedRow[0].ISACTIVE
+            });
+                $("#docNumber").val(selectedRow[0].DOCNUM);
+                $('#docNumber').prop("disabled", true);
+                Table = selectedRow[0].Table;
+            GenerateGrid(selectedRow[0].Table);
+        }
+        $('#myModal_Find').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+
+    });
+
+    $('#btnOkUser').click(function () {
+        Table=[];
+        var popupUsers = popupUserInstance.getSelectedRowsData("all");
+        var sno = Table.length;
+        
+        $.each(popupUsers, function (index, val) {
+
+            var dataExist = Table.filter(x=>x.UserID == val.ID);
+            if (dataExist.length == 0) {
+                sno = sno + 1;
+
+                var Details = {
+                    //KEYMain: e.key + 1,
+                    KEY: uuidv4(),
+                    ID: 0,
+                    SNO: sno,
+
+                    USER_NAME: val.FULLNAME,
+                    BRANCHNAME: val.BRANCHNAME,
+                    DESIGNATIONNAME: val.DESIGNATIONNAME,
+                    DEPARTMENTNAME: val.DEPARTMENTNAME,
+
+                    UserID: val.ID,
+                    USER_CODE: val.ID,
+                    ISDELETED: false
+                };
+                Table.push(Details);
+
+               
+            }
+
+        });
+
+        $('#myModal_Users').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+
+        GenerateGrid(Table);
+    });
+
+</script>

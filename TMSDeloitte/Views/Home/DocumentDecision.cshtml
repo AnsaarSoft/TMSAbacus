@@ -1,0 +1,89 @@
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<head>
+    <title>Time Management System </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="#" type="image/x-icon">
+  
+    <!-- font css -->
+    <link rel="stylesheet" href="/assets/fonts/font-awsome-pro/css/pro.min.css">
+    <link rel="stylesheet" href="/assets/fonts/feather.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/customizer.css">
+    <link href="~/Content/jquery.toast.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/bundle")
+    @Styles.Render("~/Content/DevExtremeBundle")
+
+   
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.toast.js"></script>
+    <script src="~/Scripts/toastNotifications.js"></script>
+
+    @Scripts.Render("~/Scripts/bundle")
+    @Scripts.Render("~/Scripts/DevExtremeBundle")
+</head>
+
+<html>
+<body>
+
+    <div class="form-group">
+        <div class="col-md-12">
+
+            @Html.Hidden("Msg", (string)ViewBag.Msg)
+
+
+        </div>
+    </div>
+
+
+
+    <div class="auth-wrapper">
+        <div class="auth-content">
+
+            <div class="row align-items-center text-center">
+                <div class="col-lg-6 col-sm-12 pr-0">
+                    <div class="company-logo">
+                        <img src="~/assets/images/loginLogo.png" alt="Deloitte Logo" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 pl-0">
+                    <div class="card-body">
+                        <div class="login-box" id="msgDiv"> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+       
+        $('document').ready(function () {
+            // <h1 class="mb-3 f-w-600"> </h1>
+            var html = '<h1 class="mb-3 f-w-600">' +
+                              $('#Msg').val() +
+                              '  </div>' +
+                              '  </h1>';
+            $("#msgDiv").append(html);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "AssignmentNatureSetup";
+}
+<h2>Assignment Nature Setup</h2>
+
+<div class="demo-container">
+
+    <div id="gridContainer"></div>
+</div>
+
+<div class="form-actions right text-right relative">
+    <input type="button" value="Add & Update" id="add_update" class="btn btn-primary" />
+</div>
+
+
+<script type="text/javascript">
+
+    var Table = [];
+    var serialNo = 0;
+
+    function GenerateGrid(JSON_Response)
+    {
+        $(function () {
+            $("#gridContainer").dxDataGrid({
+                dataSource: JSON_Response,
+                keyExpr: "KEY",
+                showBorders: true,
+                showScrollbar: 'always',
+                filterRow: { visible: true },
+                scrolling: {
+                    mode: "horizontal",
+                    showScrollbar: 'always'
+                },
+                paging: {
+                    enabled: false
+                },
+                editing: {
+                    mode: "batch",
+                    allowUpdating: true,
+                    allowDeleting: true,
+                    allowAdding: true
+                },
+                columns: [
+                     {
+                         dataField: "ID",
+                         caption: "ID",
+                         width: "auto",
+                         allowEditing: false,
+                         visible: false
+                     },
+                    {
+                        dataField: "SNO",
+                        caption: "S.No",
+                        dataType: "Number",
+                        allowEditing: false,
+                        width: "auto"
+                    },
+                    {
+                        caption: "Type",
+                        dataField: "Type",
+                        validationRules: [{ type: "required" }],
+                        width: 330
+                    },
+                    {
+                        caption: "Assignment Nature",
+                        dataField: "AssignmentNature",
+                        validationRules: [{ type: "required" }],
+                        width: 330
+                    },
+                    {
+                        dataField: "IsActive",
+                        caption: "Active",
+                        dataType: "boolean",
+                        width: "auto"
+                    },
+                     {
+                         dataField: "IsDeleted",
+                         caption: "Deleted",
+                         dataType: "bool",
+                         visible: false,
+                         allowEditing: false,
+                         width: "auto"
+                     }
+                ],
+                onEditorPreparing: function(e) {
+                    if (e.parentType == 'dataRow' && e.dataField == 'Type') {
+                        e.editorOptions.maxLength = 100;
+                    }
+                },
+                onEditingStart: function (e) {
+                },
+                onInitNewRow: function (e) {
+                    e.data.ID = 0;
+                    e.data.IsDeleted = false;
+                    e.data.IsActive = true;
+
+                },
+                onRowInserting: function (e) {
+                    serialNo = serialNo + 1;
+                    e.data.SNO = serialNo ;
+                },
+                onRowInserted: function (e) {
+                    var Details = {
+                        KEY: e.key,
+                        ID: 0,
+                        SNO: e.data.SNO,
+                        Type: e.data.Type,
+                        AssignmentNature: e.data.AssignmentNature,
+                        IsActive: e.data.IsActive,
+                        IsDeleted: false
+                    };
+                    Table.push(Details);
+                },
+                onRowUpdating: function (e) {
+                },
+                onRowUpdated: function (e) {
+                    $.each(Table, function (index, val) {
+                        if (val.KEY == e.data.KEY) {
+                            val.Type = e.data.Type;
+                            val.AssignmentNature = e.data.AssignmentNature,
+                            val.IsActive = e.data.IsActive;
+                        }
+
+                    });
+                },
+                onRowRemoving: function (e) {
+                },
+                onRowRemoved: function (e) {
+                    $.each(Table, function (index, val) {
+                        if (val.KEY == e.data.KEY) {
+                            val.IsDeleted = true;
+                        }
+                    });
+                }
+            });
+
+        });
+    }
+
+    function GetAllAssignmentCostSetup() {
+        var url = "/Setup/GetAllAssignmentNatureSetup";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+            var JSON_Response = data.response;
+            GenerateGrid(JSON_Response);
+            $.each(JSON_Response, function (index, val) {
+                var Details = {
+                    KEY: val.KEY,
+                    ID: val.ID,
+                    SNO: val.SNO,
+                    Type: val.Type,
+                    AssignmentNature: val.AssignmentNature,
+                    IsActive: val.IsActive,
+                    IsDeleted: val.IsDeleted
+                };
+                Table.push(Details);
+                serialNo = Table.length;
+            });
+        }).fail(function (data) {
+        });
+    }
+
+    $('document').ready(function () {
+        GetAllAssignmentCostSetup();
+        debugger;
+        $('#add_update').click(function () {
+            if (Table.length > 0)
+            {
+                var url = "/Setup/AddUpdateAssignmentNatureSetup";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    contentType: 'application/json',
+                    data: JSON.stringify(Table),
+                    dataType: "json",
+                    async: false,
+                    success: function (response) {
+                        if (response.Success) {
+                            AlertToast('success', response.Message);
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 5000);
+                        }
+                    },
+                    error: function (response) {
+                        console.log(response)
+                    },
+                    failure: function (response) {
+                        console.log(response)
+                    }
+
+                })
+            }
+            else
+            {
+                AlertToast('error', "Please add atleast one record");
+            }
+
+
+        });
+    });
+
+</script>
+
+

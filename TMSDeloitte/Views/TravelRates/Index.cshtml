@@ -1,0 +1,525 @@
+﻿
+@{
+    ViewBag.Title = "TravelRateSetup";
+}
+
+<h2>Travel Rate Setup</h2>
+<div class="dx-field">
+    @*<div class="dx-field-label">Function</div>
+        <div class="dx-field-value">
+            <div id="searchBox"></div>
+        </div>*@
+    <label class="col-md-2 label-control text-left" for="projectinput2">Branch</label>
+    <div class="col-md-4">
+        <div id="sapFunction" class="form-control frm-cstm"></div>
+    </div>
+
+
+
+    <div class="col-md-4">
+        <input type="text" class="form-control frm-cstm" id="docNumber" placeholder="DocNum" disabled="disabled">
+    </div>
+
+
+    @*<label class="col-md-2 label-control text-left"></label>
+        <div class="col-md-4">
+            <div id="docNumber"></div>
+        </div>*@
+
+    @*<div class="dx-field-label">Doc Num</div>
+        <div class="dx-field-value">
+            <div id="docNumber"></div>
+        </div>*@
+</div>
+<div class="demo-container">
+    <div id="gridContainer"></div>
+</div>
+
+<div class="form-actions right text-right relative">
+    <input type="button" value="Add & Update" id="add_update" class="btn btn-primary" />
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onclick='GetLogData();' data-target="#myModal">Show Log</button>
+
+</div>
+
+<div class="form-actions right text-right relative">
+    <input type="button" value="Add New" id="new" class="btn btn-primary" />
+    <input type="button" value="Find" id="find" class="btn btn-primary" />
+    <input type="button" value="First" id="first" class="btn btn-primary" />
+    <input type="button" value="Previous" id="previous" class="btn btn-primary" />
+    <input type="button" value="Next" id="next" class="btn btn-primary" />
+    <input type="button" value="Last" id="last" class="btn btn-primary" />
+</div>
+
+<script type="text/javascript">
+
+    var Task = {};
+    var Table = [];
+    var serialNo = 0;
+    index = 0;
+    var DocNum = "";
+    var allDocList = [];
+    var FunctionId = 0;
+
+    var abc1 = 0;
+    abc1 = 1;
+    abc1 = 'asd';
+    var products = [{
+        "ID": 1,
+        "Value": "Audit",
+
+    }, {
+        "ID": 2,
+        "Value": "External Audit",
+
+    }, {
+        "ID": 3,
+        "Value": "Internal Audit",
+
+    }];
+    var productsDataSource = null;
+
+    //$("#docNumber").dxTextBox({
+    //    disabled: true
+    //});
+
+    $('#docNumber').prop("disabled", true);
+
+    function GenerateSAPFunctionDropDown(jsonResponse) {
+        $("#sapFunction").dxSelectBox({
+            cacheEnabled: false,
+            items: jsonResponse,
+            displayExpr: "FunctionName",
+            valueExpr: "FunctionID",
+            placeholder: "Select Function...",
+            cssclass: "form-control frm-cstm",
+            searchEnabled: true,
+            readonly: false,
+            onValueChanged: function (data) {
+                var val = data.value;
+                functionID = val;
+                DocNum = "";
+                Table = [];
+                GetMaster_TaskByFunctionID(val);
+            }
+        });
+    }
+
+    function GetMaster_TaskByFunctionID(functionID) {
+        var url = "/TravelRateSetup/GetMaster_TaskByFunctionID/" + functionID;
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+            var JSON_Response = data.response;
+            FunctionId = functionID;
+            //if (JSON_Response.length == 0) {
+            //    if (DocNum == "") {
+            //        DocNum = '00001';
+
+            //        $("#docNumber").dxTextBox({
+            //            value: DocNum,
+            //            readOnly: true
+            //        });
+
+            //    }
+            //}
+            GenerateGrid(JSON_Response);
+            $.each(JSON_Response, function (index, val) {
+
+                //if (DocNum == "") {
+                    var isnewDoc = val.isNewDocument;
+                    if (isnewDoc == false)
+                        DocNum = val.DOCNUM;
+                //}
+
+
+                var Details = {
+
+                    ID: val.ID,
+                    DocNum: val.DOCNUM,
+                    SNO: val.SNO,
+                    KEY: val.KEY,
+                    FUNCTIONID: val.FUNCTIONID,
+                    TASK: val.TASK,
+                    ISACTIVE: val.ISACTIVE,
+                    ISDELETED: val.ISDELETED
+                };
+                Table.push(Details);
+                serialNo = Table.length;
+            });
+            //$('#docNumber').prop("disabled", true);
+            //$("#docNumber").dxTextBox({
+            //    disabled: true
+            //});
+            $('#docNumber').prop("disabled", true);
+            if (DocNum != undefined) {
+                //$("#docNumber").val(DocNum);
+
+                //$("#docNumber").dxTextBox({
+                //    value: DocNum
+                //});
+                $("#docNumber").val(DocNum);
+            }
+
+        }).fail(function (data) {
+        });
+    }
+    function GetSAPFunction() {
+        var url = "/TravelRateSetup/GetSapFunctions";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+            var JSON_Response = data.response;
+            allDocList = data.DocList;
+            GenerateSAPFunctionDropDown(JSON_Response);
+
+        }).fail(function (data) {
+        });
+    }
+
+    //var searchBox = $("#searchBox").dxSelectBox({
+    //    dataSource: products,
+    //    displayExpr: "Value",
+    //    searchEnabled: true
+    //    ,
+    //    onValueChanged: function (data) {
+
+    //        if (data.value) {
+    //            Task.FunctionID = data.value.ID;
+    //            GenerateTaskData(Task);
+
+    //        }
+    //    }
+    //}).dxSelectBox("instance");
+
+    function GenerateTaskData(Task) {
+        //Taskobj = Task[0];
+
+        //Task.forEach(function (obj) {
+        //    obj.ID == undefined ? 0 : obj.ID;
+        //    obj.DOCNUM == undefined ? '111' : obj.DOCNUM;
+        //    obj.ISDELETED == undefined ? false : obj.ISDELETED;
+        //    obj.ISACTIVE == undefined ? true : obj.ISACTIVE;
+        //})
+        console.log(Task);
+    }
+    function GenerateGrid(JSON_Response) {
+        $(function () {
+            $("#gridContainer").dxDataGrid({
+                dataSource: JSON_Response,
+                keyExpr: "KEY",
+                showBorders: true,
+                showScrollbar: 'always',
+                filterRow: { visible: true },
+                scrolling: {
+                    mode: "horizontal",
+                    showScrollbar: 'always'
+                },
+                paging: {
+                    enabled: false
+                },
+                editing: {
+                    mode: "batch",
+                    allowUpdating: true,
+                    allowDeleting: true,
+                    allowAdding: true
+                },
+                columns: [
+                     {
+                         dataField: "ID",
+                         caption: "ID",
+                         width: "auto",
+                         allowEditing: false,
+                         visible: false
+                     },
+                    {
+                        dataField: "SNO",
+                        caption: "S.No",
+                        dataType: "Number",
+                        allowEditing: false,
+                        width: "auto"
+                    },
+                    {
+                        caption: "TASK",
+                        dataField: "TASK",
+                        validationRules: [{ type: "required" }],
+
+                        width: 530
+                    },
+                    {
+                        dataField: "ISACTIVE",
+                        caption: "Active",
+                        dataType: "boolean",
+                        width: "auto"
+                    },
+                     {
+                         dataField: "ISDELETED",
+                         caption: "Deleted",
+                         dataType: "bool",
+                         visible: false,
+                         allowEditing: false,
+                         width: "auto"
+                     }
+                ],
+                onEditorPreparing: function (e) {
+                    if (e.parentType == 'dataRow' && e.dataField == 'TASK') {
+                        e.editorOptions.maxLength = 100;
+                    }
+                },
+                onEditingStart: function (e) {
+                },
+                onInitNewRow: function (e) {
+                    e.data.ID = 0;
+                    e.data.ISDELETED = false;
+                    e.data.ISACTIVE = true;
+
+                },
+                onRowInserting: function (e) {
+                    serialNo = serialNo + 1;
+                    e.data.SNO = serialNo;
+                },
+                onRowInserted: function (e) {
+                    var Details = {
+                        KEY: e.key,
+                        ID: 0,
+                        SNO: e.data.SNO,
+                        TASK: e.data.TASK,
+                        FUNCTIONID: FunctionId,
+                        ISACTIVE: e.data.ISACTIVE,
+                        ISDELETED: false
+                    };
+                    Table.push(Details);
+                },
+                onRowUpdating: function (e) {
+                },
+                onRowUpdated: function (e) {
+                    $.each(Table, function (index, val) {
+                        if (val.KEY == e.data.KEY) {
+                            val.TASK = e.data.TASK;
+                            FUNCTIONID = FunctionId;
+                            val.ISACTIVE = e.data.ISACTIVE;
+                        }
+
+                    });
+                },
+                onRowRemoving: function (e) {
+                },
+                onRowRemoved: function (e) {
+                    $.each(Table, function (index, val) {
+                        if (val.KEY == e.data.KEY) {
+                            val.ISDELETED = true;
+                        }
+                    });
+                }
+            });
+
+        });
+    }
+
+    function GetAllMaster_Task() {
+        var url = "/TravelRateSetup/Index";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+            var JSON_Response = data.response;
+            //var FunctionList = data.FunctionList;
+            //GenerateCombo(FunctionList);
+            GenerateTaskData(JSON_Response);
+            GenerateGrid(JSON_Response);
+
+            $.each(JSON_Response, function (index, val) {
+                var Details = {
+                    KEY: val.KEY,
+                    ID: val.ID,
+                    SNO: val.SNO,
+                    FUNCTIONID: val.FUNCTIONID,
+                    TASK: val.TASK,
+                    ISACTIVE: val.ISACTIVE,
+                    ISDELETED: val.ISDELETED
+                };
+                Table.push(Details);
+                serialNo = Table.length;
+            });
+        }).fail(function (data) {
+        });
+    }
+
+    function GetMaster_TaskByDocNum(docNum) {
+        var url = "/TravelRateSetup/GetMaster_TaskByDocNum?docNum=" + docNum;
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+
+
+            var JSON_Response = data.response;
+            if (JSON_Response.length>0) {
+                DOCNUM = JSON_Response[0].DOCNUM;
+                $("#docNumber").val(DOCNUM);
+
+                //$("#docNumber").dxTextBox({
+                //    value: DOCNUM
+                //});
+            }
+            //$("#docNumber").val(DOCNUM);
+
+
+
+            GenerateGrid(JSON_Response);
+
+            $.each(JSON_Response, function (index, val) {
+
+                if (DocNum == "")
+                    DocNum = val.DOCNUM;
+
+                var Details = {
+                    //KEY: val.KEY,
+                    ID: val.ID,
+                    DocNum: val.DocNum,
+                    SNO: val.SNO,
+                    //FunctionID: functionID,
+                    //FunctionID: functionID != undefined ? functionID : val.FUNCTIONID,
+                    FunctionID: val.FUNCTIONID,
+                    DesignationID: val.DesignationID,
+                    RatesPerHour: val.RatesPerHour,
+                    ISACTIVE: val.ISACTIVE,
+                    ISDELETED: val.ISDELETED
+                };
+                Table.push(Details);
+                serialNo = Table.length;
+            });
+        }).fail(function (data) {
+        });
+    }
+
+
+    $('document').ready(function () {
+        GetAllMaster_Task();
+        GetSAPFunction();
+        $('#add_update').click(function () {
+            //GenerateTaskData(JSON_Response);
+
+//            console.log(Task);
+            if (Table.length > 0) {
+
+
+                Table.forEach(function (obj,index) {
+                    obj.FUNCTIONID = FunctionId;
+                    //obj.DOCNUM = $('#docNumber').dxTextBox('instance').option('value');
+                    //obj.DOCNUM = $("#docNumber").val(DocNum);
+                    obj.DOCNUM = DocNum;
+                    delete obj.DocNum;
+                })
+                //delete Table.DocNum;
+                //Table = Table.splice(0, 2);
+                var url = "/TravelRateSetup/AddUpdateGetTravelRateSetup";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    contentType: 'application/json',
+                    data: JSON.stringify(Table),
+                    //data: JSON.stringify(Task),
+                    dataType: "jsonp",
+                    async: false,
+                    success: function (response) {
+                        if (response.Success) {
+                            AlertToast('success', response.Message);
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 5000);
+                        }
+                    },
+                    error: function (response) {
+                        console.log(response)
+                    },
+                    failure: function (response) {
+                        console.log(response)
+                    }
+
+                })
+            }
+            else {
+                AlertToast('error', "Please add atleast one record");
+            }
+
+
+        });
+
+
+    });
+
+    $("#docNumber").blur(function () {
+        console.log('blur2 has been called ')
+        GetMaster_TaskByDocNum($("#docNumber").val());
+    });
+
+    //$("#docNumber").click(function () {
+    //    GetMaster_TaskByDocNum($("#docNumber").val());
+    //});
+
+
+    $('#new').click(function () {
+        //$("#docNumber").dxTextBox({
+        //    value: ""
+        //});
+        //Table = [];
+
+        //GenerateGrid(Table);
+
+        $("#docNumber").val("");
+        $('#docNumber').prop("disabled", true);
+    });
+    $('#find').click(function () {
+        $("#docNumber").val("");
+       $('#docNumber').prop("disabled", false);
+        //$("#docNumber").dxTextBox({
+        //    disabled: false
+        //});
+
+    });
+    $('#first').click(function () {
+        $('#docNumber').prop("disabled", true);
+
+        GetMaster_TaskByDocNum(allDocList[0]);
+    });
+    $('#last').click(function () {
+        $('#docNumber').prop("disabled", true);
+        index = allDocList.length - 1;
+        GetMaster_TaskByDocNum(allDocList[index]);
+    });
+    $('#previous').click(function () {
+        $('#docNumber').prop("disabled", true);
+        if (index != 0)
+            index = index - 1;
+        GetMaster_TaskByDocNum(allDocList[index]);
+    });
+    $('#next').click(function () {
+        $('#docNumber').prop("disabled", true);
+        if (index < allDocList.length - 1)
+            index = index + 1;
+
+        GetMaster_TaskByDocNum(allDocList[index]);
+    });
+
+
+
+
+    function GetLogData(name) {
+        loadData("/TravelRateSetup/GetTaskMastersSetupLog?docNum=" + DocNum);
+    }
+
+    function GetDocNumData() {
+        loadData("/TravelRateSetup/GetTaskMastersSetupLog?docNum=" + DocNum);
+    }
+
+</script>

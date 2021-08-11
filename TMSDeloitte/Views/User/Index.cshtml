@@ -1,0 +1,574 @@
+﻿@model TMSDeloitte.Models.UserProfile
+@{
+    ViewBag.Title = "User Management";
+}
+
+@Html.HiddenFor(m => m.ID)
+@Html.HiddenFor(m => m.HCMOneID)
+@Html.HiddenFor(m => m.EMPLOYEECODE)
+@Html.HiddenFor(m => m.DESIGNATIONID)
+@Html.HiddenFor(m => m.DEPARTMENTID)
+@Html.HiddenFor(m => m.ISDELETED)
+@Html.HiddenFor(m => m.USERNAME)
+@*@Html.HiddenFor(m => m.OBAPPROVEDHOURS)
+@Html.HiddenFor(m => m.OBASONDATE)
+@Html.HiddenFor(m => m.OBOVERTIMEHOURS)*@ 
+
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h4> User Management </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"> Administration </a></li>
+                            <li class="breadcrumb-item"> User Management </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="employeeCode"> Employee Code </label>
+                    @*<div id="empCode" class="form-control frm-cstm"></div>*@
+                    <div id="gridBox"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="alertName"> User Name </label>
+                    <div id="username-validation"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label for="alertName"> Password </label>
+                        <div id="password-validation"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="designation"> Designation </label>
+                    @Html.EditorFor(model => model.DESIGNATIONNAME, new { htmlAttributes = new { @class = "form-control", placeholder = "Designation", @disabled = "disabled" } })
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="department"> Department </label>
+                    @Html.EditorFor(model => model.DEPARTMENTNAME, new { htmlAttributes = new { @class = "form-control", placeholder = "Department", @disabled = "disabled" } })
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label for="email"> Email </label>
+                        @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", @disabled = "disabled" } })
+                    </div>
+                    <div class="col-lg-12 mt-3 pl-0" style="padding-left: 7% !important;">
+                        <div class="super-user">
+                            @Html.CheckBoxFor(m => m.ISSUPER, new { htmlAttributes = new { @class = "form-check-input", @checked = "" } })
+                            <label class="form-check-label" for="superUser"> Super User </label>
+                        </div>
+                        <div class="active-user">
+                            @Html.CheckBoxFor(m => m.ISACTIVE, new { htmlAttributes = new { @class = "form-check-inpu", @checked = "" } })
+                            <label class="form-check-label" for="activeUser"> Active User </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="OBAPPROVEDHOURS"> OB Approved Hours </label>
+                @Html.EditorFor(model => model.OBAPPROVEDHOURS, new { htmlAttributes = new { @class = "form-control", placeholder = "OB Approved Hours", @disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="OBASONDATE"> OB As On Date </label>
+                @Html.EditorFor(model => model.OBASONDATE, new { htmlAttributes = new { @class = "form-control", placeholder = "OB As On Date", @disabled = "disabled" } })
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="OBOVERTIMEHOURS"> OB Overtime Hours </label>
+                @Html.EditorFor(model => model.OBOVERTIMEHOURS, new { htmlAttributes = new { @class = "form-control", placeholder = "OB Overtime Hours", @disabled = "disabled" } })
+            </div>
+        </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+
+                @{
+                    <div id="add_update"></div>
+                    TMSDeloitte.Models.UserSession sess = null;
+                    if ((TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"] != null)
+                    {
+                        sess = (TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"];
+
+                        if (sess.SessionUser.ISSUPER)
+                        {
+                            <div id="resetPassword"></div>
+                            <button type="button" class="btn btn-success" data-toggle="modal" onclick='GetLogData("/User/GetUserLogByUserID");' data-target="#myModal">Show Log</button>
+                        }
+                        var menu = sess.pagelist.Where(x => x.ID == (int)TMSDeloitte.Helper.Enums.FormsName.UserManagement).FirstOrDefault();
+                        if (menu != null)
+                        {
+                            <input type="hidden" id="AuthID" name="AuthID" value="@menu.Role">
+                        }
+                        else
+                        {
+                            <input type="hidden" id="AuthID" name="AuthID" value="-1">
+                        }
+                    }
+
+                }
+
+            </div>
+        </div>
+
+        <!-- [ Main Content ] end -->
+    </div> <!-- [ Card Content ] end -->
+</div>
+
+
+<script type="text/javascript">
+    var passwordInstance;
+    var usernameInstance;
+    var EmpCode = "0";
+    var HcmOneID = 0;
+    var isValidateUserName = false;
+
+    function applyValidation() {
+        passwordInstance = $("#password-validation").dxTextBox({
+            mode: "password",
+            maxLength: 16,
+            buttons: [{
+                name: "password",
+                location: "after",
+                options: {
+                    icon: "/assets/images/eye.png",
+                    type: "default",
+                    onClick: function () {
+                        passwordInstance.option("mode", passwordInstance.option("mode") === "text" ? "password" : "text");
+                    }
+                }
+            }]
+        }).dxValidator({
+            validationRules: [
+                //{
+                //type: "required",
+                //message: "Password is required"
+                //}
+            ]
+        }).dxTextBox('instance');
+
+        usernameInstance = $("#username-validation").dxTextBox({
+            onValueChanged: function (e) {
+                const previousValue = e.previousValue;
+                const newValue = e.value;
+                if (previousValue != "") {
+                    if (newValue == $("#USERNAME").val()) {
+                        isValidateUserName = false;
+                    }
+                    else {
+                        if (previousValue != newValue)
+                            isValidateUserName = true;
+                        else
+                            isValidateUserName = false;
+                    }
+
+                }
+
+            }
+        })
+            .dxValidator({
+                validationRules: [{
+                    type: "required",
+                    message: "User name is required"
+                },
+                {
+                    type: "async",
+                    message: "User name is already registered",
+                    validationCallback: function (params) {
+                        return validateUser(params.value);
+                    }
+                }]
+            }).dxTextBox('instance');
+
+    }
+
+    var validateUser = function (value) {
+        var validEmail = "";
+        var d = $.Deferred();
+
+        if (value != "") {
+            if (isValidateUserName == false && $("#ID").val() != 0) {
+                //var isSuccess=false;
+                //if ($("#ID").val() == 0)
+                //    isSuccess = true;
+
+                setTimeout(function () {
+                    d.resolve(true);
+                }, 1000);
+            }
+            else {
+
+                var url = "/User/validateUser";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {
+                        userName: value
+                    },
+                    async: false,
+                    success: function (response) {
+                        setTimeout(function () {
+                            d.resolve(response.Msg == "");
+                        }, 1000);
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                    }
+
+                })
+
+            }
+
+
+
+        }
+
+
+        return d.promise();
+    }
+
+    function GetHCMUser() {
+        loadPanel.show();
+        var url = "/User/GetHCMUsers";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+            var JSON_Response = data.response;
+            //GenerateHCMUserDropDown(JSON_Response);
+            GenerateHCMUserTableDropDown(JSON_Response);
+            loadPanel.hide();
+        }).fail(function (data) {
+            loadPanel.hide();
+        });
+    }
+
+    function GenerateHCMUserTableDropDown(jsonData) {
+        $("#gridBox").dxDropDownBox({
+            //value: [3],
+            valueExpr: "ID",
+            placeholder: "Select a value...",
+            displayExpr: "EmpID",
+            showClearButton: true,
+            dataSource: jsonData,
+            contentTemplate: function (e) {
+                var value = e.component.option("value"),
+                    $dataGrid = $("<div>").dxDataGrid({
+                        dataSource: e.component.getDataSource(),
+                        columns: ["EmpID", { dataField: "Fax", caption: "Old Code" }, "EmpName", "DesignationName", "DepartmentName"],
+                        hoverStateEnabled: true,
+                        paging: { enabled: true, pageSize: 10 },
+                        filterRow: { visible: true },
+                        scrolling: { mode: "infinite" },
+                        height: 345,
+                        selection: { mode: "single" },
+                        selectedRowKeys: value,
+                        onSelectionChanged: function (selectedItems) {
+
+                            if (selectedItems != null) {
+                                if (selectedItems != undefined) {
+                                    var keys = selectedItems.selectedRowKeys;
+                                    if (keys.length > 0) {
+                                        e.component.option("value", keys[0].ID);
+
+                                        EmpCode = keys[0].EmpID;
+                                        //HcmOneID = keys[0].ID;
+
+                                        GetUserInfoByEmpCode(EmpCode);
+
+                                        $("#gridBox").dxDropDownBox("instance").close();
+                                    }
+
+                                }
+                            }
+
+
+                        }
+                    });
+
+                dataGrid = $dataGrid.dxDataGrid("instance");
+
+                e.component.on("valueChanged", function (args) {
+                    var value = args.value;
+                    dataGrid.selectRows(value, false);
+                });
+
+                return $dataGrid;
+            }
+        });
+    }
+
+    function GenerateHCMUserDropDown(jsonResponse) {
+        $("#empCode").dxSelectBox({
+            cacheEnabled: false,
+            items: jsonResponse,
+            displayExpr: "EmpID",
+            valueExpr: "ID",
+            placeholder: "Select Employee Code...",
+            cssclass: "form-control frm-cstm",
+            searchEnabled: true,
+            readonly: false,
+            onValueChanged: function (data) {
+                //var val = data.value;
+                //EmpCode = val;
+
+                EmpCode = data.component.option("text");
+                HcmOneID = data.component.option("value");
+
+                GetUserInfoByEmpCode(EmpCode);
+            }
+        });
+    }
+
+    function GetUserInfoByEmpCode(empCode) {
+        loadPanel.show();
+        var url = "/User/GetUserInfoByEmpCode";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: { empCode: empCode },
+            async: false,
+        }).done(function (response) {
+            debugger;
+            isValidateUserName = true;
+            $("#ID").val(0);
+            $("#USERNAME").val("");
+            $("#EMPLOYEECODE").val("");
+            $("#HCMOneID").val("");
+            usernameInstance.option('value', "");
+            passwordInstance.option('value', "");
+            $("#DESIGNATIONNAME").val("");
+            $("#DESIGNATIONID").val(0);
+            $("#DEPARTMENTNAME").val("");
+            $("#DEPARTMENTID").val(0);
+            $("#EMAIL").val("");
+            $("#OBAPPROVEDHOURS").val(0);
+            $("#OBASONDATE").val("");
+            $("#OBOVERTIMEHOURS").val(0);
+            $("#ISACTIVE").prop("checked", false);
+            $("#ISSUPER").prop("checked", false);
+            $("#ISDELETED").prop("checked", true);
+
+            if (response.Success) {
+                isValidateUserName = false;
+                $("#ID").val(response.UserInfo.ID);
+                $("#USERNAME").val(response.UserInfo.USERNAME);
+                $("#EMPLOYEECODE").val(response.UserInfo.EMPLOYEECODE);
+                $("#HCMOneID").val(response.UserInfo.HCMOneID);
+                usernameInstance.option('value', response.UserInfo.USERNAME);
+                passwordInstance.option('value', response.UserInfo.PASSWORD);
+                $("#DESIGNATIONNAME").val(response.UserInfo.DESIGNATIONNAME);
+                $("#DESIGNATIONID").val(response.UserInfo.DESIGNATIONID);
+                $("#DEPARTMENTNAME").val(response.UserInfo.DEPARTMENTNAME);
+                $("#DEPARTMENTID").val(response.UserInfo.DEPARTMENTID);
+                $("#EMAIL").val(response.UserInfo.EMAIL);
+                $("#OBAPPROVEDHOURS").val(response.UserInfo.OBAPPROVEDHOURS);
+                $("#OBASONDATE").val(moment(response.UserInfo.OBASONDATE).format('DD-MMM-YYYY'));
+                $("#OBOVERTIMEHOURS").val(response.UserInfo.OBOVERTIMEHOURS);
+                $("#ISSUPER").prop("checked", response.UserInfo.ISSUPER);
+                $("#ISACTIVE").prop("checked", response.UserInfo.ISACTIVE);
+                $("#ISDELETED").val(response.UserInfo.ISDELETED);
+            }
+            if ($("#ID").val() == "0")
+                $("#add_update").dxButton({ text: "Add" });
+            else
+                $("#add_update").dxButton({ text: "Update" });
+
+            loadPanel.hide();
+
+        }).fail(function (data) {
+            loadPanel.hide();
+        });
+    }
+
+    function GetLogData(url) {
+        loadData(url + "?id=" + $("#ID").val());
+    }
+
+    function validateAndSubmit(params) {
+        var id = $("#ID").val();
+        if (id == 0) {
+            AlertToast('error', "Please select employee.");
+            return;
+        }
+
+        if (id == null) {
+            AlertToast('error', "Please select employee.");
+            return;
+        }
+        var result = params.validationGroup.validate();
+
+        // var pass = usernameInstance.option('value');
+        var pass = '';
+        var id = $("#ID").val();
+
+        if (result.isValid) {
+
+            var url = "/User/ResetPasswordByAdmin";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    id: id,
+                    userPassword: pass
+                },
+                async: false,
+                success: function (response) {
+                    if (response.Success) {
+                        $("#password-validation").dxTextBox({ value: null });
+                        AlertToast('success', response.Msg);
+                    }
+                    else {
+                        AlertToast('error', response.Msg);
+                    }
+                },
+                error: function (response) {
+                    console.log(response)
+                },
+                failure: function (response) {
+                    console.log(response)
+                }
+
+            })
+        }
+        else {
+            AlertToast('error', "Please enter required fields!");
+        }
+
+
+    }
+
+    $('document').ready(function () {
+
+        GetHCMUser();
+        applyValidation();
+
+
+        $("#resetPassword").dxButton({
+            icon: "revert",
+            text: "Reset Password",
+            type: "default",
+            onClick: validateAndSubmit
+        });
+        $("#add_update").dxButton({
+            icon: "check",
+            type: "success",
+            text: "Add / Update",
+            onClick: AddUpdate
+        });
+
+        function AddUpdate(params) {
+            var result = params.validationGroup.validate();
+            if (result.isValid) {
+                loadPanel.show();
+                var data = {};
+
+                data.ID = $("#ID").val();
+                data.HCMOneID = $("#HCMOneID").val();
+                data.EMPLOYEECODE = EmpCode;
+                data.USERNAME = usernameInstance.option('value');
+                data.PASSWORD = passwordInstance.option('value');
+                data.DESIGNATIONID = $("#DESIGNATIONID").val();
+                data.DEPARTMENTID = $("#DEPARTMENTID").val();
+                data.EMAIL = $("#EMAIL").val();
+                data.ISSUPER = $('#ISSUPER').is(":checked");
+                data.ISACTIVE = $('#ISACTIVE').is(":checked");
+                data.ISDELETED = $("#ISDELETED").val();
+                var url = "/User/AddUpdateUser";
+                if (data.PASSWORD == "" || data.PASSWORD == null) {
+                    loadPanel.hide();
+                    var msg = "Please enter password";
+                    AlertToast('error', msg);
+                    return;
+                }
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    async: false,
+                    success: function (response) {
+                        loadPanel.hide();
+                        if (response.Success) {
+                            AlertToast('success', response.Message);
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 5000);
+                        }
+                        else {
+                            AlertToast('error', 'Exception occured on Add/Update');
+                        }
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        loadPanel.hide();
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                        loadPanel.hide();
+                    }
+
+                })
+            }
+            else {
+                var msg = "Please enter required fields";
+                AlertToast('error', msg);
+            }
+
+        }
+
+
+    });
+
+
+
+</script>

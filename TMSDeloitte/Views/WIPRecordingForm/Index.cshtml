@@ -1,0 +1,237 @@
+﻿@model TMSDeloitte.Models.AssignmentForm
+@{
+    ViewBag.Title = "WIP Recording Form";
+}
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h4> WIP Recording Form</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"> Administration </a></li>
+                            <li class="breadcrumb-item"> Project Management </li>
+                            <li class="breadcrumb-item"> WIP Recording Form</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div class="text-right">
+                        <button id="new" class="plus-icon"> <i class="fas fa-plus-square"></i> </button>
+                        @*<button id="find" class="find-icon"> <i class="fas fa-search"></i> </button>*@
+                        <button id="find" class="find-icon" data-toggle="modal" onclick='GeneratePopupFindGrid();' data-target="#myModal_Find"> <i class="fas fa-search"></i> </button>
+                        <button id="first" class="step-backword-icon"> <i class="fas fa-step-backward"></i></button>
+                        <button id="previous" class="backword-icon"> <i class="fas fa-backward"></i> </button>
+                        <button id="next" class="forward-icon"> <i class="fas fa-forward"></i> </button>
+                        <button id="last" class="step-forward-icon"> <i class="fas fa-step-forward"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> As on Date </label>
+                    <div id="AsOnDate" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-4"> <div class="form-group"></div>  </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> DocNum </label>
+                    <input type="text" class="form-control frm-cstm" id="docNumber" placeholder="Document Number" disabled="disabled">
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="row">
+            @*<div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"> Assignment Code </label>
+                        <div id="code-validation"></div>
+                        <input type="text" class="form-control frm-cstm" id="AssignmentCode" placeholder="Assignment Code" />
+                    </div>
+                </div>*@
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Debit Account: </label>
+                    <div id="DebitAccount" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+            
+            <div class="col-sm-4"> <div class="form-group"></div>  </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Doc Date: </label>
+                    <div id="DocDate" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Credit Account </label>
+
+                    <div id="CreditAccount" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-4"> <div class="form-group"></div>  </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Year </label>
+                    <div id="ddYear" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Branch </label>
+                    <div id="Office" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+            
+            <div class="col-sm-4"> <div class="form-group"></div>  </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Month </label>
+                    <div id="ddMonth" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Reversal Date </label>
+                    <div id="ReversalDate" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="col-lg-12" for="exampleFormControlSelect1"></label>
+                    <input type="checkbox" class="form-check-label" id="ReverseJE" /> <label class="col-lg-4" for="exampleFormControlSelect1">Reverse JE</label>
+                    <button type="button" id="WIPView" class="btn btn-primary mr-2">  View  </button>
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Currency </label>
+                    <div id="Currency" class="form-control frm-cstm"></div>
+                </div>
+            </div>
+
+        </div>
+            <div class="row">
+                <div class="col-lg-12">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <div id="gridContainer"></div>
+                    </div>
+                </div>
+            </div>
+        
+            <br/>
+            <div class="row">
+                <div class="col-lg-8">
+
+                </div>
+                <div class="col-lg-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Total WIP</label>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                            <input type="text" class="form-control frm-cstm" id="TotalWIP" placeholder="Total WIP" disabled>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12 text-right mt-3">
+                    <button type="button" id="add_update" class="btn btn-primary mr-2"> Post to SBO </button>
+                    @{
+                        TMSDeloitte.Models.UserSession sess = null;
+                        if ((TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"] != null)
+                        {
+                            sess = (TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"];
+                            if (sess.SessionUser.ISSUPER)
+                            {
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick='GetLogData("/AssignmentForm/GetTravelRatesLog?docNum=" + DocNum);'> Show Log </button>
+                            }
+
+                            var menu = sess.pagelist.Where(x => x.ID == (int)TMSDeloitte.Helper.Enums.FormsName.WIPRecordingForm).FirstOrDefault();
+                            if (menu != null)
+                            {
+                                <input type="hidden" id="AuthID" name="AuthID" value="@menu.Role">
+                            }
+                            else
+                            {
+                                <input type="hidden" id="AuthID" name="AuthID" value="-1">
+                            }
+                        }
+
+                    }
+
+
+                </div>
+            </div>
+            <!-- [ Main Content ] end -->
+        </div> <!-- [ Card Content ] end -->
+</div>
+<div id="myModal_Find" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+            </div>
+            <div class="modal-body">
+                <div id="FindContainer"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOk" class="btn btn-primary">Ok</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/customjs/base.js"></script>
+<script src="~/Scripts/customjs/WIPRecordingForm.js"></script>
+<script type="text/javascript">
+
+
+
+</script>

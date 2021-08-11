@@ -1,0 +1,177 @@
+﻿@model TMSDeloitte.Models.Login
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>  Welcome to Login Page of Deloitte - Time Management System </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="#" type="image/x-icon">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.toast.js"></script>
+    <script src="~/Scripts/toastNotifications.js"></script>
+    <!-- font css -->
+    <link rel="stylesheet" href="/assets/fonts/font-awsome-pro/css/pro.min.css">
+    <link rel="stylesheet" href="/assets/fonts/feather.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/customizer.css">
+    <link href="~/Content/jquery.toast.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-content">
+
+            <div class="row align-items-center text-center">
+                <div class="col-lg-6 col-sm-12 pl-0 pr-0">
+                    <div class="company-logo">
+                        <img src="/assets/images/Logo/loginLogo.png" alt="Deloitte Logo" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 pl-0 pr-0">
+                    @Html.AntiForgeryToken()
+                    @using (Html.BeginForm("LoginUser", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("LoginUser", "Home", new { id = 0 }) }))//data-resetUrl
+                    {
+                        <div class="card-body">
+                            <div class="login-box">
+                                @Html.ValidationSummary(true)
+                                <!-- <img src="assets/images/logo-dark.svg" alt="" class="img-fluid mb-4"> -->
+                                <h1 class="mb-3 f-w-600"> Welcome to <br /> TMS</h1>
+                                <h1 class="mb-3 f-w-600"> User Login </h1>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @{
+                                            if (ViewBag.isLogin != null)
+                                            {
+                                                if (ViewBag.isLogin == false)
+                                                {
+                                                    <font color="red">*Invalid Login Credentials!</font>
+                                                }
+                                            }
+
+
+                                        }
+
+
+
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label> User Name </label>
+                                    @*<input type="email" class="form-control user-email" placeholder="Email address">*@
+                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control user-email", required = "true", placeholder = "Username", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.Username)
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i data-feather="user"></i></span>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-4">
+                                    <label> Password </label>
+                                    @*<input type="password" class="form-control user-pass" placeholder="Password">*@
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control user-pass", Type = "Password", required = "true", placeholder = "Password" } })
+                                    @Html.ValidationMessageFor(model => model.Password)
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i data-feather="lock"></i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group float-left mt-1 mb-2 w-100">
+
+                                    <div class="custom-control custom-checkbox float-left">
+                                        @*<input type="checkbox" class="custom-control-input input-primary" id="remember" checked="">*@
+                                        @Html.CheckBoxFor(m => m.remeber, new { htmlAttributes = new { @class = "", @checked = "" } })
+                                        <label class="" for=""> Remember Me </label>
+                                    </div>
+                                    <div class="forget-password float-right">
+                                        <p class="mb-2"><a onClick="validateAndSubmit(); return false;" href="#" class="f-w-400"> Forgot password?</a></p>
+                                        @*<p class="mb-2"><a href="@Url.Action("ForgotPassword", "Home")" class="f-w-400"> Forgot password?</a></p>*@
+                                    </div>
+                                </div>
+
+                                <div class="login-btn">
+                                    <button class="btn btn-primary mb-4"> Login <i class="fas fa-sign-in-alt"></i> </button>
+                                </div>
+
+                                <!-- <p class="mb-0 text-muted">Don�t have an account? <a href="auth-signup.html" class="f-w-400">Signup</a></p> -->
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+
+
+</html>
+
+<script type="text/javascript">
+
+
+    function validateAndSubmit() {
+
+        var userName = $("#Username").val();
+
+        if (userName != "") {
+
+            var url = "/Home/ForgotPassword";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    userName: userName
+                },
+
+                success: function (response) {
+                    if (response.Success) {
+                        AlertToast('success', response.Message);
+                    }
+                    else {
+                        AlertToast('error', response.Message);
+                    }
+                },
+                error: function (response) {
+                    console.log(response)
+                },
+                failure: function (response) {
+                    console.log(response)
+                }
+
+            })
+        }
+        else {
+            var msg = "Please enter user name!";
+            //if (ConfirmPasswordInstance.option('value') != newPasswordInstance.option('value'))
+            //    msg = "'New Password' and 'Confirm Password' do not match.";
+            AlertToast('error', msg);
+        }
+
+    }
+    $('document').ready(function () {
+
+
+        $("#docNumber").blur(function () {
+
+            validateAndSubmit();
+
+        });
+
+    });
+</script>

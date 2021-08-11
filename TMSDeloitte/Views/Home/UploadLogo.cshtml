@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Upload Logo";
+}
+
+
+
+@Html.Hidden("EmpID", 0)
+@Html.Hidden("IsSuper", false)
+
+
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h4> Upload Logo </h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Inner Logo: </label>
+                    <div id="file-uploader1"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Outer Logo: </label>
+                    <div id="file-uploader2"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- [ Main Content ] end -->
+    </div> <!-- [ Card Content ] end -->
+</div>
+
+
+<script type="text/javascript">
+
+
+
+
+    function GenerateFileUploader() {
+
+
+        var url1 = "/Home/UploadInnerLogo";
+        var url2 = "/Home/OuterInnerLogo";
+
+        $("#file-uploader1").dxFileUploader({
+            multiple: false,
+            accept: [{ name: "Images", value: "image/*" }],
+            value: [],
+            uploadMode: "instantly",
+            uploadUrl: url1,
+            onValueChanged: function (e) {
+                var files = e.value;
+                if (files.length > 0) {
+                    AlertToast('success', "Inner Logo Updated");
+                }
+
+
+            }
+        }).dxFileUploader("instance");
+
+        $("#file-uploader2").dxFileUploader({
+            multiple: false,
+            accept: [{ name: "Images", value: "image/*" }],
+            value: [],
+            uploadMode: "instantly",
+            uploadUrl: url2,
+            onValueChanged: function (e) {
+                var files = e.value;
+                if (files.length > 0) {
+                    AlertToast('success', "Outer Logo Updated");
+                }
+
+
+            }
+        }).dxFileUploader("instance");
+    }
+
+
+
+    $('document').ready(function () {
+
+        GenerateFileUploader();
+
+    });
+
+
+
+</script>
+

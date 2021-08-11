@@ -1,0 +1,321 @@
+﻿
+@{
+    ViewBag.Title = "TypeOfClaimSetup";
+}
+@*<h2>Type Of Claim Setup</h2>
+
+<div class="demo-container">
+
+    <div id="gridContainer"></div>
+</div>
+
+<div class="form-actions right text-right relative">
+    <input type="button" value="Add & Update" id="add_update" class="btn btn-primary" />
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onclick='GetLogData();' data-target="#myModal">Show Log</button>
+
+</div>*@
+
+
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h4> Type Of Claim Setup</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"> Administration </a></li>
+                            <li class="breadcrumb-item"> Setup </li>
+                            <li class="breadcrumb-item"> Type Of Claim Setup</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <div id="gridContainer"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12 text-right mt-3">
+                <button type="button" id="add_update" class="btn btn-primary mr-2"> Add & Update </button>
+                @{
+                    TMSDeloitte.Models.UserSession sess = null;
+                    if ((TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"] != null)
+                    {
+                        sess = (TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"];
+                        if (sess.SessionUser.ISSUPER)
+                        {
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick='loadData("/TypeOfClaimSetup/GetTypeOfClaimsSetupLog");'> Show Log </button>
+                        }
+
+                        var menu = sess.pagelist.Where(x => x.ID == (int)TMSDeloitte.Helper.Enums.FormsName.TypeOfClaimSetup).FirstOrDefault();
+                        if (menu != null)
+                        {
+                            <input type="hidden" id="AuthID" name="AuthID" value="@menu.Role">
+                        }
+                        else
+                        {
+                            <input type="hidden" id="AuthID" name="AuthID" value="-1">
+                        }
+                    }
+
+                }
+
+            </div>
+        </div>
+
+        <!-- [ Main Content ] end -->
+    </div> <!-- [ Card Content ] end -->
+</div>
+
+
+
+<script type="text/javascript">
+
+
+    function GetLogData(name) {
+        loadData("/TypeOfClaimSetup/GetTypeOfClaimsSetupLog");
+    }
+
+
+
+    var Table = [];
+    var serialNo = 0;
+
+    function GenerateGrid(JSON_Response)
+    {
+        $(function () {
+            $("#gridContainer").dxDataGrid({
+                dataSource: JSON_Response,
+                keyExpr: "KEY",
+                columnAutoWidth: true,
+                allowColumnResizing: true,
+                allowColumnReordering: true,
+                showBorders: true,
+                showScrollbar: 'always',
+                filterRow: { visible: true },
+                scrolling: {
+                    mode: "horizontal",
+                    showScrollbar: 'always'
+                },
+
+                paging: {
+                    enabled: false
+                },
+                editing: {
+                    mode: "batch",
+                    allowUpdating: true,
+                    allowDeleting: true,
+                    allowAdding: true
+                },
+                columns: [
+                     {
+                         dataField: "ID",
+                         caption: "ID",
+                         allowEditing: false,
+                         visible: false
+                     },
+                    {
+                        dataField: "SNO",
+                        caption: "S.No",
+                        dataType: "Number",
+                        allowEditing: false
+                    },
+                    {
+                        caption: "Type of Claim",
+                        dataField: "TYPEOFCLAIM",
+                        validationRules: [{ type: "required" }],
+
+                        width: 530
+                    },
+                    {
+                        dataField: "ISACTIVE",
+                        caption: "Active",
+                        dataType: "boolean"
+                    },
+                     {
+                         dataField: "ISDELETED",
+                         caption: "Deleted",
+                         dataType: "bool",
+                         visible: false,
+                         allowEditing: false
+                     }
+                ],
+                onEditorPreparing: function(e) {
+                    if (e.parentType == 'dataRow' && e.dataField == 'TYPEOFCLAIM') {
+                        e.editorOptions.maxLength = 100;
+                    }
+                },
+                onEditingStart: function (e) {
+                },
+                onInitNewRow: function (e) {
+                    serialNo = serialNo + 1;
+                    e.data.SNO = serialNo;
+                    e.data.ID = 0;
+                    e.data.ISDELETED = false;
+                    e.data.ISACTIVE = true;
+
+                },
+                onRowInserting: function (e) {
+                    serialNo = serialNo + 1;
+                    e.data.SNO = serialNo ;
+                },
+                onRowInserted: function (e) {
+                    var Details = {
+                        KEY: e.key,
+                        ID: 0,
+                        SNO: e.data.SNO,
+                        TYPEOFCLAIM: e.data.TYPEOFCLAIM,
+                        ISACTIVE: e.data.ISACTIVE,
+                        ISDELETED: false
+                    };
+                    Table.push(Details);
+                },
+                onRowUpdating: function (e) {
+                },
+                onRowUpdated: function (e) {
+                    $.each(Table, function (index, val) {
+                        if (val.KEY == e.data.KEY) {
+                            val.TYPEOFCLAIM = e.data.TYPEOFCLAIM;
+                            val.ISACTIVE = e.data.ISACTIVE;
+                        }
+
+                    });
+                },
+                onRowRemoving: function (e) {
+                },
+                onRowRemoved: function (e) {
+                    $.each(Table, function (index, val) {
+                        if (val.KEY == e.data.KEY) {
+                            val.ISDELETED = true;
+                        }
+                    });
+                }
+            });
+
+        });
+    }
+
+    function GetAllAssignmentCostSetup() {
+        var url = "/TypeOfClaimSetup/GetTypeOfClaimSetup";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false,
+        }).done(function (data) {
+            var JSON_Response = data.response;
+            GenerateGrid(JSON_Response);
+            $.each(JSON_Response, function (index, val) {
+                var Details = {
+                    KEY: val.KEY,
+                    ID: val.ID,
+                    SNO: val.SNO,
+                    TYPEOFCLAIM: val.TYPEOFCLAIM,
+                    ISACTIVE: val.ISACTIVE,
+                    ISDELETED: val.ISDELETED
+                };
+                Table.push(Details);
+                serialNo = Table.length;
+            });
+        }).fail(function (data) {
+        });
+    }
+
+    function ValidateAuthorization() {
+        var id = $("#AuthID").val();
+        if (id != -1) {
+            if (id == 2) {
+                $("#add_update").remove();
+                $("#gridContainer").dxDataGrid({ disabled: true });
+
+            }
+        }
+    }
+
+    function AddUpdate() {
+        var notSaved = $('#gridContainer').dxDataGrid('instance').getController('editing').hasChanges();
+        if (notSaved)
+            setTimeout(function () { AddUpdate(); }, 2000);
+        else {
+            if (Table.length > 0) {
+                var url = "/TypeOfClaimSetup/AddUpdateGetTypeOfClaimSetup";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    contentType: 'application/json',
+                    data: JSON.stringify(Table),
+                    dataType: "json",
+                    async: false,
+                    success: function (response) {
+                        if (response.Success) {
+                            AlertToast('success', response.Message);
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 5000);
+                        }
+                        else
+                        {
+                            AlertToast('error', response.Message);
+                        }
+                        loadPanel.hide();
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        loadPanel.hide();
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                        loadPanel.hide();
+                    }
+
+                })
+            }
+            else {
+                AlertToast('error', "Please add atleast one record");
+                loadPanel.hide();
+            }
+        }
+    }
+
+    $('document').ready(function () {
+        GetAllAssignmentCostSetup();
+        ValidateAuthorization();
+
+        $('#add_update').click(function () {
+            var gridContainer = $("#gridContainer").dxDataGrid("instance");
+            loadPanel.show();
+            gridContainer.getController('validating').validate(true).done(function (result) {
+                if (result) {
+                    gridContainer.saveEditData();
+                    setTimeout(function () { AddUpdate(); }, 2000);
+                }
+                else {
+                    loadPanel.hide();
+                    AlertToast('error', "Please fill required fields!");
+                }
+                
+            });
+        });
+
+        //$('#add_update').click(function () {
+        //    loadPanel.show();
+        //    var gridContainer = $("#gridContainer").dxDataGrid("instance");
+        //    gridContainer.saveEditData();
+        //    setTimeout(function () { AddUpdate(); }, 2000);
+        //});
+    });
+
+</script>

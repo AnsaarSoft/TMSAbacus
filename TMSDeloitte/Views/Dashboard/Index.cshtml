@@ -1,0 +1,592 @@
+﻿@Html.Hidden("DashboardIDs", (object)ViewBag.DashboardIDs);
+
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h2> Dashboard </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"> Login </a></li>
+                            <li class="breadcrumb-item"> Dashboard </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div id="totalapprovedHours"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div id="leaveStatus"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div id="timeSheetStatus"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div id="TotalHours_ProfessionalStaff"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="StaffPendingTimeStatusKPIRow" style="display: none;">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <div class="card bg-primary order-card">
+                        <div class="card-body" id="StaffPendingTimeStatusKPI">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div id="StaffPendingTimeStatus"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div id="timeToLapse"></div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    </div> <!-- [ Card Content ] end -->
+</div>
+
+
+<script type="text/javascript">
+
+    var isGetAllDashboard = false;
+    var isSetStaffPendingTimeStatus = false;
+    var isSetLeavStatus=false
+
+    var StaffPendingTimeStatusList=[];
+    var LeavStatusList = [];
+
+    function GetTimeSheetStatus()
+    {
+        var url = "/Dashboard/GetTimeSheetStatus";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false
+        }).done(function (data) {
+            var dataSource;
+             dataSource = JSON.parse(data.dt_List.Data);
+            console.log(dataSource);
+
+            // dataSource = [{
+            //    status: "Pending",
+            //    count: 3
+            //}, {
+            //    status: "Submitted",
+            //    count: 2
+            //}, {
+            //    status: "Not Submitted",
+            //    count: 3
+            //}, {
+            //    status: "Approved",
+            //    count: 4
+            //}, {
+            //    status: "Rejected",
+            //    count: 6
+            //}];
+
+            $("#timeSheetStatus").dxChart({
+                dataSource: dataSource,
+                commonSeriesSettings: {
+                    label: {
+                        visible: true,
+                        format: {
+                            type: "fixedPoint",
+                            precision: 0
+                        }
+                    }
+                },
+                legend: {
+                    visible:false
+                },
+                series: {
+                    argumentField: "status",
+                    valueField: "count",
+                    type: "bar",
+                    color: '#179bd2'
+                },
+                "export": {
+                    enabled: true
+                },
+                tooltip: {
+                    enabled: true,
+                    customizeTooltip: function (point) {
+                        return {
+
+                            text:  point.argumentText + ' : ' + point.value
+                        }
+                    }
+                },
+                title: "My Timesheet Status"
+            });
+
+
+        }).fail(function (data) {
+        });
+
+
+
+    }
+
+    function GetLeaveStatus()
+    {
+        var url = "/Dashboard/GetLeavStatus";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false
+        }).done(function (data) {
+            LeavStatusList = data.List;
+            console.log(LeavStatusList);
+            isSetLeavStatus = true;
+            
+            $("#leaveStatus").dxChart({
+                palette: "soft",
+                dataSource: LeavStatusList,
+                commonSeriesSettings: {
+                    ignoreEmptyPoints: true,
+                    argumentField: "LeaveType",
+                    type: "bar",
+                    label: {
+                        visible: true,
+                        format: {
+                            type: "fixedPoint",
+                            precision: 0
+                        }
+                    }
+                },
+                series: [
+                    { valueField: "CarryForward", name: "Carry Forward" },
+                    { valueField: "TotalAllowed", name: "Total Allowed" },
+                    { valueField: "UseD", name: "Used" },
+                    { valueField: "Balance", name: "Balance" }
+                ],
+                legend: {
+                    verticalAlignment: "top",
+                    horizontalAlignment: "right"
+                },
+                "export": {
+                    enabled: true
+                },
+                tooltip: {
+                    enabled: true,
+                    customizeTooltip: function (point) {
+                        return {
+                            text: point.argumentText + '\n' + point.seriesName + ' : ' + point.value
+                        }
+                    }
+                },
+                title: "My Leave Status"
+            });
+
+        }).fail(function (data) {
+        });
+    }
+   
+
+    function GetDashboardTotalHours() {
+        var url = "/Dashboard/GetDashboardTotalHours";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false
+        }).done(function (data) {
+            var List = JSON.parse(data.dt_List.Data);
+            console.log(List);
+
+            $("#totalapprovedHours").dxChart({
+                dataSource: List,
+                commonSeriesSettings: {
+                    argumentField: "Period",
+                    type: "bar",
+                    hoverMode: "allArgumentPoints",
+                    selectionMode: "allArgumentPoints"
+                },
+                series: [
+                    { valueField: "ChargeableHours", name: "Chargeable" },
+                    { valueField: "NonChargeableHours", name: "Non-Chargeable" }
+                ],
+                title: {
+                    text: "My Total Hours",
+                    //subtitle: "Approved Hours"
+                },
+                legend: {
+                    verticalAlignment: "bottom",
+                    horizontalAlignment: "center"
+                },
+
+                "export": {
+                    enabled: true
+                },
+                onPointClick: function (e) {
+                    e.target.select();
+                },
+                tooltip: {
+                    enabled: true,
+                    customizeTooltip: function (point) {
+                        return {
+                            text: 'Period : ' + point.argumentText + '\n' + 'Year : ' + point.point.data.Year + '\n' + point.seriesName + " : " + point.originalValue
+                        }
+                    }
+                },
+            });
+
+        }).fail(function (data) {
+        });
+
+
+    }
+
+    function GetTotalHours_ProfessionalStaff() {
+        var url = "/Dashboard/GetDashboardTotalHours_ProfessionalStaff";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false
+        }).done(function (data) {
+            var dataSource;
+            dataSource =JSON.parse(data.dt_List.Data);
+            console.log(dataSource);
+            $("#TotalHours_ProfessionalStaff").dxChart({
+                palette: "soft",
+                dataSource: dataSource,
+                commonSeriesSettings: {
+                    ignoreEmptyPoints: true,
+                    argumentField: "Type",
+                    type: "bar",
+                    label: {
+                        visible: true,
+                        format: {
+                            type: "fixedPoint",
+                            precision: 0
+                        }
+                    }
+                },
+                series: [
+                    { valueField: "ChargeableHours", name: "Chargeable" },
+                    { valueField: "NonChargeableHours", name: "NonChargeable" }
+                ],
+                legend: {
+                    verticalAlignment: "top",
+                    horizontalAlignment: "right"
+                },
+                "export": {
+                    enabled: true
+                },
+                tooltip: {
+                    enabled: true,
+                    customizeTooltip: function (point) {
+                        return {
+                            text: point.argumentText + '\n' + point.seriesName + ' : ' + point.value
+                        }
+                    }
+                },
+                title: {
+                    text: "Staff Wise Total Hours",
+                    //subtitle: "Professional Staff"
+                }
+            });
+
+        }).fail(function (data) {
+        });
+
+
+    }
+    function GetDashboardStaffPendingTimeStatusKPI() {
+        var url = "/Dashboard/GetDashboardStaffPendingTimeStatusKPI";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false
+        }).done(function (data) {
+            console.log(data);
+            StaffPendingTimeStatusList = data.List;
+            isSetStaffPendingTimeStatus = true;
+            $("#StaffPendingTimeStatusKPIRow").css({ display: "block" });
+
+            var html = ' <h6 class="text-white">Staff Wise Timesheet Status</h6> ' +
+                         '  <h2 class="text-white">Total : ' + data.Total + '</h2> ' +
+                          ' <p class="m-b-0">Submitted: ' + data.TotalSubmittedSum + ' <i class="feather m-l-10 m-r-10"></i>Approved: ' + data.TotalApprovedSum + ' <i class="feather"></i></p> ' +
+                           ' <i class="card-icon feather icon-users"></i>';
+
+            $("#StaffPendingTimeStatusKPI").append(html);
+        }).fail(function (data) {
+        });
+
+
+    }
+
+    function GetDashboardStaffPendingTimeStatus() {
+        if (isSetStaffPendingTimeStatus==true)
+        {
+            SetDashboardStaffPendingTimeStatus(StaffPendingTimeStatusList);
+            return;
+        }
+        var url = "/Dashboard/GetDashboardStaffPendingTimeStatus";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false
+        }).done(function (data) {
+            var dataSource;
+            dataSource =data.List;
+            console.log(dataSource);
+            StaffPendingTimeStatusList(dataSource);
+        }).fail(function (data) {
+        });
+
+    }
+
+    function SetDashboardStaffPendingTimeStatus(dataSource)
+    {
+        $("#StaffPendingTimeStatus").dxChart({
+            palette: "harmony light",
+            dataSource: dataSource,
+            commonSeriesSettings: {
+                ignoreEmptyPoints: true,
+                argumentField: "Function",
+                type: "bar",
+                label: {
+                    visible: true,
+                    format: {
+                        type: "fixedPoint",
+                        precision: 0
+                    }
+                }
+            },
+            series: [
+                { valueField: "TotalSubmitted", name: "Total Submitted" },
+                { valueField: "TotalApproved", name: "Total Approved" }
+            ],
+
+            legend: {
+                verticalAlignment: "top",
+                horizontalAlignment: "right"
+            },
+            "export": {
+                enabled: true
+            },
+            tooltip: {
+                enabled: true,
+                customizeTooltip: function (point) {
+                    return {
+                        text: point.argumentText + '\n' + point.seriesName + ' : ' + point.value
+                    }
+                }
+            },
+            title: {
+                text: "Function Wise Timesheet Status",
+                //subtitle: "Professional Staff"
+            }
+        });
+    }
+
+    function GetTimeToLapse()
+    {
+        if(isSetLeavStatus==true)
+        {
+            TimetoLapse(LeavStatusList)
+            return;
+        }
+        
+        var url = "/Dashboard/GetLeavStatus";
+        $.ajax({
+            url: url,
+            method: "GET",
+            data: {},
+            async: false
+        }).done(function (data) {
+            console.log(data.List);
+            TimetoLapse(data.List);
+            $("#leaveStatus").dxChart({
+                palette: "soft",
+                dataSource: LeavStatusList,
+                commonSeriesSettings: {
+                    ignoreEmptyPoints: true,
+                    argumentField: "LeaveType",
+                    type: "bar",
+                    label: {
+                        visible: true,
+                        format: {
+                            type: "fixedPoint",
+                            precision: 0
+                        }
+                    }
+                },
+                series: [
+                    { valueField: "CarryForward", name: "Carry Forward" },
+                    { valueField: "TotalAllowed", name: "Total Allowed" },
+                    { valueField: "UseD", name: "Used" },
+                    { valueField: "Balance", name: "Balance" }
+                ],
+                legend: {
+                    verticalAlignment: "top",
+                    horizontalAlignment: "right"
+                },
+                "export": {
+                    enabled: true
+                },
+                tooltip: {
+                    enabled: true,
+                    customizeTooltip: function (point) {
+                        return {
+                            text: point.argumentText + '\n' + point.seriesName + ' : ' + point.value
+                        }
+                    }
+                },
+                title: "My Leave Status"
+            });
+
+        }).fail(function (data) {
+        });
+
+    }
+
+    function TimetoLapse(LeavStatusList)
+    {
+        $("#timeToLapse").dxChart({
+            palette: "soft",
+            dataSource: LeavStatusList,
+            commonSeriesSettings: {
+                ignoreEmptyPoints: true,
+                argumentField: "LeaveType",
+                type: "bar",
+                label: {
+                    visible: true,
+                    format: {
+                        type: "fixedPoint",
+                        precision: 0
+                    }
+                }
+            },
+            series: [
+                { valueField: "TimeToLapse", name: "Time To Lapse" }
+            ],
+            legend: {
+                verticalAlignment: "top",
+                horizontalAlignment: "right"
+            },
+            "export": {
+                enabled: true
+            },
+            tooltip: {
+                enabled: true,
+                customizeTooltip: function (point) {
+                    return {
+                        text: point.argumentText + '\n' + point.seriesName + ' : ' + parseInt(point.value)
+                    }
+                }
+            },
+            title: "My Leave Time To Lapse"
+        });
+    }
+
+
+    function Dashboard(arrDashboardIDs)
+    {
+      
+        if (arrDashboardIDs.length > 0) {
+           
+            $.each(arrDashboardIDs, function (index, val) {
+                switch (val) {
+                    case '601':
+                        GetDashboardTotalHours();
+
+                        break;
+                    case '602':
+                        GetLeaveStatus();
+                        break;
+                    case '603':
+                        GetTimeSheetStatus();
+                        break;
+                    case '604':
+                        GetTotalHours_ProfessionalStaff();
+                        break;
+                    case '605':
+                        GetDashboardStaffPendingTimeStatusKPI();
+                        break;
+                    case '606':
+                        GetDashboardStaffPendingTimeStatus();
+                        break;
+                    case '607':
+                        GetTimeToLapse();
+                        break;
+                    case '608':
+
+                        break;
+                    default:
+                }
+            });
+
+            isGetAllDashboard = true;
+        }
+    }
+    function stopLoading()
+    {
+        if (isGetAllDashboard==false) {
+            setTimeout(function () { stopLoading(); }, 500);
+        }
+        else
+        {
+            loadPanel.hide();
+        }
+    }
+
+    $('document').ready(function () {
+        var arrDashboardIDs = $('#DashboardIDs').val().split(',');
+        loadPanel.show();
+        setTimeout(function () { Dashboard(arrDashboardIDs); }, 100);
+       
+        stopLoading();
+    });
+
+</script>>

@@ -1,0 +1,182 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Notification Detail";
+}
+
+@Html.Hidden("ID", (int)ViewBag.ID)
+
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h4> Notification Detail </h4>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+       
+    
+        <div class="row" >
+            <div class="col-lg-12">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="alertName"> Date </label>
+                            <input type="text" class="form-control frm-cstm" id="Date" placeholder="Date" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="alertName"> From </label>
+                            <input type="text" class="form-control frm-cstm" id="From" placeholder="From" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="txtDetail">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="alertName"> Detail </label>
+                            <textarea class="form-control" id="Detail" rows="5" placeholder="Detail" disabled="disabled"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="tableDetails">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <div id="gridContainer"></div>
+                        </div>
+                    </div>
+                </div>
+              
+
+            </div>
+        </div>
+
+      
+
+
+      
+
+        <!-- [ Main Content ] end -->
+    </div> <!-- [ Card Content ] end -->
+</div>
+
+
+
+<script type="text/javascript">
+
+
+    function GetData() {
+
+        if ($("#ID").val()!=0)
+        {
+            loadPanel.show();
+            var url = "/Notification/GetAllNotificationByDocID?id=" + $("#ID").val() + "&empID=" + $("#userID").val();
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                data: {},
+                async: false,
+            }).done(function (data) {
+                //data = JSON.parse(data.response.Data);
+               
+                loadPanel.hide();
+                if (data.NotificationList.length > 0) {
+                    if (data.NotificationList[0].Table) {
+                        $('#tableDetails').show();
+                        $("#gridContainer").dxDataGrid({
+                            dataSource: JSON.parse(data.NotificationList[0].FileName),
+                            paging: { pageSize: 10 },
+                            columnAutoWidth: true,
+                            pager: { showInfo: true },
+                            allowColumnResizing: true,
+                            allowColumnReordering: true,
+                            showBorders: true,
+                            showScrollbar: 'always',
+                            filterRow: { visible: true },
+                            scrolling: {
+                                mode: "horizontal",
+                                showScrollbar: 'always'
+                            },
+                        });
+                    }
+                    else {
+                        $('#txtDetail').show();
+                        $('#Detail').val(data.NotificationList[0].Detail);
+                    }
+
+                    $('#From').val(data.NotificationList[0].FromEmp);
+                    $('#Date').val(data.NotificationList[0].Date);
+
+
+                    MarkAsRead($("#ID").val());
+                   
+                }
+
+            }).fail(function (data) {
+                loadPanel.hide();
+                console.log(data);
+            });
+        }
+           
+        }
+
+    function MarkAsRead(id)
+    {
+
+        var url = "/Notification/UpdateAnotificationAsRead";
+        $.ajax({
+            url: url,
+            method: "POST",
+            cache: false,
+            data: {
+                docId: id
+            },
+            async: false,
+            success: function (response) {
+                loadPanel.hide();
+               
+            },
+            error: function (response) {
+                console.log(response);
+                loadPanel.hide();
+            },
+            failure: function (response) {
+                console.log(response);
+                loadPanel.hide();
+            }
+
+        });
+    }
+
+        $('document').ready(function () {
+
+            $('#txtDetail').hide();
+            $('#tableDetails').hide();
+
+            GetData();
+
+           
+        });
+
+
+    
+</script>
+

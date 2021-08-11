@@ -1,0 +1,125 @@
+﻿
+
+@{
+    ViewBag.Title = "EncDec";
+}
+
+<div class="pcoded-content">
+    <div class="card p-20" style="min-height: 495px;">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-header-title">
+                            <h4> Encrypt / Decrypt</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">  Encrypt / Decrypt </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Decrypted String  </label>
+                    <input type="text" class="form-control frm-cstm" id="decrypt" placeholder="Decrypted String">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"> Encrypted String </label>
+                    <input type="text" class="form-control frm-cstm" id="encrypt" placeholder="Encrypted String" />
+
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div id="IsActive"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1 mt-3">
+                <button type="button" id="add_update" class="btn btn-primary mr-2"> Submit </button>
+            </div>
+            <div class="col-lg-1 mt-3">
+                <button type="button" id="Reset" class="btn btn-secondary mr-2"> Reset </button>
+            </div>
+        </div>
+        
+        <!-- [ Main Content ] end -->
+    </div> <!-- [ Card Content ] end -->
+</div>
+
+
+
+<script type="text/javascript">
+
+   
+
+    function AddUpdate() {
+
+        var isurl = $("#IsActive").dxCheckBox("instance").option('value');
+        var encrypt = $('#encrypt').val();
+        var decrypt = $('#decrypt').val();
+        var url = "/EncDec/EncDecString";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                encrypt: encrypt,
+                decrypt: decrypt,
+                url: isurl
+            },
+            async: false,
+            success: function (response) {
+                $('#encrypt').val(response.encrypt);
+                $('#decrypt').val(response.decrypt);
+            },
+            error: function (response) {
+                console.log(response)
+            },
+            failure: function (response) {
+                console.log(response)
+            }
+
+        })
+    }
+
+    $('document').ready(function () {
+
+        $("#IsActive").dxCheckBox({
+            text: "URL",
+            value: false,
+            onValueChanged: function (e) {
+            }
+        });
+
+        $('#add_update').click(function () {
+            AddUpdate();
+        });
+        $('#Reset').click(function () {
+            $('#encrypt').val("");
+            $('#decrypt').val("");
+        });
+    });
+
+</script>
+
+
+
