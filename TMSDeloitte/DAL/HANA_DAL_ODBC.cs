@@ -222,7 +222,17 @@ namespace TMSDeloitte.DAL
             {
 
                 loCommand = Hana_DataContext_ODBC.OpenConnectionOdbc(connectionString, docType);
-                loCommand = Hana_DataContext_ODBC.SetStoredProcedure(loCommand, schemaName, spName);
+                //loCommand = Hana_DataContext_ODBC.SetStoredProcedure(loCommand, schemaName, spName);
+
+                if(parameterList.Count > 0) //the condition is said true if the parameterList has parameters in it. So the call from database will be made accordingly with paramter e.g call  "schema_name"."stored_procedure"(comma separated and/or single quotes paramter list)
+                {
+                    loCommand = Hana_DataContext_ODBC.SetStoredProcedureWithParameters(loCommand, schemaName, spName, parameterList);
+                }
+                else //else will if the parameterList has parameters in it. So the call from database will be made accordingly with paramter e.g call  "schema_name"."stored_procedure"(comma separated and/or single quotes paramter list)
+                {
+                    loCommand = Hana_DataContext_ODBC.SetStoredProcedure(loCommand, schemaName, spName);
+                }
+
                 loCommand.CommandTimeout = 8;
                 foreach (var item in parameterList)
                 {
@@ -261,7 +271,17 @@ namespace TMSDeloitte.DAL
             try
             {
                 loCommand = Hana_DataContext_ODBC.OpenConnectionOdbc(connectionString, docType);
-                loCommand = Hana_DataContext_ODBC.SetStoredProcedure(loCommand, schemaName, spName);
+                //loCommand = Hana_DataContext_ODBC.SetStoredProcedure(loCommand, schemaName, spName);
+
+                if (parameterList.Count > 0) //the condition is said true if the parameterList has parameters in it. So the call from database will be made accordingly with paramter e.g call  "schema_name"."stored_procedure"(comma separated and/or single quotes paramter list)
+                {
+                    loCommand = Hana_DataContext_ODBC.SetStoredProcedureWithParameters(loCommand, schemaName, spName, parameterList);
+                }
+                else //else will if the parameterList has parameters in it. So the call from database will be made accordingly with paramter e.g call  "schema_name"."stored_procedure"(comma separated and/or single quotes paramter list)
+                {
+                    loCommand = Hana_DataContext_ODBC.SetStoredProcedure(loCommand, schemaName, spName);
+                }
+
                 loCommand.CommandTimeout = 8;
                 foreach (var item in parameterList)
                 {
