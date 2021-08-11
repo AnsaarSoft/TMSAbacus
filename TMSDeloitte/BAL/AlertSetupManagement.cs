@@ -119,6 +119,7 @@ namespace TMSDeloitte.BAL
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "AlertName";
                     parm.ParameterValue = Convert.ToString(obj.AlertName);
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     DataTable dt = HANADAL.GetDataTableByStoredProcedure("ValidateAlertSetupName", parmList, "GroupSetupManagement");
@@ -289,6 +290,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -320,6 +322,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -347,6 +350,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -593,6 +597,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = docId;
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -623,6 +628,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = docID;
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -653,61 +659,73 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID"; 
                 parm.ParameterValue = Convert.ToString(obj.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(obj.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AlertName";
                 parm.ParameterValue = Convert.ToString(obj.AlertName);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Query";
                 parm.ParameterValue = Convert.ToString(obj.Query);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Frequency";
                 parm.ParameterValue = Convert.ToString(obj.Frequency);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FrequencyType";
                 parm.ParameterValue = Convert.ToString(obj.FrequencyType);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsActive";
                 parm.ParameterValue = Convert.ToString(obj.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(obj.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(obj.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(obj.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -732,32 +750,38 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID";
                 parm.ParameterValue = Convert.ToString(userID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsNotification";
                 parm.ParameterValue = Convert.ToString(IsNotification);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsEmail";
                 parm.ParameterValue = Convert.ToString(IsEmail);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(isDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
@@ -784,31 +808,37 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(AlertSetupID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserGroupID";
                 parm.ParameterValue = Convert.ToString(groupID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsNotification";
                 parm.ParameterValue = Convert.ToString(IsNotification);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsEmail";
                 parm.ParameterValue = Convert.ToString(IsEmail);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(isDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
@@ -941,87 +971,104 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(docID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(obj.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AlertName_Previous";
                 parm.ParameterValue = Convert.ToString(obj.AlertName);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Query_Previous";
                 parm.ParameterValue = Convert.ToString(obj.Query);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Frequency_Previous";
                 parm.ParameterValue = Convert.ToString(obj.Frequency);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FrequencyType_Previous";
                 parm.ParameterValue = Convert.ToString(obj.FrequencyType);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsActive_Previous";
                 parm.ParameterValue = Convert.ToString(obj.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(obj.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AlertName_New";
                 parm.ParameterValue = Convert.ToString(obj.AlertName);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Query_New";
                 parm.ParameterValue = Convert.ToString(obj.Query);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Frequency_New";
                 parm.ParameterValue = Convert.ToString(obj.Frequency);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FrequencyType_New";
                 parm.ParameterValue = Convert.ToString(obj.FrequencyType);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsActive_New";
                 parm.ParameterValue = Convert.ToString(obj.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(obj.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(obj.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -1048,32 +1095,38 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(docID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(user.AlertSetupHeaderTableID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID";
                 parm.ParameterValue = Convert.ToString(user.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsNotification_Previous";
                 parm.ParameterValue = Convert.ToString(user.IsNotification);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsEmail_Previous";
                 parm.ParameterValue = Convert.ToString(user.IsEmail);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
@@ -1084,16 +1137,19 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsNotification_New";
                 parm.ParameterValue = Convert.ToString(user.IsNotification);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsEmail_New";
                 parm.ParameterValue = Convert.ToString(user.IsEmail);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(user.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
             }
@@ -1121,52 +1177,61 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(docID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(user.AlertSetupHeaderTableID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserGroupID";
                 parm.ParameterValue = Convert.ToString(user.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsNotification_Previous";
                 parm.ParameterValue = Convert.ToString(user.IsNotification);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsEmail_Previous";
                 parm.ParameterValue = Convert.ToString(user.IsEmail);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(user.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsNotification_New";
                 parm.ParameterValue = Convert.ToString(user.IsNotification);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsEmail_New";
                 parm.ParameterValue = Convert.ToString(user.IsEmail);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
-                parm.ParameterValue = Convert.ToString(user.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)

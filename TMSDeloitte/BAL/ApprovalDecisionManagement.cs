@@ -74,11 +74,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCUMENT_ID";
                 parm.ParameterValue = Convert.ToString(DocID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(EmpID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -251,6 +253,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(Id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -437,11 +440,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(EmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocumentID";
                 parm.ParameterValue = Convert.ToString(DocumentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 
@@ -464,6 +469,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.ApprovalChildID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
@@ -476,6 +482,7 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.EmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 //parm = new B1SP_Parameter();
@@ -491,51 +498,61 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "USER_CODE";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.EmpID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "USER_NAME";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.FullName);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DesignationID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.DesignationID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DesignationName";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.DesignationName);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DepartmentID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.DepartmentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DepartmentName";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.DepartmentName);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CHANGETOEMPID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.CHANGETOEMPID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CHANGETOEMPCODE";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.CHANGETOEMPCODE);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 ApproverRequest = ApproverRequest + Convert.ToString(changeApproverChild.FullName);
@@ -561,16 +578,19 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID";
                 parm.ParameterValue = Convert.ToString(OriginatorUser);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
          
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -591,21 +611,25 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.DocumentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CHANGETOEMPID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.CHANGETOEMPID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
             }
@@ -959,22 +983,26 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(TimeSheetFormDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status";
                 parm.ParameterValue = Convert.ToString(TimeSheetFormDetails.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(TimeSheetFormDetails.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -1015,26 +1043,31 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STATUS";
                 parm.ParameterValue = Convert.ToString(STATUS);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDBY";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCUMENT";
                 parm.ParameterValue = Convert.ToString(docType);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -1056,41 +1089,49 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCUMENT_ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCUMENT";
                 parm.ParameterValue = Convert.ToString(DOCUMENT);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "APPROVAL";
                 parm.ParameterValue = Convert.ToString(APPROVAL);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "REJECTION";
                 parm.ParameterValue = Convert.ToString(REJECTION);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STATUS";
                 parm.ParameterValue = Convert.ToString(STATUS);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDBY";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -1112,51 +1153,61 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(approvalDecision.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDBY";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCUMENT_ID";
                 parm.ParameterValue = Convert.ToString(approvalDecision.DOCUMENT_ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpId";
                 parm.ParameterValue = Convert.ToString(approvalDecision.USER_CODE);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCUMENT";
                 parm.ParameterValue = Convert.ToString(approvalDecision.DOCUMENT);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "APPROVAL";
                 parm.ParameterValue = Convert.ToString(approvalDecision.CurrentAPPROVAL);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "REJECTION";
                 parm.ParameterValue = Convert.ToString(approvalDecision.CurrentREJECTION);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 //parm = new B1SP_Parameter();
@@ -1172,6 +1223,7 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STATUS";
                 parm.ParameterValue = Convert.ToString(approvalDecision.STATUS);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -1198,21 +1250,25 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ApprovalDecision_ID";
                 parm.ParameterValue = Convert.ToString(approvalDecision.ApprovalDecision_ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCUMENT_ID";
                 parm.ParameterValue = Convert.ToString(approvalDecision.DOCUMENT_ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 //parm = new B1SP_Parameter();
@@ -1238,11 +1294,13 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STATUS";
                 parm.ParameterValue = Convert.ToString(approvalDecision.STATUS);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "COMMENTS";
                 parm.ParameterValue = Convert.ToString(approvalDecision.COMMENTS);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
