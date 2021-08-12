@@ -169,6 +169,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(docNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -207,6 +208,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -250,6 +252,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -385,6 +388,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = docId;
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -413,36 +417,43 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID";
                 parm.ParameterValue = Convert.ToString(userID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(sessionUserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDEDBY";
                 parm.ParameterValue = Convert.ToString(sessionUserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -470,11 +481,13 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DataAccessID";
                 parm.ParameterValue = Convert.ToString(DataAccessID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
@@ -483,17 +496,20 @@ namespace TMSDeloitte.BAL
                 //if(menuID.Length>=4)
                 //    menuID= menuID.Substring(4, menuID.Length - 4);
                 parm.ParameterValue = menuID;
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserDataAccessID";
                 parm.ParameterValue = Convert.ToString(auth.Authorization);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(isDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
@@ -576,11 +592,13 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DataAccessID";
                 parm.ParameterValue = Convert.ToString(DocId);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(Docnum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -588,36 +606,43 @@ namespace TMSDeloitte.BAL
                 parm.ParameterName = "Menu";
                 Common cmn = new Common();
                 parm.ParameterValue = Convert.ToString(cmn.GetUserDataAccessMenuList().Where(x => x.ID == menu.ID).Select(x => x.Name).FirstOrDefault());
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserAuthorization_Previous";
                 parm.ParameterValue = Convert.ToString(((Enums.UserAuthorization)menu.Authorization));
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsChecked_Previous";
                 parm.ParameterValue = Convert.ToString(menu.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserAuthorization_New";
                 parm.ParameterValue = Convert.ToString(((Enums.UserAuthorization)menu.Authorization));
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsChecked_New";
                 parm.ParameterValue = Convert.ToString(menu.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(sessionUser);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -644,11 +669,13 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DataAccessID";
                 parm.ParameterValue = Convert.ToString(DocId);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(Docnum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -656,31 +683,37 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID_Previous";
                 parm.ParameterValue = Convert.ToString(user.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsChecked_Previous";
                 parm.ParameterValue = Convert.ToString(user.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID_New";
                 parm.ParameterValue = Convert.ToString(user.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsChecked_New";
                 parm.ParameterValue = Convert.ToString(user.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(sessionUser);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)

@@ -22,6 +22,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -60,6 +61,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = docNo;
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -96,14 +98,17 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(year);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(fromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(toDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -426,14 +431,17 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(year);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(fromDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(toDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -478,6 +486,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = id;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -595,52 +604,62 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(Holiday.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(Holiday.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FuncationID";
                 parm.ParameterValue = Convert.ToString(Holiday.Year);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(Holiday.FromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(Holiday.ToDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED";
                 parm.ParameterValue = Convert.ToString(Holiday.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(Holiday.CREATEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDEDBY";
                 parm.ParameterValue = Convert.ToString(Holiday.UPDATEDEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -664,26 +683,31 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(Holiday.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(Holiday.HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Holidate";
                 parm.ParameterValue = Convert.ToString(Holiday.Holidate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description";
                 parm.ParameterValue = Convert.ToString(Holiday.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(Holiday.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
@@ -710,16 +734,19 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(Holiday.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(Holiday.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 
@@ -727,43 +754,51 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate_Previous";
                 parm.ParameterValue = Convert.ToString(Holiday.FromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Year_Previous";
                 parm.ParameterValue = Convert.ToString(Holiday.Year);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate_Previous";
                 parm.ParameterValue = Convert.ToString(Holiday.ToDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(Holiday.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate_New";
                 parm.ParameterValue = Convert.ToString(Holiday.FromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Year_New";
                 parm.ParameterValue = Convert.ToString(Holiday.Year);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate_New";
                 parm.ParameterValue = Convert.ToString(Holiday.ToDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(Holiday.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 
@@ -789,39 +824,46 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(Holiday.HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
               
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HoliDate_Previous";
                 parm.ParameterValue = Convert.ToString(Holiday.Holidate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description_Previous";
                 parm.ParameterValue = Convert.ToString(Holiday.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(Holiday.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HoliDate_New";
                 parm.ParameterValue = Convert.ToString(Holiday.Holidate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description_New";
                 parm.ParameterValue = Convert.ToString(Holiday.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(Holiday.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
             }

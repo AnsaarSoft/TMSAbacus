@@ -22,6 +22,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(Id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
@@ -276,41 +277,49 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TYPEOFCLAIM";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.TYPEOFCLAIM);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISACTIVE";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.ISACTIVE);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.CREATEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDEDBY";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.UPDATEDEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -335,41 +344,49 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TYPEOFCLAIM_PREVIOUS";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.TYPEOFCLAIM);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TYPEOFCLAIM_NEW";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.TYPEOFCLAIM);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISACTIVE_PREVIOUS";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.ISACTIVE);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISACTIVE_NEW";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.ISACTIVE);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED_PREVIOUS";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED_NEW";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(typeOfClaimSetupInfo.CREATEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }

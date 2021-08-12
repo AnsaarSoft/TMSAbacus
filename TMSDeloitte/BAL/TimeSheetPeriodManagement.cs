@@ -22,6 +22,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -58,6 +59,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -228,14 +230,17 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(year);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "fromDate";
                 parm.ParameterValue = Convert.ToString(fromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "toDate";
                 parm.ParameterValue = Convert.ToString(toDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -267,14 +272,17 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(year);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(fromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(toDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -305,6 +313,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -365,6 +374,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = docNo;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -400,6 +410,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = year;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -588,52 +599,62 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(TimeSheetPeriods.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(TimeSheetPeriods.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(TimeSheetPeriods.year);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(TimeSheetPeriods.fromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(TimeSheetPeriods.toDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED";
                 parm.ParameterValue = Convert.ToString(TimeSheetPeriods.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(TimeSheetPeriods.CREATEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDEDBY";
                 parm.ParameterValue = Convert.ToString(TimeSheetPeriods.UPDATEDEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -659,11 +680,13 @@ namespace TMSDeloitte.BAL
                 {
                     parm.ParameterName = "ID";
                     parm.ParameterValue = Convert.ToString(TimeSheetPeriods.ID);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "StdHoursInWeek";
                     parm.ParameterValue = Convert.ToString(TimeSheetPeriods.StdHoursInWeek);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
                 }
                 else
@@ -671,26 +694,31 @@ namespace TMSDeloitte.BAL
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "HeaderID";
                     parm.ParameterValue = Convert.ToString(TimeSheetPeriods.HeaderID);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "Period";
                     parm.ParameterValue = Convert.ToString(TimeSheetPeriods.Period);
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "FromDate";
                     parm.ParameterValue = Convert.ToString(TimeSheetPeriods._Monday);
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "ToDate";
                     parm.ParameterValue = Convert.ToString(TimeSheetPeriods._Friday);
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "StdHoursInWeek";
                     parm.ParameterValue = Convert.ToString(TimeSheetPeriods.StdHoursInWeek);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
                 }
 

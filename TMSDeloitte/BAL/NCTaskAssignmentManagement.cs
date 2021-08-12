@@ -23,6 +23,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
@@ -78,6 +79,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -146,6 +148,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -183,6 +186,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -384,14 +388,17 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(year);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "fromDate";
                 parm.ParameterValue = Convert.ToString(fromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "toDate";
                 parm.ParameterValue = Convert.ToString(toDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -468,6 +475,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = docNo;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
               
@@ -505,6 +513,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue =Convert.ToString(docid);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 //parm = new B1SP_Parameter();
@@ -544,6 +553,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -817,53 +827,63 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.EmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpCode";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.EmpCode);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
               
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -887,11 +907,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
               
@@ -899,6 +921,7 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 
@@ -906,11 +929,13 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsActive";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
                 
             }
@@ -934,16 +959,19 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(DocID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                
@@ -951,18 +979,21 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.EmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
               
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate_Previous";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
                
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
               
@@ -970,23 +1001,27 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate_New";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
              
@@ -1012,11 +1047,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(DocID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                
@@ -1024,24 +1061,28 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID_Previous";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsActive_Previous";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
               
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID_New";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 
@@ -1049,11 +1090,13 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsActive_New";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(NCTaskAssignmentDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
             }

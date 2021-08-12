@@ -23,6 +23,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -61,6 +62,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = docNo;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -123,14 +125,17 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "FunctionID";
                 parm.ParameterValue = Convert.ToString(functionID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(fromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(toDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -450,7 +455,8 @@ namespace TMSDeloitte.BAL
                     B1SP_Parameter parm = new B1SP_Parameter();
                     parm.ParameterName = "ID";
                     parm.ParameterValue = id;
-                    parmList.Add(parm);
+                parm.ParameterType = DBTypes.String.ToString();
+                parmList.Add(parm);
 
                     HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
                     ds = HANADAL.GetDataSetByStoredProcedure("GetResourceBillingRatesLogByID", parmList, "ResourceBillingRatesManagement");
@@ -568,52 +574,62 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FuncationID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.FunctionID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.FromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ToDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.CREATEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDEDBY";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.UPDATEDEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -637,31 +653,37 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DesignationID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.DesignationID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RatesPerHour";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.RatesPerHour);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsActive";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
@@ -688,48 +710,57 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FunctionID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.FunctionID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate_Previous";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.FromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate_Previous";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ToDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate_New";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.FromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate_New";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ToDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 
@@ -755,44 +786,52 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DesignationID";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.DesignationID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RatesPerHour_Previous";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.RatesPerHour);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISACTIVE_Previous";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED_Previous";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RatesPerHour_New";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.RatesPerHour);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISACTIVE_New";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.IsActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED_New";
                 parm.ParameterValue = Convert.ToString(resourceBillingRates.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 

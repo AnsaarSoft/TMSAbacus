@@ -423,149 +423,190 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(obj.DOCNUM);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "NonChargeable";
 
                 if (obj.NonChargeable == null)
+                {
                     parm.ParameterValue = Convert.ToString(false);
+                    parm.ParameterType = DBTypes.Bool.ToString();
+                }
                 else
+                {
                     parm.ParameterValue = Convert.ToString(obj.NonChargeable);
+                    parm.ParameterType = DBTypes.Bool.ToString();
+                }
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(docID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentTitle_Previous";
                 parm.ParameterValue = Convert.ToString(obj.AssignmentTitle);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "BranchID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.BranchID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClientID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.ClientID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FunctionID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.FunctionID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "SubFunctionID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.SubFunctionID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "PartnerID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.PartnerID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DirectorID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.DirectorID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status_Previous";
                 parm.ParameterValue = Convert.ToString(obj.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "flgPost_Previous";
                 parm.ParameterValue = Convert.ToString(obj.flgPost);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 if (obj.IsDeleted != null)
+                {
                     parm.ParameterValue = Convert.ToString(obj.IsDeleted);
+                    parm.ParameterType = DBTypes.Bool.ToString();
+                }
                 else
+                {
                     parm.ParameterValue = Convert.ToString(false);
+                    parm.ParameterType = DBTypes.Bool.ToString();
+                }
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentTitle_New";
                 parm.ParameterValue = Convert.ToString(obj.AssignmentTitle);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "BranchID_New";
                 parm.ParameterValue = Convert.ToString(obj.BranchID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClientID_New";
                 parm.ParameterValue = Convert.ToString(obj.ClientID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FunctionID_New";
                 parm.ParameterValue = Convert.ToString(obj.FunctionID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "SubFunctionID_New";
                 parm.ParameterValue = Convert.ToString(obj.SubFunctionID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "PartnerID_New";
                 parm.ParameterValue = Convert.ToString(obj.PartnerID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DirectorID_New";
                 parm.ParameterValue = Convert.ToString(obj.DirectorID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status_New";
                 parm.ParameterValue = Convert.ToString(obj.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "flgPost_New";
                 parm.ParameterValue = Convert.ToString(obj.flgPost);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 if (obj.IsDeleted != null)
+                {
                     parm.ParameterValue = Convert.ToString(obj.IsDeleted);
+                    parm.ParameterType = DBTypes.Bool.ToString();
+                }
                 else
+                {
                     parm.ParameterValue = Convert.ToString(false);
+                    parm.ParameterType = DBTypes.Bool.ToString();
+                }
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(obj.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -592,111 +633,133 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssingmentFormID";
                 parm.ParameterValue = Convert.ToString(docID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TypeOfAssignment_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TypeOfAssignment);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentNatureID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.AssignmentNatureID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TypeOfBilling_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TypeOfBilling);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CurrencyID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.CurrencyID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentValue_Previous";
                 parm.ParameterValue = Convert.ToString(obj.AssignmentValue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "StartDate_Previous";
                 parm.ParameterValue = Convert.ToDateTime(obj.StartDate).ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EndDate_Previous";
                 parm.ParameterValue = Convert.ToDateTime(obj.EndDate).ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DurationInDays_Previous";
                 parm.ParameterValue = Convert.ToString(obj.DurationInDays);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClosureDate_Previous";
                 parm.ParameterValue = Convert.ToDateTime(obj.ClosureDate).ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status_Previous";
                 parm.ParameterValue = Convert.ToString(obj.Status);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TypeOfAssignment_New";
                 parm.ParameterValue = Convert.ToString(obj.TypeOfAssignment);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentNatureID_New";
                 parm.ParameterValue = Convert.ToString(obj.AssignmentNatureID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TypeOfBilling_New";
                 parm.ParameterValue = Convert.ToString(obj.TypeOfBilling);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CurrencyID_New";
                 parm.ParameterValue = Convert.ToString(obj.CurrencyID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentValue_New";
                 parm.ParameterValue = Convert.ToString(obj.AssignmentValue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "StartDate_New";
-                parm.ParameterValue = Convert.ToDateTime(obj.StartDate).ToString("yyyy-MM-dd HH:MM:s"); ;
+                parm.ParameterValue = Convert.ToDateTime(obj.StartDate).ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EndDate_New";
-                parm.ParameterValue = Convert.ToDateTime(obj.EndDate).ToString("yyyy-MM-dd HH:MM:s"); ;
+                parm.ParameterValue = Convert.ToDateTime(obj.EndDate).ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DurationInDays_New";
                 parm.ParameterValue = Convert.ToString(obj.DurationInDays);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClosureDate_New";
-                parm.ParameterValue = Convert.ToDateTime(obj.ClosureDate).ToString("yyyy-MM-dd HH:MM:s"); ;
+                parm.ParameterValue = Convert.ToDateTime(obj.ClosureDate).ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status_New";
                 parm.ParameterValue = Convert.ToString(obj.Status);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -724,141 +787,169 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssingmentFormID";
                 parm.ParameterValue = Convert.ToString(docID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalHours_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TotalHours);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "StdBillingRateHr_Previous";
                 parm.ParameterValue = Convert.ToString(obj.StdBillingRateHr);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ResourceCost_Previous";
                 parm.ParameterValue = Convert.ToString(obj.ResourceCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "LocationID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TravelRateID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TravelCost_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TravelCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalCost_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TotalCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RevenueRateHr_Previous";
                 parm.ParameterValue = Convert.ToString(obj.RevenueRateHr);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Revenue_Previous";
                 parm.ParameterValue = Convert.ToString(obj.Revenue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsChargeable_Previous";
                 parm.ParameterValue = Convert.ToString(obj.IsChargeable);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "InActive_Previous";
                 parm.ParameterValue = Convert.ToString(obj.InActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID_New";
                 parm.ParameterValue = Convert.ToString(obj.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID_New";
                 parm.ParameterValue = Convert.ToString(obj.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalHours_New";
                 parm.ParameterValue = Convert.ToString(obj.TotalHours);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "StdBillingRateHr_New";
                 parm.ParameterValue = Convert.ToString(obj.StdBillingRateHr);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ResourceCost_New";
                 parm.ParameterValue = Convert.ToString(obj.ResourceCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "LocationID_New";
                 parm.ParameterValue = Convert.ToString(obj.TravelRateID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TravelCost_New";
                 parm.ParameterValue = Convert.ToString(obj.TravelCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalCost_New";
                 parm.ParameterValue = Convert.ToString(obj.TotalCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RevenueRateHr_New";
                 parm.ParameterValue = Convert.ToString(obj.RevenueRateHr);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Revenue_New";
                 parm.ParameterValue = Convert.ToString(obj.Revenue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsChargeable_New";
                 parm.ParameterValue = Convert.ToString(obj.IsChargeable);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "InActive_New";
                 parm.ParameterValue = Convert.ToString(obj.InActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(obj.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = Convert.ToDateTime(obj.CreateDate).ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -887,43 +978,51 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssingmentFormID";
                 parm.ParameterValue = Convert.ToString(docID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentCostSetupID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Amount_Previous";
                 parm.ParameterValue = Convert.ToString(obj.Amount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentCostSetupID_New";
                 parm.ParameterValue = Convert.ToString(obj.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Amount_New";
                 parm.ParameterValue = Convert.ToString(obj.Amount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(obj.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -952,71 +1051,85 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssingmentFormID";
                 parm.ParameterValue = Convert.ToString(docID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalBudgetedHour_Previous";
                 parm.ParameterValue = Convert.ToString(obj.TotalBudgetedHour);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EstimatedResourceCost_Previous";
                 parm.ParameterValue = Convert.ToString(obj.EstimatedResourceCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RevenueDistribution_Previous";
                 parm.ParameterValue = Convert.ToString(obj.RevenueDistribution);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EstimatedRevenue_Previous";
                 parm.ParameterValue = Convert.ToString(obj.EstimatedRevenue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID_New";
                 parm.ParameterValue = Convert.ToString(obj.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalBudgetedHour_New";
                 parm.ParameterValue = Convert.ToString(obj.TotalBudgetedHour);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EstimatedResourceCost_New";
                 parm.ParameterValue = Convert.ToString(obj.EstimatedResourceCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RevenueDistribution_New";
                 parm.ParameterValue = Convert.ToString(obj.RevenueDistribution);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EstimatedRevenue_New";
                 parm.ParameterValue = Convert.ToString(obj.EstimatedRevenue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(obj.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -1422,6 +1535,7 @@ namespace TMSDeloitte.BAL
                         parm = new B1SP_Parameter();
                         parm.ParameterName = "ID";
                         parm.ParameterValue = Convert.ToString(ID);
+                        parm.ParameterType = DBTypes.Int32.ToString();
                         parmList.Add(parm);
                         DataSet ds = HANADAL.GetDataSetByStoredProcedure("GetAssignmentForm", parmList, "AssignmentFormManagement");
                         if (ds.Tables.Count > 0)
@@ -1444,6 +1558,7 @@ namespace TMSDeloitte.BAL
                         parm = new B1SP_Parameter();
                         parm.ParameterName = "DocNum";
                         parm.ParameterValue = Convert.ToString(DOCNUM);
+                        parm.ParameterType = DBTypes.String.ToString();
                         parmList.Add(parm);
 
                         DataTable dt = HANADAL.GetDataTableByStoredProcedure("ValidateAssignmentForm", parmList, "AssignmentFormManagement");
@@ -1542,6 +1657,7 @@ namespace TMSDeloitte.BAL
                         parm = new B1SP_Parameter();
                         parm.ParameterName = "ID";
                         parm.ParameterValue = Convert.ToString(ID);
+                        parm.ParameterType = DBTypes.Int32.ToString();
                         parmList.Add(parm);
                         DataSet ds = HANADAL.GetDataSetByStoredProcedure("GetAssignmentForm", parmList, "AssignmentFormManagement");
                         if (ds.Tables.Count > 0)
@@ -1564,6 +1680,7 @@ namespace TMSDeloitte.BAL
                         parm = new B1SP_Parameter();
                         parm.ParameterName = "DocNum";
                         parm.ParameterValue = Convert.ToString(DOCNUM);
+                        parm.ParameterType = DBTypes.String.ToString();
                         parmList.Add(parm);
 
                         DataTable dt = HANADAL.GetDataTableByStoredProcedure("ValidateAssignmentForm", parmList, "AssignmentFormManagement");
@@ -1886,6 +2003,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = id;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -1913,6 +2031,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentTitle";
                 parm.ParameterValue = Convert.ToString(assignmentTitle);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -1972,11 +2091,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "FunctionID";
                 parm.ParameterValue = Convert.ToString(FunctionID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DesignationID";
                 parm.ParameterValue = Convert.ToString(DesignationID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
@@ -1986,11 +2107,13 @@ namespace TMSDeloitte.BAL
                 //FromDate = string.Format("{0:dd/MM/yyyy}", StartDate);
                 //FromDate = FromDate.Replace("/", "");
                 parm.ParameterValue = Convert.ToString(FromDate);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(ToDate);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
             }
@@ -2012,6 +2135,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(Id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -2044,81 +2168,97 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCNUM";
                 parm.ParameterValue = Convert.ToString(DOCNUM);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "NonChargeable";
                 parm.ParameterValue = Convert.ToString(NonChargeable);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate";
                 parm.ParameterValue = Convert.ToString(Convert.ToDateTime(AssignmentForm.DocDate).ToString("yyyy-MM-dd HH:MM:s")); //DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentTitle";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.AssignmentTitle);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "BranchID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.BranchID); //branch id nahe arahe
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClientID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.ClientID);//branch id nahe arahe
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FunctionID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.FunctionID);//branch id nahe arahe
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "SubFunctionID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.SubFunctionID);//branch id nahe arahe
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "PartnerID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.PartnerID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DirectorID";
                 parm.ParameterValue = (Convert.ToInt64(AssignmentForm.DirectorID)).ToString();
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "flgPost";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.flgPost);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(false);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                
@@ -2142,51 +2282,61 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentFormID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.AssignmentFormID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TypeOfAssignment";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.TypeOfAssignment);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentNatureID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.AssignmentNatureID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TypeOfBilling";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.TypeOfBilling);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CurrencyID";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.CurrencyID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentValue";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.AssignmentValue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "StartDate";
                 parm.ParameterValue = Convert.ToString(Convert.ToDateTime(AssignmentForm.StartDate).ToString("yyyy-MM-dd HH:MM:s"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EndDate";
                 parm.ParameterValue = Convert.ToString(Convert.ToDateTime(AssignmentForm.EndDate).ToString("yyyy-MM-dd HH:MM:s"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DurationInDays";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.DurationInDays);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 if(AssignmentForm.ClosureDate != null)
@@ -2194,32 +2344,38 @@ namespace TMSDeloitte.BAL
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "ClosureDate";
                     parm.ParameterValue = Convert.ToString(Convert.ToDateTime(AssignmentForm.ClosureDate).ToString("yyyy-MM-dd HH:MM:s"));
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
                 }
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status";
                 parm.ParameterValue = Convert.ToString(AssignmentForm.Status);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -2243,51 +2399,61 @@ namespace TMSDeloitte.BAL
                 if (assignmentFormChild.RowID == null)
                     assignmentFormChild.RowID = 0;
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.RowID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentFormID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.AssignmentFormID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpCode";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.USER_CODE);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DesignationID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.DesignationID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DepartmentID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.DepartmentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalHours";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.TotalHours);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "StdBillingRateHr";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.StdBillingRateHr);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ResourceCost";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.ResourceCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
@@ -2295,36 +2461,43 @@ namespace TMSDeloitte.BAL
                 if (assignmentFormChild.TravelRateID == null)
                     assignmentFormChild.TravelRateID = 0;
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.TravelRateID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TravelCost";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.TravelCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalCost";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.TotalCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RevenueRateHr";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.RevenueRateHr);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Revenue";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.Revenue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsChargeable";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.IsChargeable);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "InActive";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.InActive);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
@@ -2334,26 +2507,31 @@ namespace TMSDeloitte.BAL
                     assignmentFormChild.ISDELETED = false;
                 }
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -2379,21 +2557,25 @@ namespace TMSDeloitte.BAL
                 if (assignmentFormChild.RowID == null)
                     assignmentFormChild.RowID = 0;
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.RowID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentFormID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.AssignmentFormID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentCostSetupID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Amount";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.Amount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 //parm = new B1SP_Parameter();
@@ -2404,21 +2586,25 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -2444,56 +2630,67 @@ namespace TMSDeloitte.BAL
                 if (assignmentFormChild.RowID == null)
                     assignmentFormChild.RowID = 0;
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.RowID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentFormID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.AssignmentFormID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TaskID";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.TaskID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalBudgetedHour";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.TotalBudgetedHour);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EstimatedResourceCost";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.EstimatedResourceCost);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "RevenueDistribution";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.RevenueDistribution);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EstimatedRevenue";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.EstimatedRevenue);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(assignmentFormChild.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -2650,6 +2847,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentFormID";
                 parm.ParameterValue = Convert.ToString(AssignmentFormID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 

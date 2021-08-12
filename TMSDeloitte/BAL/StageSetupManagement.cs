@@ -56,6 +56,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -130,6 +131,7 @@ namespace TMSDeloitte.BAL
                         parm = new B1SP_Parameter();
                         parm.ParameterName = "ID";
                         parm.ParameterValue = Convert.ToString(ID);
+                        parm.ParameterType = DBTypes.Int32.ToString();
                         parmList.Add(parm);
                         DataSet ds = HANADAL.GetDataSetByStoredProcedure("GetStage_Setup", parmList, "StageSetupManagement");
                         if (ds.Tables.Count > 0)
@@ -152,6 +154,7 @@ namespace TMSDeloitte.BAL
                         parm = new B1SP_Parameter();
                         parm.ParameterName = "STAGECODE";
                         parm.ParameterValue = Convert.ToString(STAGECODE);
+                        parm.ParameterType = DBTypes.String.ToString();
                         parmList.Add(parm);
 
                         DataTable dt = HANADAL.GetDataTableByStoredProcedure("ValidateStageCode", parmList, "StageSetupManagement");
@@ -479,6 +482,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCNUM";
                 parm.ParameterValue = docNo;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -521,6 +525,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(Id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -541,6 +546,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "STAGESETUP_ID";
                 parm.ParameterValue = Convert.ToString(STAGESETUP_ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
@@ -690,57 +696,68 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED";
                 parm.ParameterValue = Convert.ToString(ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDBY";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STAGECODE";
                 parm.ParameterValue = Convert.ToString(STAGECODE);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STAGEDESCRIPTION";
                 parm.ParameterValue = Convert.ToString(STAGEDESCRIPTION);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "APPROVALREQUIRED";
                 parm.ParameterValue = Convert.ToString(APPROVALREQUIRED);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "REJECTIONREQUIRED";
                 parm.ParameterValue = Convert.ToString(REJECTIONREQUIRED);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCNUM";
                 parm.ParameterValue = Convert.ToString(DOCNUM);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -765,78 +782,93 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STAGESETUP_ID";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.STAGESETUP_ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISACTIVE";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.ISACTIVE);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.CREATEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDBY";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.UPDATEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UPDATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "USER_CODE";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.USER_CODE);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "USER_NAME";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.FULLNAME);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DESIGNATIONID";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.DESIGNATIONID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DESIGNATIONNAME";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.DESIGNATIONNAME);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DEPARTMENTID";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.DEPARTMENTID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DEPARTMENTNAME";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.DEPARTMENTNAME);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -866,6 +898,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -897,73 +930,87 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(stageSetup.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCNUM";
                 parm.ParameterValue = Convert.ToString(stageSetup.DOCNUM);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCID";
                 parm.ParameterValue = Convert.ToString(stageSetup.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STAGECODE";
                 parm.ParameterValue = Convert.ToString(stageSetup.STAGECODE);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STAGEDESCRIPTION_Previous";
                 parm.ParameterValue = Convert.ToString(stageSetup.STAGEDESCRIPTION);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "APPROVALREQUIRED_Previous";
                 parm.ParameterValue = Convert.ToString(stageSetup.APPROVALREQUIRED);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "REJECTIONREQUIRED_Previous";
                 parm.ParameterValue = Convert.ToString(stageSetup.REJECTIONREQUIRED);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED_Previous";
                 parm.ParameterValue = Convert.ToString(stageSetup.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STAGEDESCRIPTION_New";
                 parm.ParameterValue = Convert.ToString(stageSetup.STAGEDESCRIPTION);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "APPROVALREQUIRED_New";
                 parm.ParameterValue = Convert.ToString(stageSetup.APPROVALREQUIRED);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "REJECTIONREQUIRED_New";
                 parm.ParameterValue = Convert.ToString(stageSetup.REJECTIONREQUIRED);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED_New";
                 parm.ParameterValue = Convert.ToString(stageSetup.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDBY";
                 parm.ParameterValue = Convert.ToString(stageSetup.CREATEDBY);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CREATEDATE";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss");
+                parm.ParameterType = DBTypes.String.ToString();
                 //parm.ParameterValue = string.Format("{0:dd/MM/yyyy}", DateTime.Now);// DateTime.Now.ToString("dd-MM-yyyy HH:MM:ss");
                 parmList.Add(parm);
 
@@ -990,46 +1037,55 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "STAGESETUP_ID";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.STAGESETUP_ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DOCID";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.STAGESETUP_ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID_Previous";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FullName_Previous";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.FULLNAME);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED_Previous";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID_New";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FullName_New";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.FULLNAME);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ISDELETED_New";
                 parm.ParameterValue = Convert.ToString(stageSetupChild.ISDELETED);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
             }

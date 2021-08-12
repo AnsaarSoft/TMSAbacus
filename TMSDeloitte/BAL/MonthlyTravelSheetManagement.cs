@@ -25,16 +25,19 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = year;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Month";
                 parm.ParameterValue = Convert.ToString(month);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(empID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -83,21 +86,25 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = year;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(empID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(fromDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(toDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -129,6 +136,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
@@ -160,6 +168,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -196,6 +205,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -232,6 +242,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -437,14 +448,17 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(year);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "fromDate";
                 parm.ParameterValue = Convert.ToString(fromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "toDate";
                 parm.ParameterValue = Convert.ToString(toDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -474,6 +488,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -534,11 +549,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = docNo;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue =Convert.ToString(empID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -574,11 +591,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue =Convert.ToString(docid);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(empID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -613,6 +632,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = year;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -647,6 +667,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
@@ -882,31 +903,37 @@ namespace TMSDeloitte.BAL
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "ID";
                     parm.ParameterValue =Convert.ToString(docId);// Convert.ToString(MonthlyTravelSheetDetails.ID);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "Status";
                     parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Status);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "DocNum";
                     parm.ParameterValue = Convert.ToString(security.DecryptString(MonthlyTravelSheetDetails._DocNum));
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "EmpID";
                     parm.ParameterValue = Convert.ToString(security.DecryptString(MonthlyTravelSheetDetails._EmpID));
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "UpdatedBy";
                     parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.UpdatedBy);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "UpdatedDate";
                     parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     previousObj = GetMonthlyTravelSheetDetailsByID(docId);
@@ -1175,46 +1202,55 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.EmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpCode";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.EmpCode);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Year);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Month";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Month);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 string attachements ="";
@@ -1229,31 +1265,37 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Attachements";
                 parm.ParameterValue = attachements;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -1277,52 +1319,62 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TravelDate";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails._TravelDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 // parm.ParameterValue = Convert.ToString(DateTime.ParseExact(MonthlyTravelSheetDetails.WorkDate, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"));
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.AssignmentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "LocationID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.LocationID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClientID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.ClientID);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Kilometers";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Kilometers);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Amount";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Amount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ParkingCharges";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.ParkingCharges);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                
@@ -1330,11 +1382,13 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
                 
             }
@@ -1358,88 +1412,105 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(DocID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.EmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpCode";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.EmpCode);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Year);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Month";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Month);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
  
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
              
@@ -1465,92 +1536,110 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(DocID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TravelDate_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails._TravelDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentID_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.AssignmentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Kilometers_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Kilometers);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Amount_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Amount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ParkingCharges_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.ParkingCharges);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TravelDate_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails._TravelDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentID_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.AssignmentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Kilometers_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Kilometers);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Amount_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.Amount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ParkingCharges_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.ParkingCharges);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(MonthlyTravelSheetDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
             }

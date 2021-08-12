@@ -23,6 +23,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
@@ -54,6 +55,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -90,6 +92,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -126,6 +129,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -332,14 +336,17 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(year);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "fromDate";
                 parm.ParameterValue = Convert.ToString(fromDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "toDate";
                 parm.ParameterValue = Convert.ToString(toDate.ToString("yyyy-MM-dd"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -369,6 +376,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -429,11 +437,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = docNo;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue =Convert.ToString(empID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -469,11 +479,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue =Convert.ToString(docid);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(empID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -508,6 +520,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = year;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -742,31 +755,37 @@ namespace TMSDeloitte.BAL
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "ID";
                     parm.ParameterValue =Convert.ToString(docId);// Convert.ToString(ClaimFormDetails.ID);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "Status";
                     parm.ParameterValue = Convert.ToString(ClaimFormDetails.Status);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "DocNum";
                     parm.ParameterValue = Convert.ToString(security.DecryptString(ClaimFormDetails._DocNum));
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "EmpID";
                     parm.ParameterValue = Convert.ToString(security.DecryptString(ClaimFormDetails._EmpID));
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "UpdatedBy";
                     parm.ParameterValue = Convert.ToString(ClaimFormDetails.UpdatedBy);
+                    parm.ParameterType = DBTypes.Int32.ToString();
                     parmList.Add(parm);
 
                     parm = new B1SP_Parameter();
                     parm.ParameterName = "UpdatedDate";
                     parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                    parm.ParameterType = DBTypes.String.ToString();
                     parmList.Add(parm);
 
                     previousObj = GetClaimFormDetailsByID(docId);
@@ -953,53 +972,63 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.EmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpCode";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.EmpCode);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
               
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ImageFolder";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.ImageFolder);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AdvanceReceived";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.AdvanceReceived);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Receivable";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Receivable);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 string attachements ="";
@@ -1014,31 +1043,37 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Attachements";
                 parm.ParameterValue = attachements;
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.UpdatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
 
@@ -1062,42 +1097,50 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.HeaderID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Date";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails._Date);
+                parm.ParameterType = DBTypes.String.ToString();
                 // parm.ParameterValue = Convert.ToString(DateTime.ParseExact(ClaimFormDetails.WorkDate, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"));
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentID";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.AssignmentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClaimID";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.ClaimID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
                 
             }
@@ -1121,98 +1164,117 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocID";
                 parm.ParameterValue = Convert.ToString(DocID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.DocNum);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpID";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.EmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpCode";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.EmpCode);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AdvanceReceived_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.AdvanceReceived);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Receivable_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Receivable);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Status_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Status);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.DocDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AdvanceReceived_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.AdvanceReceived);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Receivable_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Receivable);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.CreatedBy);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
              
@@ -1238,75 +1300,89 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "HeaderID";
                 parm.ParameterValue = Convert.ToString(DocID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Date_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails._Date);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentID_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.AssignmentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClaimID_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.ClaimID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_Previous";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Date_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails._Date);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AssignmentID_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.AssignmentID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ClaimID_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.ClaimID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Description_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.Description);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
                 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalAmount_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.TotalAmount);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "IsDeleted_New";
                 parm.ParameterValue = Convert.ToString(ClaimFormDetails.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
             }

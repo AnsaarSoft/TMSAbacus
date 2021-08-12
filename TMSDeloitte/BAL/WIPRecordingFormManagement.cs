@@ -245,6 +245,7 @@ namespace TMSDeloitte.BAL
                         parm = new B1SP_Parameter();
                         parm.ParameterName = "ID";
                         parm.ParameterValue = Convert.ToString(ID);
+                        parm.ParameterType = DBTypes.Int32.ToString();
                         parmList.Add(parm);
                         DataSet ds = HANADAL.GetDataSetByStoredProcedure("GetWIPRecordingForm", parmList, "WIPRecordingFormManagement");
                         if (ds.Tables.Count > 0)
@@ -267,6 +268,7 @@ namespace TMSDeloitte.BAL
                         parm = new B1SP_Parameter();
                         parm.ParameterName = "DocNum";
                         parm.ParameterValue = Convert.ToString(WIPRecordingForm.DocNum);
+                        parm.ParameterType = DBTypes.String.ToString();
                         parmList.Add(parm);
 
                         DataTable dt = HANADAL.GetDataTableByStoredProcedure("ValidateWIPRecordingForm", parmList, "WIPRecordingFormManagement");
@@ -614,66 +616,79 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "AsOnDate";
                 parm.ParameterValue = Convert.ToString(Convert.ToDateTime(WIPRecordingForm.AsOnDate).ToString("yyyy-MM-dd HH:MM:s")); //DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DebitAccount";
                 parm.ParameterValue = Convert.ToString(WIPRecordingForm.DebitAccount);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreditAccount";
                 parm.ParameterValue = Convert.ToString(WIPRecordingForm.CreditAccount);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ReverseDate";
-                parm.ParameterValue = Convert.ToString(Convert.ToDateTime(WIPRecordingForm.ReversalDate).ToString("yyyy-MM-dd HH:MM:s")); 
+                parm.ParameterValue = Convert.ToString(Convert.ToDateTime(WIPRecordingForm.ReversalDate).ToString("yyyy-MM-dd HH:MM:s"));
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = Convert.ToString(DOCNUM);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "DocDate";
                 parm.ParameterValue = Convert.ToString(Convert.ToDateTime(WIPRecordingForm.DocDate).ToString("yyyy-MM-dd HH:MM:s")); //DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Year";
                 parm.ParameterValue = Convert.ToString(WIPRecordingForm.Year);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Month";
                 parm.ParameterValue = Convert.ToString(WIPRecordingForm.Month);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "BranchID";
-                parm.ParameterValue = Convert.ToString(WIPRecordingForm.BranchID); 
+                parm.ParameterValue = Convert.ToString(WIPRecordingForm.BranchID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CurrencyID";
                 parm.ParameterValue = Convert.ToString(WIPRecordingForm.CurrencyID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "TotalWIP";
                 parm.ParameterValue = Convert.ToString(WIPRecordingForm.WipTotal);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ReverseJE";
                 parm.ParameterValue = Convert.ToString(WIPRecordingForm.ReverseJE);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
@@ -681,26 +696,31 @@ namespace TMSDeloitte.BAL
                 if (WIPRecordingForm.IsDeleted == null)
                     WIPRecordingForm.IsDeleted = false;
                 parm.ParameterValue = Convert.ToString(WIPRecordingForm.IsDeleted);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
                 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedBy";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedBy";
                 parm.ParameterValue = Convert.ToString(UserID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UpdatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
             }
@@ -722,6 +742,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(Id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -741,6 +762,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "WIPFormID";
                 parm.ParameterValue = Convert.ToString(Id);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -760,11 +782,13 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "AsOnDate";
                 parm.ParameterValue = Convert.ToString(AsOnDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "BranchID";
                 parm.ParameterValue = Convert.ToString(BranchID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
             }

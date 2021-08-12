@@ -476,13 +476,14 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "APPROVALSETUP_ID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.ApprovalID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "UserID";
                 parm.ParameterValue = Convert.ToString(changeApproverChild.EmpID);
-                parm.ParameterType = DBTypes.Int32.ToString();
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 //parm = new B1SP_Parameter();

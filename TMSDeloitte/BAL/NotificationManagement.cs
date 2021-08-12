@@ -30,41 +30,49 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(0);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromEmpID";
                 parm.ParameterValue = Convert.ToString(FromEmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToEmpID";
                 parm.ParameterValue = Convert.ToString(ToEmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Detail";
                 parm.ParameterValue = Convert.ToString(Detail);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Table";
                 parm.ParameterValue = Convert.ToString(isTable);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FileName";
                 parm.ParameterValue = Convert.ToString(FileName);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "CreatedDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "Read";
                 parm.ParameterValue = Convert.ToString(false);
+                parm.ParameterType = DBTypes.Bool.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -92,6 +100,7 @@ namespace TMSDeloitte.BAL
             B1SP_Parameter parm = new B1SP_Parameter();
             parm.ParameterName = "ID";
             parm.ParameterValue = Convert.ToString(id);
+            parm.ParameterType = DBTypes.Int32.ToString();
             parmList.Add(parm);
 
             string spName = "GetNotificationByEmpID";
@@ -105,11 +114,13 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "FromDate";
                 parm.ParameterValue = Convert.ToString(fromDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToDate";
                 parm.ParameterValue = Convert.ToString(toDate);
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
             }
 
@@ -186,11 +197,13 @@ namespace TMSDeloitte.BAL
             B1SP_Parameter parm = new B1SP_Parameter();
             parm.ParameterName = "ID";
             parm.ParameterValue = Convert.ToString(id);
+            parm.ParameterType = DBTypes.Int32.ToString();
             parmList.Add(parm);
 
             parm = new B1SP_Parameter();
             parm.ParameterName = "ToEmpID";
             parm.ParameterValue = Convert.ToString(ToEmpID);
+                parm.ParameterType = DBTypes.Int32.ToString();
             parmList.Add(parm);
 
 
@@ -264,6 +277,7 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ID";
                 parm.ParameterValue = Convert.ToString(ID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
@@ -290,6 +304,7 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "ToEmpID";
                 parm.ParameterValue = Convert.ToString(empID);
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
