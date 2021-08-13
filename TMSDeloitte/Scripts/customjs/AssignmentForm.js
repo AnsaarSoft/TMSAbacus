@@ -407,8 +407,13 @@ function AddUpdateNC() {
             ID = 0;
         }
         var NonChargeable = $('#NonChargeable').is(":checked");
+        var textBoxInstance = $('#AssignmentTitle').dxTextBox({
+        }).dxTextBox('instance');
+        var assignTitle = textBoxInstance.option('value'); //Get the current value
         var Header = {
-            AssignmentTitle: $("#AssignmentTitle").val(),
+            //AssignmentTitle: $("#AssignmentTitle").val(),
+            //AssignmentTitle: $("#AssignmentTitle").dxTextBox({ value: AssignmentTitle }),
+            AssignmentTitle: assignTitle,
             Status: Status,
             flgPost:flgPost              
         }
@@ -469,10 +474,15 @@ function AddUpdateStat() {
     var isSuccess = true;
     var message = '';
     //var func = $("#Function").val();
+    var textBoxInstance = $('#AssignmentTitle').dxTextBox({
+    }).dxTextBox('instance');
+    var assignTitle = textBoxInstance.option('value'); //Get the current value
+
     if (Table.length > 0) {
         var alertSetupObj = {
             Office: $("#Office").val(),
-            AssignmentTitle: $("#AssignmentTitle").val(),
+            // AssignmentTitle: $("#AssignmentTitle").val(),
+            AssignmentTitle: assignTitle,
             Client: $("#Client").dxSelectBox("instance").option('value'),
             Function: $("#Function").dxSelectBox("instance").option('value'),
             SubFunction: $("#SubFunction").dxSelectBox("instance").option('value'),
@@ -2476,12 +2486,16 @@ function AddUpdate() {
     
     var brnch = $("#Office > .dx-dropdowneditor-input-wrapper ").find("input")[1].value;
     var clientNme = $("#Client > .dx-dropdowneditor-input-wrapper ").find("input")[1].value;
+    var textBoxInstance = $('#AssignmentTitle').dxTextBox({
+    }).dxTextBox('instance');
+    var assignTitle = textBoxInstance.option('value'); //Get the current value
     var Header = {
         BranchID: $("#Office").val(),
         BranchName: brnch,
         FunctionID: $("#Function").val(),
         SubFunctionID: $("#SubFunction").val(),
-        AssignmentTitle: $("#AssignmentTitle").val(),
+        //AssignmentTitle: $("#AssignmentTitle").val(),
+        AssignmentTitle: assignTitle,
         PartnerID: $("#Partner").val(),
         ClientID: $("#Client").val(),
         ClientName: clientNme,

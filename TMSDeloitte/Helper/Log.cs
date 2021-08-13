@@ -75,24 +75,29 @@ namespace TMSDeloitte.Helper
             {
 
                 string folderPath = "~/Logs/AllDocumentLog/"+docType;
-                if (!Directory.Exists(System.Web.HttpContext.Current.Server.MapPath(folderPath)))
-                    Directory.CreateDirectory(System.Web.HttpContext.Current.Server.MapPath(folderPath));
 
-                string path = folderPath + "/" + DateTime.Now.ToString("dd_MM_yyyy") + ".txt";
-                if (!File.Exists(System.Web.HttpContext.Current.Server.MapPath(path)))
-                    File.Create(System.Web.HttpContext.Current.Server.MapPath(path)).Close();
-
-                using (StreamWriter log = File.AppendText(System.Web.HttpContext.Current.Server.MapPath(path)))
+                if (System.Web.HttpContext.Current != null)
                 {
-                    // Write to the file:
-                    log.WriteLine("Data Time:" + DateTime.Now);
-                    log.WriteLine("Document Type: " + docType);
-                    log.WriteLine("Message: " + msg);
-                    log.WriteLine();
-                    log.WriteLine("====================================================================================");
-                    // Close the stream:
-                    log.Close();
 
+                    if (!Directory.Exists(System.Web.HttpContext.Current.Server.MapPath(folderPath)))
+                        Directory.CreateDirectory(System.Web.HttpContext.Current.Server.MapPath(folderPath));
+
+                    string path = folderPath + "/" + DateTime.Now.ToString("dd_MM_yyyy") + ".txt";
+                    if (!File.Exists(System.Web.HttpContext.Current.Server.MapPath(path)))
+                        File.Create(System.Web.HttpContext.Current.Server.MapPath(path)).Close();
+
+                    using (StreamWriter log = File.AppendText(System.Web.HttpContext.Current.Server.MapPath(path)))
+                    {
+                        // Write to the file:
+                        log.WriteLine("Data Time:" + DateTime.Now);
+                        log.WriteLine("Document Type: " + docType);
+                        log.WriteLine("Message: " + msg);
+                        log.WriteLine();
+                        log.WriteLine("====================================================================================");
+                        // Close the stream:
+                        log.Close();
+
+                    }
                 }
 
             }
