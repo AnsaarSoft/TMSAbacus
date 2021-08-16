@@ -121,8 +121,8 @@ namespace TMSDeloitte.BAL
                         {
                             Director direc = new Director();
                             direc.DirectorID = Convert.ToInt32(row["DirectorID"] == DBNull.Value ? 0 : row["DirectorID"]);
-                            direc.DirectorCode = Convert.ToString(row["DirectorCode"]);
-                            direc.DirectorName = Convert.ToString(row["DirectorName"]);
+                            direc.PmId = Convert.ToString(row["DirectorCode"]);
+                            direc.PmName = Convert.ToString(row["DirectorName"]);
                             direc.DepartmentName = Convert.ToString(row["DepartmentName"]);
                             list.Add(direc);
                         }
