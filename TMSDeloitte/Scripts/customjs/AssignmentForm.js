@@ -870,7 +870,7 @@ function GetSAPPartner() {
     var id = "#Partner";
     var DisplayExpr = "PartnerName";
     var ValueExpr = "PartnerID";
-    var Placeholder = "Select Partner...";
+    var Placeholder = "Select Practice Area Lead...";
 
     $.ajax({
         url: url,
@@ -904,8 +904,8 @@ function GenerateHCMDirectorDropDown(jsonData) {
     $("#Director").dxDropDownBox({
         //value: [3],
         valueExpr: "DirectorID",
-        placeholder: "Select Director...",
-        displayExpr: "DirectorName",
+        placeholder: "Select Project Manager...",
+        displayExpr: "PmName",
         showClearButton: true,
         dataSource: jsonData,
         contentTemplate: function (e) {
@@ -920,7 +920,7 @@ function GenerateHCMDirectorDropDown(jsonData) {
 		                visible: false
 		            },
  
-                    "DirectorCode", "DirectorName", "DepartmentName"],
+                    "PmId", "PmName", "DepartmentName"],
                     hoverStateEnabled: true,
                     paging: { enabled: true, pageSize: 10 },
                     filterRow: { visible: true },
@@ -937,7 +937,7 @@ function GenerateHCMDirectorDropDown(jsonData) {
                                     e.component.option("value", keys[0].DirectorID);
 
                                     DirectorID = keys[0].DirectorID;
-                                    DirectorName = keys[0].DirectorName;
+                                    PmName = keys[0].DirectorName;
                                     $("#Director").val(DirectorID);
                                     //GetUserInfoByEmpCode(EmpCode);
 
@@ -2714,7 +2714,7 @@ function GeneratePopupFindGrid() {
                     lookup: {
                         dataSource: hcmDirector,
                         valueExpr: "DirectorID",
-                        displayExpr: "DirectorName",
+                        displayExpr: "PmName",
                     }
                 }
             ]

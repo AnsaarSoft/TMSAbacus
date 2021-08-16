@@ -61,7 +61,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "DocNum";
                 parm.ParameterValue = docNo;
-                parm.ParameterType = DBTypes.Int32.ToString();
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 HANA_DAL_ODBC HANADAL = new HANA_DAL_ODBC();
