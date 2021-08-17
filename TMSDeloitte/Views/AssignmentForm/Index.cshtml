@@ -1,4 +1,5 @@
 ﻿@model TMSDeloitte.Models.AssignmentForm
+    @using System.Configuration;
 @{
     ViewBag.Title = "Assignment Form";
 }
@@ -134,7 +135,18 @@
 
             <div class="col-lg-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"> Practice Area Lead </label>
+
+                    @if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+                    {
+                        <label for="exampleFormControlSelect1"> Practice Area Lead </label>
+
+                    }
+                    else
+                    {
+                        <label for="exampleFormControlSelect1"> Partner </label>
+                    }
+
+                    
                     <div id="Partner" class="form-control frm-cstm"></div>
                 </div>
             </div>
@@ -152,7 +164,19 @@
 
             <div class="col-lg-4">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"> Project Manager </label>
+
+
+                    @if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+                    {
+                        <label for="exampleFormControlSelect1"> Project Manager </label>
+
+                    }
+                    else
+                    {
+                        <label for="exampleFormControlSelect1"> Director </label>
+                    }
+
+                    
                     <div id="Director" class="form-control frm-cstm"></div>
                 </div>
             </div>
@@ -446,5 +470,13 @@
     </div>
 </div>
 
+@if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+{
+    <script id="owner" data-name="true" src="~/Scripts/customjs/AssignmentForm.js"></script>    
+}
+else
+{
+<script id="owner" data-name="false" src="~/Scripts/customjs/AssignmentForm.js"></script>
+}
+
 <script src="~/Scripts/customjs/base.js"></script>
-<script src="~/Scripts/customjs/AssignmentForm.js"></script>

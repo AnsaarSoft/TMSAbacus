@@ -1,4 +1,5 @@
 ﻿@model TMSDeloitte.Models.Login
+    @using System.Configuration;
 @{
     Layout = null;
     ViewBag.Title = "Login";
@@ -8,7 +9,14 @@
 <html>
 <head>
 
-    <title>  Welcome to Login Page of Deloitte - Time Management System </title>
+    @if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+    {
+        <title>  Welcome to Login Page of Abacus - Time Management System </title>
+    }
+    else
+    {
+        <title>  Welcome to Login Page of Deloitte - Time Management System </title>
+    }
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -39,7 +47,16 @@
             <div class="row align-items-center text-center">
                 <div class="col-lg-6 col-sm-12 pl-0 pr-0">
                     <div class="company-logo">
+
+                        @if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+                        {
+                        <img src="/assets/images/LogoAbacus/loginLogo.png" alt="Deloitte Logo" style="width:600px;" />
+                        }
+                        else
+                        {
                         <img src="/assets/images/Logo/loginLogo.png" alt="Deloitte Logo" />
+                        }
+
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 pl-0 pr-0">
