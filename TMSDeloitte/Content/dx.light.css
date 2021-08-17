@@ -2404,8 +2404,12 @@
   right: 15%;
   left: 0;
 }
-.dx-overlay-shader {
+/*.dx-overlay-shader {
   background-color: rgba(255, 255, 255, 0.8);
+}*/
+
+.dx-overlay-shader {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 .dx-overlay-wrapper {
   color: #333;
