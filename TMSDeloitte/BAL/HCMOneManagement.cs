@@ -121,8 +121,17 @@ namespace TMSDeloitte.BAL
                         {
                             Director direc = new Director();
                             direc.DirectorID = Convert.ToInt32(row["DirectorID"] == DBNull.Value ? 0 : row["DirectorID"]);
-                            direc.PmId = Convert.ToString(row["DirectorCode"]);
-                            direc.PmName = Convert.ToString(row["DirectorName"]);
+
+                            if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+                            {
+                                direc.PmId = Convert.ToString(row["DirectorCode"]);
+                                direc.PmName = Convert.ToString(row["DirectorName"]);
+                            }
+                            else
+                            {
+                                direc.DirectorCode = Convert.ToString(row["DirectorCode"]);
+                                direc.DirectorName = Convert.ToString(row["DirectorName"]);
+                            }
                             direc.DepartmentName = Convert.ToString(row["DepartmentName"]);
                             list.Add(direc);
                         }

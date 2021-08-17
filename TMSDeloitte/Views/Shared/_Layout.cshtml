@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Configuration;
+
+<!DOCTYPE html>
 <html>
 <head>
     @*<title>  Welcome to Login Page of Deloitte - Time Management System </title>*@
@@ -48,7 +50,16 @@
     <!-- [ Mobile header ] start -->
     <div class="pc-mob-header pc-header">
         <div class="pcm-logo">
-            <img src="~/assets/images/Logo/innerLogo.png" alt="" class="logo logo-lg">
+
+            @if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+            {
+                <img src="~/assets/images/LogoAbacus/innerLogo.png" alt="" class="logo logo-lg">
+            }
+            else
+            {
+                <img src="~/assets/images/Logo/innerLogo.png" alt="" class="logo logo-lg">
+            }
+
         </div>
         <div class="pcm-toolbar">
             <a href="#!" class="pc-head-link" id="mobile-collapse">
@@ -64,7 +75,7 @@
             <a href="#!" class="pc-head-link" id="header-collapse">
                 <i data-feather="more-vertical"></i>
             </a>
-            
+
         </div>
     </div>
     <!-- [ Mobile header ] End -->
@@ -77,7 +88,7 @@
                         <a href="/Dashboard/Index" class="pc-link "><span class="pc-micon"><i class="fas fa-tachometer-alt"></i></span><span class="pc-mtext">Dashboard</span></a>
                     </li>
 
-                    @{ 
+                    @{
 
                         Dictionary<int, string> dictLinkClass = new Dictionary<int, string>();
                         dictLinkClass.Add(1, "fas fa-user-shield");
@@ -91,47 +102,47 @@
                         {
                             sess = (TMSDeloitte.Models.UserSession)HttpContext.Current.Session["TMSUserSession"];
 
-                            foreach (var parentMenu in sess.pagelist.Where(x=>x.ID==1 || x.ID==2 || x.ID==3 || x.ID==4).ToList())
+                            foreach (var parentMenu in sess.pagelist.Where(x => x.ID == 1 || x.ID == 2 || x.ID == 3 || x.ID == 4).ToList())
                             {
                                 string className = dictLinkClass[parentMenu.ID];
-                                  <li class="pc-item pc-hasmenu">
-                                      <a href="#!" class="pc-link"><span class="pc-micon"><i class="@className"></i></span><span class="pc-mtext"> @parentMenu.PageName </span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-                                      <ul class="pc-submenu">
-                                          @{
+                                <li class="pc-item pc-hasmenu">
+                                    <a href="#!" class="pc-link"><span class="pc-micon"><i class="@className"></i></span><span class="pc-mtext"> @parentMenu.PageName </span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                                    <ul class="pc-submenu">
+                                        @{
 
-                                              foreach (var childMenu in sess.pagelist.Where(x => x.HeadID == parentMenu.ID).ToList())
-                                              {
-                                                  var subChildMenuList = sess.pagelist.Where(x => x.HeadID == childMenu.ID).ToList();
-                                                  if (subChildMenuList.Count==0)
-                                                  {
+                                            foreach (var childMenu in sess.pagelist.Where(x => x.HeadID == parentMenu.ID).ToList())
+                                            {
+                                                var subChildMenuList = sess.pagelist.Where(x => x.HeadID == childMenu.ID).ToList();
+                                                if (subChildMenuList.Count == 0)
+                                                {
                                                     <li class="pc-item"><a class="pc-link" href="@childMenu.PageURL">@childMenu.PageName </a></li>
-                                                  }
-                                                  else
-                                                  {
-                                                   <li class="pc-item pc-hasmenu">
-                                                       <a href="#" class="pc-link">@childMenu.PageName <span class="pc-arrow"><i data-feather="chevron-right"></i></span> </a>
-                                                    <ul class="pc-submenu">
-                                                        @{
-                                                            foreach (var subChild in subChildMenuList)
-                                                            {
-                                                                <li class="pc-item"><a class="pc-link" href="@subChild.PageURL">@subChild.PageName </a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="pc-item pc-hasmenu">
+                                                        <a href="#" class="pc-link">@childMenu.PageName <span class="pc-arrow"><i data-feather="chevron-right"></i></span> </a>
+                                                        <ul class="pc-submenu">
+                                                            @{
+                                                                foreach (var subChild in subChildMenuList)
+                                                                {
+                                                                    <li class="pc-item"><a class="pc-link" href="@subChild.PageURL">@subChild.PageName </a></li>
+                                                                }
                                                             }
-                                                        }
-                                                    </ul>
+                                                        </ul>
                                                     </li>
-                                                  }
+                                                }
 
-                                              }
+                                            }
 
                                         }
-                                      </ul>
-                                   </li>
+                                    </ul>
+                                </li>
                             }
                         }
                     }
 
 
-                  
+
 
 
                 </ul>
@@ -144,18 +155,27 @@
 
     <header class="pc-header bg-white">
         <div class="header-wrapper">
-            
+
             <div id="menu-collapse" class="menu-btn">
                 <a href="#"> <i class="fas fa-bars"></i> </a>
             </div>
-            
+
             <div class="m-header d-flex align-items-center">
                 <a href="/Dashboard/Index" class="b-brand">
                     <!-- ========   change your logo hear   ============ -->
+
+                    @if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+                    {
+                    <img src="~/assets/images/LogoAbacus/innerLogo.png" alt="" class="logo logo-lg" style="width:100px;">
+                    }
+                    else
+                    {
                     <img src="~/assets/images/Logo/innerLogo.png" alt="" class="logo logo-lg">
+                    }
+
                 </a>
 
-                <span class="small" style="color:rebeccapurple"> V 1.1.0</span>
+                <span class="small" style="color:rebeccapurple"> V 1.1.1</span>
             </div>
 
             <div class="ml-auto">
@@ -163,10 +183,10 @@
                     <li class="dropdown pc-h-item pc-cart-menu">
                         <a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <i data-feather="bell"></i>
-                            <span class="badge badge-danger pc-h-badge dots" id="bell" ><span class="sr-only"></span></span>
+                            <span class="badge badge-danger pc-h-badge dots" id="bell"><span class="sr-only"></span></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right pc-h-dropdown drp-cart" id="NotifiCationItems">
-                            
+
                         </div>
                     </li>
 
@@ -177,17 +197,17 @@
                                 @{
                                     if (sess != null)
                                     {
-                                        <input type="hidden" id="userID"  value="@sess.SessionUser.ID">
+                                        <input type="hidden" id="userID" value="@sess.SessionUser.ID">
 
                                         <span class="user-name"> @sess.SessionUser.FULLNAME </span>
                                         <span class="user-desc"> @sess.SessionUser.DESIGNATIONNAME </span>
                                     }
                                     else
                                     {
-                                        <input type="hidden" id="userID"  value="0">
+                                        <input type="hidden" id="userID" value="0">
                                     }
                                 }
-                               
+
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right pc-h-dropdown">
@@ -204,7 +224,7 @@
                                 }
 
                             }
-                           
+
                             <a href="/Home/UpdatePassword" class="dropdown-item">
                                 <i data-feather="lock"></i>
                                 <span> Change Password </span>
@@ -218,7 +238,7 @@
                                     </a>
                                 }
                             }
-                         
+
                             <a href="/Home/Logout" class="dropdown-item">
                                 <i data-feather="power"></i>
                                 <span>Logout</span>
@@ -457,25 +477,24 @@
             //console.log('GetNotifications');
             GetNotifications();
         }, 1000 * 300);  //1000 -> 10 Sec
-       
+
 
         $(".pc-sidebar .pc-navbar a").each(function () {
             var e = window.location.href.split(/[?#]/)[0];
             this.href == e &&
                 "" != $(this).attr("href") &&
                 ($(this).addClass("active-page-link"),
-                $(this).parent("li").addClass("active"),
-                $(this).parent("li").parent().parent(".pc-hasmenu").addClass("active").addClass("pc-trigger"),
-                $(this).parent("li").parent().parent(".sidelink").addClass("active"),
-                $(this).parent("li").parent().parent(".pc-hasmenu").parent().parent(".pc-hasmenu").addClass("active").addClass("pc-trigger"),
-                $(this).parents(".pc-tabcontent").addClass("active"));
+                    $(this).parent("li").addClass("active"),
+                    $(this).parent("li").parent().parent(".pc-hasmenu").addClass("active").addClass("pc-trigger"),
+                    $(this).parent("li").parent().parent(".sidelink").addClass("active"),
+                    $(this).parent("li").parent().parent(".pc-hasmenu").parent().parent(".pc-hasmenu").addClass("active").addClass("pc-trigger"),
+                    $(this).parents(".pc-tabcontent").addClass("active"));
         });
 
 
     });
-   
-    function GetNotifications()
-    {
+
+    function GetNotifications() {
         $("#NotifiCationItems").html('');
 
         if ($("#userID").val() == 0)
@@ -486,66 +505,63 @@
             url: url,
             method: "GET",
             data: {},
-            async:false
+            async: false
         }).done(function (data) {
-           
+
 
             $.each(data.NotificationList, function (index, val) {
                 var detail = "Click to view details";
-                if (val.Table == false)
-                {
+                if (val.Table == false) {
                     detail = val.Detail
                 }
                 var html = '<div class="cart-item">' +
-                               ' <div class="cart-desc">' +
-                               '   <a href="/Notification/Detail?NotificationID=' + val.ID + '" class="text-body">' +
-                               '     <h6 class="d-inline-block mb-0">' + val.FromEmp + '</h6>' +
-                               '   </a>' +
-                               '   <p class="mb-0">' + detail + '</p>' +
-                               '   <p class="mb-0">' + val.Date  + '</p>' +
-                               '  </div>' +
-                               ' </div>';
+                    ' <div class="cart-desc">' +
+                    '   <a href="/Notification/Detail?NotificationID=' + val.ID + '" class="text-body">' +
+                    '     <h6 class="d-inline-block mb-0">' + val.FromEmp + '</h6>' +
+                    '   </a>' +
+                    '   <p class="mb-0">' + detail + '</p>' +
+                    '   <p class="mb-0">' + val.Date + '</p>' +
+                    '  </div>' +
+                    ' </div>';
                 $("#NotifiCationItems").append(html);
             });
 
-            if (data.NotificationList.length > 0)
-            {
+            if (data.NotificationList.length > 0) {
                 $("#bell").show();
             }
-               
-            else
-            {
+
+            else {
                 $("#bell").hide();
 
                 var html = '<div class="cart-item">' +
-                             ' <div class="cart-desc">' +
-                             '   <a href="#" class="text-body">' +
-                             '     <h6 class="d-inline-block mb-0">There is no any unread notification</h6>' +
-                             '   </a>' +
-                             '   <p class="mb-0"></p>' +
-                             '   <p class="mb-0"></p>' +
-                             '  </div>' +
-                             ' </div>';
+                    ' <div class="cart-desc">' +
+                    '   <a href="#" class="text-body">' +
+                    '     <h6 class="d-inline-block mb-0">There is no any unread notification</h6>' +
+                    '   </a>' +
+                    '   <p class="mb-0"></p>' +
+                    '   <p class="mb-0"></p>' +
+                    '  </div>' +
+                    ' </div>';
                 $("#NotifiCationItems").append(html);
             }
-               
+
             var html = '<div class="cart-item" style="background: #179bd2;">' +
-                          ' <div class="cart-desc">' +
-                          '   <a href="/Notification/Index" class="text-body">' +
-                          '     <h6 class="d-inline-block mb-0">Click To View All Notifications</h6>' +
-                          '   </a>' +
-                          '   <p class="mb-0"></p>' +
-                          '   <p class="mb-0"></p>' +
-                          '  </div>' +
-                          ' </div>';
+                ' <div class="cart-desc">' +
+                '   <a href="/Notification/Index" class="text-body">' +
+                '     <h6 class="d-inline-block mb-0">Click To View All Notifications</h6>' +
+                '   </a>' +
+                '   <p class="mb-0"></p>' +
+                '   <p class="mb-0"></p>' +
+                '  </div>' +
+                ' </div>';
             $("#NotifiCationItems").append(html);
 
         }).fail(function (data) {
             console.log("Exception at GetNotifications method is :" + data);
         });
-}
+    }
 
-    
+
     function loadData(url) {
         $.ajax({
             url: url,
@@ -574,5 +590,5 @@
 
     }
 
-    
+
 </script>

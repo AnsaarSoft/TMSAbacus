@@ -6,6 +6,19 @@
     
 }
 
+var PM_Dir_Id;
+var PM_Dir_Name;
+var IsAbacus = document.getElementById("owner").getAttribute("data-name");
+
+if (IsAbacus == "true") {
+    PM_Dir_Id = "PmId";
+    PM_Dir_Name = "PmName";
+}
+else {
+    PM_Dir_Id = "DirectorCode";
+    PM_Dir_Name = "DirectorName";
+}
+
 var KEYMain;
 var Table = [];
 var Table2 = [];
@@ -870,7 +883,8 @@ function GetSAPPartner() {
     var id = "#Partner";
     var DisplayExpr = "PartnerName";
     var ValueExpr = "PartnerID";
-    var Placeholder = "Select Practice Area Lead...";
+    //var Placeholder = "Select Practice Area Lead...";
+    var Placeholder = "Select...";
 
     $.ajax({
         url: url,
@@ -904,8 +918,9 @@ function GenerateHCMDirectorDropDown(jsonData) {
     $("#Director").dxDropDownBox({
         //value: [3],
         valueExpr: "DirectorID",
-        placeholder: "Select Project Manager...",
-        displayExpr: "PmName",
+        //placeholder: "Select Project Manager...",
+        placeholder: "Select...",
+        displayExpr: PM_Dir_Name,
         showClearButton: true,
         dataSource: jsonData,
         contentTemplate: function (e) {
@@ -919,8 +934,8 @@ function GenerateHCMDirectorDropDown(jsonData) {
 		                allowEditing: false,
 		                visible: false
 		            },
- 
-                    "PmId", "PmName", "DepartmentName"],
+
+                        PM_Dir_Id, PM_Dir_Name, "DepartmentName"],
                     hoverStateEnabled: true,
                     paging: { enabled: true, pageSize: 10 },
                     filterRow: { visible: true },
@@ -937,7 +952,7 @@ function GenerateHCMDirectorDropDown(jsonData) {
                                     e.component.option("value", keys[0].DirectorID);
 
                                     DirectorID = keys[0].DirectorID;
-                                    PmName = keys[0].DirectorName;
+                                    PM_Dir_Name = keys[0].DirectorName;
                                     $("#Director").val(DirectorID);
                                     //GetUserInfoByEmpCode(EmpCode);
 
@@ -2714,7 +2729,7 @@ function GeneratePopupFindGrid() {
                     lookup: {
                         dataSource: hcmDirector,
                         valueExpr: "DirectorID",
-                        displayExpr: "PmName",
+                        displayExpr: PM_Dir_Name,
                     }
                 }
             ]
