@@ -405,7 +405,8 @@
             viewDataGridInstance.selectRows([day], true);
         }
 
-            function GetDocList(empid) {
+    function GetDocList(empid) {
+        debugger;
                 var url = "/TimeSheetForm/GetDocList?empid=" + empid;
                 $.ajax({
                     url: url,
@@ -1267,6 +1268,7 @@
            
             function GetTimeSheetByEmpIDandYear() {
 
+                debugger;
                 var empid = $("#EmpID").val(); //$("#empGridBox").dxDropDownBox("instance").option('value');
                 var year = $("#yearDropDown").dxSelectBox("instance").option('value');
                 var View = $("#isView").val();
@@ -2125,7 +2127,9 @@
         debugger;
                 $('#EmpLeaveStatus').hide();
 
-                GenerateUserTimeView(viewData);
+        GenerateUserTimeView(viewData);
+
+        var CheckValue = $("#EmployeeID").val();
 
                 GetDocList($("#EmployeeID").val());
            

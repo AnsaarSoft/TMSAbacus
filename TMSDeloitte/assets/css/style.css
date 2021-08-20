@@ -517,10 +517,10 @@ pre code {
     margin-left: auto;
 }
 
-.dx-toolbar-center, .dx-toolbar-before, .dx-toolbar-after {
+/*.dx-toolbar-center, .dx-toolbar-before, .dx-toolbar-after {
     left: 0px;
     padding-left: 0px !important;
-}
+}*/
 
 div#gridContainerTimeSheet {
     height: 400px;
@@ -21902,4 +21902,24 @@ div#CRV {
 .nav-tabs .nav-link {
     background: #ededed;
     color: #1c232f;
+}
+
+.dx-popup-done > .dx-button-content {
+    background-color: #007bff;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+.dx-popup-cancel > .dx-button-content {
+    background-color: #dc3545;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+.dx-popup-done > .dx-button-content:hover {
+    background-color: #0069d9;
+}
+
+.dx-popup-cancel > .dx-button-content:hover {
+    background-color: #ff0000;
 }
