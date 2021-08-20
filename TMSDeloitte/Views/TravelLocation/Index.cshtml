@@ -471,7 +471,9 @@
             }
         }
     }
+
     $('document').ready(function () {
+        GetDocNumTravelLocation();
         GetsapBranch();
         GetTravel_Location();
         
@@ -772,6 +774,23 @@
         $('.modal-backdrop').remove();
 
     });
+
+    function GetDocNumTravelLocation() {
+        var url = "/TravelLocation/GetTravelSetupInit";
+        $.ajax({
+            url: url,
+            //type:'json'
+            method: "GET",
+            data: {},
+            //async: false,
+        }).done(function (data) {
+            //debugger;
+            Doc = data.Doc;
+            $("#docNumber").val(Doc);
+        }).fail(function (data) {
+            console.log(Doc);
+        });
+    }
 
 
 </script>

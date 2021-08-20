@@ -165,6 +165,7 @@
     var EmpCode = "0";
     var HcmOneID = 0;
     var isValidateUserName = false;
+    var EMPLOYEENAME;
 
     function applyValidation() {
         passwordInstance = $("#password-validation").dxTextBox({
@@ -396,6 +397,7 @@
             $("#ISACTIVE").prop("checked", false);
             $("#ISSUPER").prop("checked", false);
             $("#ISDELETED").prop("checked", true);
+            
 
             if (response.Success) {
                 isValidateUserName = false;
@@ -416,6 +418,7 @@
                 $("#ISSUPER").prop("checked", response.UserInfo.ISSUPER);
                 $("#ISACTIVE").prop("checked", response.UserInfo.ISACTIVE);
                 $("#ISDELETED").val(response.UserInfo.ISDELETED);
+                EMPLOYEENAME = response.UserInfo.FULLNAME;
             }
             if ($("#ID").val() == "0")
                 $("#add_update").dxButton({ text: "Add" });
@@ -522,6 +525,11 @@
                 data.ISSUPER = $('#ISSUPER').is(":checked");
                 data.ISACTIVE = $('#ISACTIVE').is(":checked");
                 data.ISDELETED = $("#ISDELETED").val();
+                data.DEPARTMENTNAME = $("#DEPARTMENTNAME").val();
+                data.DESIGNATIONNAME = $("#DESIGNATIONNAME").val();
+                data.FULLNAME = EMPLOYEENAME;
+                
+                
                 var url = "/User/AddUpdateUser";
                 if (data.PASSWORD == "" || data.PASSWORD == null) {
                     loadPanel.hide();

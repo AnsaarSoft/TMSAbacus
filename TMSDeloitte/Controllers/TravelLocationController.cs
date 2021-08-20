@@ -59,8 +59,18 @@ namespace TMSDeloitte.Controllers
                 }
                 else
                 {
-                    suc = TravelLocationManagement.AddUpdateTravelLocation(TravelLocationList,out msg);
-                   
+                    foreach (var item in TravelLocationList)
+                    {
+                        if (item.DOCNUM == "" || item.DOCNUM == null)
+                        {
+                            item.DOCNUM= TravelLocationManagement.getDocNum();
+                            suc = TravelLocationManagement.AddUpdateTravelLocation(TravelLocationList, out msg);
+                        }
+                        else
+                        {
+                            suc = TravelLocationManagement.AddUpdateTravelLocation(TravelLocationList, out msg);
+                        }
+                    }
                 }
                 return Json(new
                 {
@@ -74,11 +84,11 @@ namespace TMSDeloitte.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new { Success = false, Message = "Exception Occured When Add/Update Travel Rates" }, JsonRequestBehavior.AllowGet);
                 Log log = new Log();
                 log.LogFile(ex.Message);
                 log.InputOutputDocLog("Travel Rates", "Exception occured on AddUpdateGetTravelLocation Controller, " + ex.Message);
 
+                return Json(new { Success = false, Message = "Exception Occured When Add/Update Travel Rates" }, JsonRequestBehavior.AllowGet);
             }
 
         }
@@ -203,6 +213,27 @@ namespace TMSDeloitte.Controllers
                 return Json(new { response = table }, JsonRequestBehavior.AllowGet);
             }
 
+        }
+
+        public JsonResult GetTravelSetupInit(int ID = 0)
+        {
+            BAL.TravelLocationManagement travelLocation = new BAL.TravelLocationManagement();
+            List<UserProfile> HCMOneUsers = new List<UserProfile>();
+            try
+            {
+                
+                return Json(new { Doc = travelLocation.getDocNum() }, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                Log log = new Log();
+                log.LogFile(ex.Message);
+                log.InputOutputDocLog("TravelLocation", "Exception occured on GetAssignmentForm Controller, " + ex.Message);
+
+                return Json(new { Doc = travelLocation.getDocNum() }, JsonRequestBehavior.AllowGet);
+
+            }
         }
     }
 }
