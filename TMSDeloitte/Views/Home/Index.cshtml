@@ -47,16 +47,14 @@
             <div class="row align-items-center text-center">
                 <div class="col-lg-6 col-sm-12 pl-0 pr-0">
                     <div class="company-logo">
-
                         @if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
                         {
-                        <img src="/assets/images/LogoAbacus/loginLogo.png" alt="Deloitte Logo" style="width:600px;" />
+                            <img src="/assets/images/LogoAbacus/loginLogo.png" alt="Deloitte Logo" class="login-logo" style="display: none;" />
                         }
                         else
                         {
-                        <img src="/assets/images/Logo/loginLogo.png" alt="Deloitte Logo" />
+                            <img src="/assets/images/Logo/loginLogo.png" alt="Deloitte Logo" class="login-logo" />
                         }
-
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 pl-0 pr-0">
@@ -67,8 +65,8 @@
                             <div class="login-box">
                                 @Html.ValidationSummary(true)
                                 <!-- <img src="assets/images/logo-dark.svg" alt="" class="img-fluid mb-4"> -->
-                                <h1 class="mb-3 f-w-600"> Welcome to <br /> TMS</h1>
-                                <h1 class="mb-3 f-w-600"> User Login </h1>
+                                <h1 class="mb-3 f-w-600"> Welcome to TMS </h1>
+                                <h2 class="mb-3 f-w-300"> Employee Login </h2>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         @{
@@ -132,6 +130,12 @@
         </div>
 
     </div>
+
+    <!-- Required Js -->
+    <script src="~/assets/js/vendor-all.min.js"></script>
+    <script src="~/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="~/assets/js/plugins/feather.min.js"></script>
+    <script src="~/assets/js/pcoded.min.js"></script>
 
 </body>
 
