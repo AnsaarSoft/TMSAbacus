@@ -1082,10 +1082,7 @@
     <Content Include="assets\images\avatar-2.jpg" />
     <Content Include="assets\images\eye.png" />
     <Content Include="assets\images\innerLogo.png" />
-    <Content Include="assets\images\LogoAbacus\innerLogo1.png" />
     <Content Include="assets\images\loginBg.jpg" />
-    <Content Include="assets\images\loginBG.png" />
-    <Content Include="assets\images\loginBG1.png" />
     <Content Include="assets\images\loginLogo.png" />
     <Content Include="assets\images\LogoAbacus\innerLogo.png" />
     <Content Include="assets\images\LogoAbacus\loginLogo.png" />
@@ -1670,7 +1667,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52822</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52841/</IISUrl>
+          <IISUrl>http://localhost:52838/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

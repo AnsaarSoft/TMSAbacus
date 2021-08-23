@@ -905,7 +905,7 @@ namespace TMSDeloitte.BAL
                 B1SP_Parameter parm = new B1SP_Parameter();
                 parm.ParameterName = "EmpCode";
                 parm.ParameterValue = Convert.ToString(empCode);
-                parm.ParameterType = DBTypes.Int32.ToString();
+                parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
 
                 Common cmn = new Common();
@@ -1463,6 +1463,26 @@ namespace TMSDeloitte.BAL
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
                 parm.ParameterType = DBTypes.String.ToString();
                 parmList.Add(parm);
+
+
+                parm = new B1SP_Parameter();
+                parm.ParameterName = "EMPLOYEENAME";
+                parm.ParameterValue = Convert.ToString(user.FULLNAME);
+                parm.ParameterType = DBTypes.String.ToString();
+                parmList.Add(parm);
+
+                parm = new B1SP_Parameter();
+                parm.ParameterName = "DEPARTMENT";
+                parm.ParameterValue = Convert.ToString(user.DEPARTMENTNAME);
+                parm.ParameterType = DBTypes.String.ToString();
+                parmList.Add(parm);
+
+                parm = new B1SP_Parameter();
+                parm.ParameterName = "DESIGNATION";
+                parm.ParameterValue = Convert.ToString(user.DESIGNATIONNAME);
+                parm.ParameterType = DBTypes.String.ToString();
+                parmList.Add(parm);
+
             }
             catch (Exception ex)
             {

@@ -110,8 +110,9 @@ function createNew() {
     $("#Updateable").hide();
 
     
-
-    GetTripRatePolicy('', 0);
+    var ClientID = $("#Client").val();
+    var BranchID = $("#Office").val();
+    GetTripRatePolicy(ClientID, BranchID);
     //Resource Tab
     GenerateGrid(abc);
     //Cost Tab
@@ -224,7 +225,9 @@ function GetFormData()
     GenerateDateBox();
 
     // GetDocFunction();
-    GetTripRatePolicy('', 0);
+    var ClientID = $("#Client").val();
+    var BranchID = $("#Office").val();
+    GetTripRatePolicy(ClientID, BranchID);
     GenerateGrid([]);
     GenerateGridCost([]);
     GenerateGridSummary([]);
@@ -253,7 +256,10 @@ function GetFormDataOnLoad(DocId) {
     GenerateDateBox();
 
     // GetDocFunction();
-    GetTripRatePolicy('', 0);
+    //GetTripRatePolicy('', 0);
+    var ClientID = $("#Client").val();
+    var BranchID = $("#Office").val();
+    GetTripRatePolicy(ClientID, BranchID);
     GenerateGrid([]);
     GenerateGridCost([]);
     GenerateGridSummary([]);
@@ -1981,7 +1987,7 @@ function GenerateGridSummary(JSON_Response) {
                             currentRowData.RevenueDistribution = value;
                             var AssignmentValue = $("#AssignmentValue").val();
                             var RevenueDistribution = currentRowData.RevenueDistribution;
-                            var total = RevenueDistribution * AssignmentValue;
+                            var total = RevenueDistribution * AssignmentValue/100;
                             currentRowData.EstimatedRevenue = total;
                             rowData.EstimatedRevenue = total;
                         }
@@ -3219,6 +3225,11 @@ function loadAuthLogData(url) {
 }
 
 $('#btnOkUser').click(function () {
+
+    var ClientID = $("#Client").val();
+    var BranchID = $("#Office").val();
+    GetTripRatePolicy(ClientID, BranchID);
+
     //Table = [];
     var popupUsers = popupUserInstance.getSelectedRowsData();
     var sno = Table.length;

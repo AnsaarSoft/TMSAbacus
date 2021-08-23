@@ -115,6 +115,7 @@ namespace TMSDeloitte.BAL
             }
             return docNum;
         }
+
         public bool AddUpdateTravelLocation(List<TravelLocationInfo> TravelLocation,out string msg)
         {
             bool isSuccess = false;

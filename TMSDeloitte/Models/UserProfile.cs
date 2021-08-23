@@ -17,7 +17,7 @@ namespace TMSDeloitte.Models
         public int HCMOneID { get; set; }
 
         [IgnorePropertyCompare]
-        public string FULLNAME { get; set; } = "N/A";
+        public string FULLNAME { get; set; }
 
         [IgnorePropertyCompare]
         public string DETAILNAME { get; set; }
@@ -33,13 +33,13 @@ namespace TMSDeloitte.Models
         public int? DESIGNATIONID { get; set; } = 0;
 
         [IgnorePropertyCompare]
-        public string DESIGNATIONNAME { get; set; } = "N/A";        
+        public string DESIGNATIONNAME { get; set; }
 
         [IgnorePropertyCompare]
         public int? DEPARTMENTID { get; set; } = 0;
 
         [IgnorePropertyCompare]
-        public string DEPARTMENTNAME { get; set; } = "N/A";
+        public string DEPARTMENTNAME { get; set; }
 
         [IgnorePropertyCompare]
         public int OBAPPROVEDHOURS { get; set; }
@@ -80,7 +80,7 @@ namespace TMSDeloitte.Models
         public int? UPDATEDEDBY { get; set; }
 
         [IgnorePropertyCompare]
-        public DateTime UPDATEDDATE { get; set; }
+        public DateTime UPDATEDDATE { get; set; }        
 
         [IgnorePropertyCompare]
         public string HCMONELINK { get; set; }
