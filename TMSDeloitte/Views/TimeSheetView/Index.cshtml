@@ -27,6 +27,17 @@
     }
 
 }
+
+
+<style type="text/css">
+    div#empGridBoxDropdown {
+        overflow: auto;
+    }
+    div#empGridBoxDropdown > div {
+        width: 750px;
+    }
+</style>
+
 <div class="pcoded-content">
     <div class="card p-20" style="min-height: 495px;">
         <!-- [ breadcrumb ] start -->
@@ -246,7 +257,7 @@
                 dataSource: jsonData,
                 contentTemplate: function (e) {
                     var value = e.component.option("value"),
-                        $dataGrid = $("<div>").dxDataGrid({
+                        $dataGrid = $("<div id='empGridBoxDropdown'>").dxDataGrid({
                             dataSource: e.component.getDataSource(),
                             columns: ["EMPLOYEECODE", "FULLNAME", "DESIGNATIONNAME", "DEPARTMENTNAME", { dataField: "BRANCHID", visible: false }],
                             hoverStateEnabled: true,

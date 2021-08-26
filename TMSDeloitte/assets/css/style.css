@@ -526,6 +526,7 @@ pre code {
 div#gridContainerTimeSheet {
     height: 400px;
     overflow: auto;
+    width: 1750px;
 }
 
 div#gridResourceContainer {
@@ -16898,7 +16899,7 @@ select.form-control {
     background-image: url(../../assets/images/loginBG.png);
     background-repeat: no-repeat;
     background-size: 86%;
-    box-shadow: 0px 0px 8px 6px #999999;
+    
 }
 
 @media (min-width: 1200px) {
@@ -22082,3 +22083,4 @@ div.tab-pane > div.card-body {
     left: 0 !important;
     padding-left: 0px !important;
 }
+

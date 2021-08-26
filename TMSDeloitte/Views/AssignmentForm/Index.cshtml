@@ -6,6 +6,46 @@
 @Html.Hidden("viewDocNum", (object)ViewBag.DocNum)
 @Html.Hidden("viewEmpID", (object)ViewBag.EmpID)
 @Html.Hidden("isView", (object)ViewBag.isView)
+
+<style type="text/css">
+    div#gridSummaryContainer {
+        height: 450px;
+        width: 1500px;
+    }
+
+    #gridResourceContainer {
+        width: 3000px !important;
+    }
+
+    div#gridResourceContainer .dx-datagrid-content > table tbody tr td:nth-child(9) {
+        width: 10%;
+    }
+
+    div#gridResourceContainer .dx-datagrid-content > table tbody tr td:nth-child(2) {
+        width: 10%;
+    }
+
+    div#gridSummaryContainer .dx-datagrid-content > table tbody tr td:nth-child(2) {
+        width: 20% !important;
+    }
+
+    div#gridSummaryContainer .dx-datagrid-content > table tbody tr td:nth-child(3) {
+        width: 20% !important;
+    }
+
+    div#gridSummaryContainer .dx-datagrid-content > table tbody tr td:nth-child(5) {
+        width: 20%;
+    }
+
+    div#gridSummaryContainer .dx-datagrid-content > table tbody tr td:nth-child(7) {
+        width: 10%;
+    }
+
+    div#gridSummaryContainer .dx-datagrid-content > table tbody tr td:nth-child(6) {
+        width: 21%;
+    }
+</style>
+
 <div class="pcoded-content">
     <div class="card p-20" style="min-height: 495px;">
         <!-- [ breadcrumb ] start -->

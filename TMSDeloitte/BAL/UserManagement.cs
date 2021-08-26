@@ -487,8 +487,8 @@ namespace TMSDeloitte.BAL
                             string lnkHref = new UrlHelper(requestContext).Action("ResetPassword", "Home", new { userId = encryptedID, email = encryptedEmail, dateTime = expireDateTime }, HttpContext.Current.Request.Url.Scheme);
                             string subject = "Reset Password Request";
                             //string body = "<b>Please find the Password Reset Link. </b><br/>" + lnkHref;
-                            string detail = "Click To Reset Password";
-                            string body = "<b>" + detail + ". </b><br/><a href='" + lnkHref + "'>Click</a>";
+                            string detail = "Click on the link given below to reset your password.";
+                            string body = "<b>" + detail + ". </b><br/><a href='" + lnkHref + "'>Reset Password</a>";
 
                             Email email = new Email();
                             isSuccess = email.SendEmail(userProfile.EMAIL, body, subject, null, out msg);
