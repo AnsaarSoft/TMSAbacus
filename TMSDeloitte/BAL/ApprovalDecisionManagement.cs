@@ -815,6 +815,7 @@ namespace TMSDeloitte.BAL
                 }
                 // Condition add krni hai stages code mai jakay dekhay ga kitne approvals required hai agr count pora tou status update krdy
                 DataTable dt_approvalDecision = HANADAL.AddUpdateDataByStoredProcedure("AddUpdateApproval_Decision", TranslateApprovalDecisionToParameterList(ApprovalDecision1, UserID), "ApprovalDecisionManagement");
+               
                 if (dt_approvalDecision.Rows.Count == 0)
                     throw new Exception("Exception occured when UpdateApprovalDecision,  DOCUMENT CODE:" + DOCUMENT_ID + " , STATUS" + STATUS);
 
@@ -907,7 +908,7 @@ namespace TMSDeloitte.BAL
             }
             catch (Exception ex)
             {
-                msg = "Exception occured in Update Aprroval Decision!";
+                //msg = "Exception occured in Update Aprroval Decision!";
                 isSuccess = false;
                 Log log = new Log();
                 log.LogFile(ex.Message);

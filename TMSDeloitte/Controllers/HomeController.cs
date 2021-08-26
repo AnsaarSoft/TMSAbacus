@@ -259,6 +259,7 @@ namespace TMSDeloitte.Controllers
                     id = security.DecryptString(userId);
                     userEmail = security.DecryptString(email);
                     expireDateTime = Convert.ToDateTime(security.DecryptString(dateTime));
+                    expireDateTime.AddMinutes(15);
 
                     if (id == "" || userEmail == "" || dateTime == "" || userId == "" || email == "")
                     {

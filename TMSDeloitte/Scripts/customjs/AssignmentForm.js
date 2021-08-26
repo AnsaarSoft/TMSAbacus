@@ -777,7 +777,7 @@ function GenerateSAPFunctionDropDownClient(jsonResponse, id, DisplayExpr, ValueE
 function UpdateLocation() {
     var ClientID = $("#Client").val();
     var BranchID = $("#Office").val();
-    //GetTripRatePolicy(ClientID, BranchID);
+    GetTripRatePolicy(ClientID, BranchID);
     var Task = TravelLocationList.filter(x=>x.ClientID == ClientID && x.BranchID == BranchID);
 
     $("#gridResourceContainer").dxDataGrid('instance').beginUpdate();
