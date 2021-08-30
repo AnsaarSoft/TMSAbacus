@@ -942,7 +942,7 @@
 }
 .dx-scrollbar-vertical {
   top: 0;
-  right: 0;
+  left: 0;
   height: 100%;
 }
 .dx-scrollbar-vertical .dx-scrollable-scroll {

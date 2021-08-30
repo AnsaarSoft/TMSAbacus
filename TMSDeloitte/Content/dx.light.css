@@ -2160,13 +2160,13 @@
           box-shadow: 0 0 0 1px transparent;
 }
 .dx-scrollbar-vertical .dx-scrollable-scroll {
-  float: right;
-  width: 8px;
+    float: right;
+    width: 15px;
 }
 .dx-scrollbar-vertical.dx-scrollbar-hoverable {
-  width: 8px;
-  -webkit-transition: width 0.2s linear 0.15s, background-color 0.2s linear 0.15s;
-  transition: width 0.2s linear 0.15s, background-color 0.2s linear 0.15s;
+    width: 15px;
+    -webkit-transition: width 0.2s linear 0.15s, background-color 0.2s linear 0.15s;
+    transition: width 0.2s linear 0.15s, background-color 0.2s linear 0.15s;
 }
 .dx-scrollbar-vertical.dx-scrollbar-hoverable .dx-scrollable-scroll {
   -webkit-transition: background-color 0.5s linear 1s, width 0.2s linear 150ms;
