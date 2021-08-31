@@ -648,7 +648,8 @@ namespace TMSDeloitte.BAL
 
                                     //For Notification and Email when time sheet submit
                                     System.Web.Routing.RequestContext requestContext = HttpContext.Current.Request.RequestContext;
-                                    string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptURLString(dt_changeApprover.Rows[0]["ID"].ToString()), docType = security.EncryptURLString("ChangeApprover") }, HttpContext.Current.Request.Url.Scheme);
+                                    //string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptURLString(dt_changeApprover.Rows[0]["ID"].ToString()), docType = security.EncryptURLString("ChangeApprover") }, HttpContext.Current.Request.Url.Scheme);
+                                    string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptString(dt_changeApprover.Rows[0]["ID"].ToString()), docType = security.EncryptString("ChangeApprover") }, HttpContext.Current.Request.Url.Scheme);
                                     Task.Run(() => cmn.SndNotificationAndEmail(Convert.ToInt32(list.CreatedBy), list.DocumentID, 0, lnkHref, "ChangeApproverManagement"));
                                 }
                                 msg = "Approver change request has submitted";

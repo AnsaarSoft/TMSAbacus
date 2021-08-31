@@ -677,7 +677,8 @@ namespace TMSDeloitte.BAL
                     ApprovalDecision1.CurrentREJECTION = Convert.ToString(rejection);
                     if (Convert.ToInt32(ApprovalDecision1.REJECTIONREQUIRED) == rejection)
                     {
-                        msg = "Your " + docType + " document has successfully rejected.";
+                        //msg = "Your " + docType + " document has successfully rejected.";
+                        msg = "Your " + docType + " document has been rejected. Login to view your timesheet detail.";
                         DataTable dt_Decision = HANADAL.AddUpdateDataByStoredProcedure("UpdateDocumentViaApprovalDecision", TranslateApprovalDecisionToParameterList(DOCUMENT_ID, STATUS, UserID, docType), "ApprovalDecisionManagement");
 
                         if (dt_Decision.Rows.Count == 0)
@@ -686,7 +687,8 @@ namespace TMSDeloitte.BAL
                     }
                     else
                     {
-                        msg = "Your " + docType + " document has successfully rejected. Need more to reject.";
+                        //msg = "Your " + docType + " document has successfully rejected. Need more to reject.";
+                        msg = "Your " + docType + " document has been rejected.";
                     }
                 }
                 if (STATUS == 4)
@@ -695,7 +697,8 @@ namespace TMSDeloitte.BAL
                     ApprovalDecision1.CurrentAPPROVAL = Convert.ToString(approval);
                     if (Convert.ToInt32(ApprovalDecision1.APPROVALREQUIRED) == approval)
                     {
-                        msg = "Your " + docType + " document has successfully approved.";
+                        //msg = "Your " + docType + " document has successfully approved.";
+                        msg = "Your " + docType + " document has been approved.";
                         DataTable dt_Decision = HANADAL.AddUpdateDataByStoredProcedure("UpdateDocumentViaApprovalDecision", TranslateApprovalDecisionToParameterList(DOCUMENT_ID, STATUS, UserID, docType), "ApprovalDecisionManagement");
 
                         if (dt_Decision.Rows.Count == 0)
@@ -775,7 +778,7 @@ namespace TMSDeloitte.BAL
                                             HCM_Employee emp = mgts.GetHCMOneEmployeeByCode(list.CHANGETOEMPCODE);
                                             if (emp != null)
                                             {
-                                                string Msgs = "Approval Setup has been created. You are approving Timesheet document of " + list.FullName;
+                                                string Msgs = "Approval Setup has been created. You are approving timesheet document of " + list.FullName;
                                                 notification.AddNotification(UserID, Convert.ToInt32(list.CHANGETOEMPID), Msgs);
                                                 string prevMsgs = msg;
                                                 //string subjects = "Approval Setup created by " + fullName;
@@ -810,7 +813,9 @@ namespace TMSDeloitte.BAL
                     }
                     else
                     {
-                        msg = "Your " + docType + " document has successfully approved. Need more to approve.";
+                        // msg = "Your " + docType + " document has successfully approved. Need more to approve.";
+                        //msg = "Your " + docType + " document has successfully approved.";
+                        msg = "Your " + docType + " document has been approved.";
                     }
                 }
                 // Condition add krni hai stages code mai jakay dekhay ga kitne approvals required hai agr count pora tou status update krdy

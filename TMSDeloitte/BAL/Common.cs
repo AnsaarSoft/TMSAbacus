@@ -1495,7 +1495,7 @@ namespace TMSDeloitte.BAL
                             if (!sendedNotification.Contains(approvarId))
                             {
                                 if (docType == "TimeSheetFormManagement")
-                                    detail = user.FULLNAME + " has submitted time sheet of period: " + period + " and year: " + year;
+                                    detail = user.FULLNAME + " has submitted timesheet of period: " + period + " and year: " + year;
 
                                 if (docType == "MonthlyTravelSheetManagement")
                                 {
@@ -1531,19 +1531,19 @@ namespace TMSDeloitte.BAL
 
                                 string subject = "";
                                 if (docType == "TimeSheetFormManagement")
-                                    subject = "Time Sheet Aproval Request - " + user.FULLNAME;
+                                    subject = "Time Sheet Approval Request - " + user.FULLNAME;
 
                                 if (docType == "MonthlyTravelSheetManagement")
-                                    subject = "Monthly Travel Aproval Request - " + user.FULLNAME;
+                                    subject = "Monthly Travel Approval Request - " + user.FULLNAME;
 
                                 if (docType == "ClaimFormManagement")
-                                    subject = "Claim Aproval Request - " + user.FULLNAME;
+                                    subject = "Claim Approval Request - " + user.FULLNAME;
 
                                 if (docType == "AssignmentFormManagement")
-                                    subject = "Assignment Aproval Request - " + user.FULLNAME;
+                                    subject = "Assignment Approval Request - " + user.FULLNAME;
 
                                 if (docType == "ChangeApproverManagement")
-                                    subject = "Change Aproval Request - " + user.FULLNAME;
+                                    subject = "Change Approval Request - " + user.FULLNAME;
 
                                 string body = "<b>" + detail + ". </b><br/><a href='" + emailLinkHref + "'>Click To View</a>\n";
                                 body = body+ "<br/><a href='" + emailLinkHref.Replace("GetApprovalDecision", "DocumentDecisionByEmail") + "&status="+ security.EncryptString("4") + "'>Click To Approve</a>\n";

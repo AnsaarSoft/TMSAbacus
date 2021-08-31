@@ -82,9 +82,9 @@ namespace TMSDeloitte.Helper
                         }
                         catch (Exception ex)
                         {
-                            msg = "Exception occured on reseat password please contact admin.";
+                            msg = "Exception occured on reset password please contact admin.";
                             Log log = new Log();
-                            string msgLog = ("Exception pccured on sending email,  email:  " + ToEmail + Environment.NewLine + "Exception: " + ex.Message);
+                            string msgLog = ("Exception occured on sending email,  email:  " + ToEmail + Environment.NewLine + "Exception: " + ex.Message);
                             log.LogFile(msgLog);
                             log.InputOutputEmailDocLog(subject, msgLog);
                             return false;

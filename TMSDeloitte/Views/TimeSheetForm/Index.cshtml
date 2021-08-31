@@ -740,7 +740,7 @@
                         mode: "single"
                     },
                     hoverStateEnabled: true,
-                    columnAutoWidth: true,
+                    columnAutoWidth: false,
                     allowColumnResizing: true,
                     allowColumnReordering: true,
                     showBorders: true,
@@ -777,7 +777,7 @@
                             caption: "S.No",
                             dataType: "number",
                             allowEditing: false,
-                            width:"45"
+                            width:"50"
                         },
                          {
                              dataField: "_WorkDate",
@@ -790,7 +790,7 @@
                             validationRules: [{ type: "required" }],
                             dataType: 'date',
                             format: 'dd/MM/yyyy',
-                            width: "90",
+                            width: "100",
                             setCellValue: function (rowData, value) {
                                 if (value != null)
                                 {
@@ -849,7 +849,7 @@
                              dataField: "TaskID",
                              caption: "Task",
                              validationRules: [{ type: "required" }],
-                             width: "150",
+                             width: "370",
                              setCellValue: function (rowData, value, options) {
                                  rowData.TaskID = value;
                                  rowData.WorkHours = 0;
@@ -929,7 +929,7 @@
                          {
                              dataField: "OnSite",
                              caption: "OnSite",
-                             width: "58",
+                             width: "80",
                              allowEditing: true,
                              dataType: 'boolean',
                              setCellValue: function (rowData, value, options) {

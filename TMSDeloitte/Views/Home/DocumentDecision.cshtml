@@ -1,6 +1,8 @@
-﻿@{ 
+﻿@{
     Layout = null;
 }
+
+@using System.Configuration;
 
 <!DOCTYPE html>
 <head>
@@ -14,7 +16,7 @@
 
     <!-- Favicon icon -->
     <link rel="icon" href="#" type="image/x-icon">
-  
+
     <!-- font css -->
     <link rel="stylesheet" href="/assets/fonts/font-awsome-pro/css/pro.min.css">
     <link rel="stylesheet" href="/assets/fonts/feather.css">
@@ -28,7 +30,7 @@
     @Styles.Render("~/Content/bundle")
     @Styles.Render("~/Content/DevExtremeBundle")
 
-   
+
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.toast.js"></script>
     <script src="~/Scripts/toastNotifications.js"></script>
@@ -57,12 +59,19 @@
             <div class="row align-items-center text-center">
                 <div class="col-lg-6 col-sm-12 pr-0">
                     <div class="company-logo">
-                        <img src="~/assets/images/loginLogo.png" alt="Deloitte Logo" />
+                        @if (ConfigurationManager.AppSettings["IsAbacus"] == "true")
+                        {
+                        <img src="~/assets/images/LogoAbacus/loginLogo.png" alt="Deloitte Logo" style="display: none;" />
+                        }
+                        else
+                        {
+                        <img src="~/assets/images/Logo/loginLogo.png" alt="Deloitte Logo" style="display: none;" />
+                        }
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 pl-0">
                     <div class="card-body">
-                        <div class="login-box" id="msgDiv"> 
+                        <div class="login-box" id="msgDiv">
                         </div>
                     </div>
                 </div>
@@ -74,13 +83,13 @@
 
     <script type="text/javascript">
 
-       
+
         $('document').ready(function () {
             // <h1 class="mb-3 f-w-600"> </h1>
             var html = '<h1 class="mb-3 f-w-600">' +
-                              $('#Msg').val() +
-                              '  </div>' +
-                              '  </h1>';
+                $('#Msg').val() +
+                '  </div>' +
+                '  </h1>';
             $("#msgDiv").append(html);
         });
     </script>

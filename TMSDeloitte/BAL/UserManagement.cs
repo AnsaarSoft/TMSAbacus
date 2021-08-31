@@ -470,7 +470,7 @@ namespace TMSDeloitte.BAL
                     if (Convert.ToBoolean(userProfile.ISSUPER) || !Convert.ToBoolean(userProfile.ISACTIVE))
                     {
                         isSuccess = false;
-                        msg = "Please contact admin to reseat password.";
+                        msg = "Please contact admin to reset password.";
                     }
                     else
                     {
@@ -515,7 +515,7 @@ namespace TMSDeloitte.BAL
             catch (Exception ex)
             {
                 isSuccess = false;
-                msg = "Exception occured on reseat password please contact admin.";
+                msg = "Exception occured on reset password please contact admin.";
                 Log log = new Log();
                 log.LogFile(ex.Message);
                 log.InputOutputDocLog("UserManagament", "Exception occured on SendResetPasswordEmail, userName: " + userName + Environment.NewLine + "Exception: " + ex.Message);

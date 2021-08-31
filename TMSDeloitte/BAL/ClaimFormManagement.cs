@@ -307,7 +307,8 @@ namespace TMSDeloitte.BAL
 
                     //For Notification and Email when time sheet submit
                     System.Web.Routing.RequestContext requestContext = HttpContext.Current.Request.RequestContext;
-                    string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptURLString(docId.ToString()), docType = security.EncryptURLString("Claim") }, HttpContext.Current.Request.Url.Scheme);
+                    //string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptURLString(docId.ToString()), docType = security.EncryptURLString("Claim") }, HttpContext.Current.Request.Url.Scheme);
+                    string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptString(docId.ToString()), docType = security.EncryptString("Claim") }, HttpContext.Current.Request.Url.Scheme);
 
                     cmn = new Common();
                     Task.Run(() => cmn.SndNotificationAndEmail(Convert.ToInt32(ClaimFormDetails.CreatedBy), ClaimFormDetails.TotalAmount, 0, lnkHref, "ClaimFormManagement"));

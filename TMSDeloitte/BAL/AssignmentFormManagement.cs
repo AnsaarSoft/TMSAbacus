@@ -1895,7 +1895,8 @@ namespace TMSDeloitte.BAL
 
                         //For Notification and Email when time sheet submit
                         System.Web.Routing.RequestContext requestContext = HttpContext.Current.Request.RequestContext;
-                        string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptURLString(ID.ToString()), docType = security.EncryptURLString("Assignment") }, HttpContext.Current.Request.Url.Scheme);
+                        //string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptURLString(ID.ToString()), docType = security.EncryptURLString("Assignment") }, HttpContext.Current.Request.Url.Scheme);
+                        string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptString(ID.ToString()), docType = security.EncryptString("Assignment") }, HttpContext.Current.Request.Url.Scheme);
                         cmn = new Common();
                         Task.Run(() => cmn.SndNotificationAndEmail(Convert.ToInt32(AssignmentForm.CreatedBy), AssignmentFormGeneral.AssignmentValue, 0, lnkHref, "AssignmentFormManagement"));
                     }

@@ -228,6 +228,9 @@ namespace TMSDeloitte.Controllers
             return View();
         }
 
+        
+        //[HttpPost]
+        //public JsonResult ForgotPassword(string userName)
         [HttpPost]
         public ActionResult ForgotPassword(string userName)
         {
@@ -237,6 +240,10 @@ namespace TMSDeloitte.Controllers
             {
                 BAL.UserManagement userMgt = new UserManagement();
                 isSuccess = userMgt.SendResetPasswordEmail(userName, out msg);
+                if (isSuccess == true)
+                {
+                    msg = "Email has been sent to Reset Password";
+                }
             }
             else
             {

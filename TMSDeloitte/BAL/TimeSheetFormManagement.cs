@@ -310,7 +310,8 @@ namespace TMSDeloitte.BAL
                     Encrypt_Decrypt security = new Encrypt_Decrypt();
                     //For Notification and Email when time sheet submit
                     System.Web.Routing.RequestContext requestContext = HttpContext.Current.Request.RequestContext;
-                    string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptURLString(docId.ToString()), docType= security.EncryptURLString("Timesheet") }, HttpContext.Current.Request.Url.Scheme);
+                    //string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptURLString(docId.ToString()), docType= security.EncryptURLString("Timesheet") }, HttpContext.Current.Request.Url.Scheme);
+                    string lnkHref = new System.Web.Mvc.UrlHelper(requestContext).Action("GetApprovalDecision", "Home", new { empID = "EncryptedID", docID = security.EncryptString(docId.ToString()), docType = security.EncryptString("Timesheet") }, HttpContext.Current.Request.Url.Scheme);
                     cmn = new Common();
                     Task.Run(() => cmn.SndNotificationAndEmail(Convert.ToInt32(TimeSheetFormDetails.CreatedBy), TimeSheetFormDetails.Period, TimeSheetFormDetails.Year, lnkHref, "TimeSheetFormManagement"));
                 }
