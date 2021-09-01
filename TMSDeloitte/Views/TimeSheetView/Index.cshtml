@@ -506,38 +506,72 @@
                       {
                           dataField: "Status",
                           caption: "Status",
+                          
                           lookup: {
                               dataSource: statusList,
                               valueExpr: "ID",
                               displayExpr: "Name"
                           }
-                      },
-                      {
-                          dataField: "ID",
-                          alignment: "left",
-                          caption: "Cancel",
-                          cellTemplate: function (container, options) {
-                              if (options.data.Status == 1 || options.data.Status == 2)
-                              {
-                                  $("<div>")
-                                 .append($("<a class='btn btn_icn btnCencelDocument' _id=" + options.data.ID + " _docnum=" + options.data._DocNum + " _empid=" + options.data.EmpID + " " + " title='Cencel'><em class='fa fa-times'></em></a>"))
-                                 .appendTo(container);
-                              }
+                    },
+                    {
+                        caption:"Cancel",
+                        type: "buttons",
+                        buttons: [{
+                            template: function (container, options) {
+                                if (options.data.Status == 1 || options.data.Status == 2) {
+                                    //        {
+                                    var link = $("<a class='btn btn_icn btnCencelDocument' _id=" + options.data.ID + " _docnum=" + options.data._DocNum + " _empid=" + options.data.EmpID + " " + " title='Cencel'>").append($("<em class='fa fa-times'></em>"))
+                                        .attr("href", "#");
+                                    //link.on("click", function () {
+                                    //    console.log("My command was clicked");
+                                    //});
+                                    return link;
+                                }
+                                else
+                                    return false;
+                            }
+                        }]
+                    },
+                      //{
+                      //    dataField: "ID",
+                      //    alignment: "left",
+                      //    caption: "Cancel",
+                      //    cellTemplate: function (container, options) {
+                      //        if (options.data.Status == 1 || options.data.Status == 2)
+                      //        {
+                      //            $("<div>")
+                      //           .append($("<a class='btn btn_icn btnCencelDocument' _id=" + options.data.ID + " _docnum=" + options.data._DocNum + " _empid=" + options.data.EmpID + " " + " title='Cencel'><em class='fa fa-times'></em></a>"))
+                      //           .appendTo(container);
+                      //        }
                              
                            
-                          }
-                      },
-                      {
-                          dataField: "ID",
-                          alignment: "left",
-                          caption: "Open",
-                          cellTemplate: function (container, options) {
-                              debugger;
-                              $("<div>")
-                                 .append($("<a class='btn btn_icn btnViewProfile' _docnum=" + options.data._DocNum + " _empid=" + options.data.EmpID + " " + " title='Open'><em class='fa fa-eye'></em></a>"))
-                                 .appendTo(container);
-                          }
-                      },
+                      //    }
+                      //},
+                    //  {
+                    //      dataField: "ID",
+                    //      alignment: "left",
+                    //      caption: "Open",
+                    //      cellTemplate: function (container, options) {
+                    //          debugger;
+                    //          $("<div>")
+                    //             .append($("<a class='btn btn_icn btnViewProfile' _docnum=" + options.data._DocNum + " _empid=" + options.data.EmpID + " " + " title='Open'><em class='fa fa-eye'></em></a>"))
+                    //             .appendTo(container);
+                    //      }
+                    //},
+                    {
+                        caption:"Open",
+                        type: "buttons",
+                        buttons: [{                            
+                            template: function (container, options) {
+                                var link = $("<a class='btn btn_icn btnViewProfile' _docnum=" + options.data._DocNum + " _empid=" + options.data.EmpID + " " + " title='Open'>").append($("<em class='fa fa-eye'></em>"))
+                                    .attr("href", "#");
+                                //link.on("click", function () {
+                                //    console.log("My command was clicked");
+                                //});
+                                return link;
+                            }
+                        }]
+                    }
                       
                 ],
                 onEditorPreparing: function (e) {
@@ -590,7 +624,21 @@
                             val.IsDeleted = true;
                         }
                     });
-                }
+                },
+                //onCellClick: function (e) {
+                    
+                //    if (e.data != undefined) {
+                //        alert('click' + e.data);
+                //        console.log(e.data);
+                //        //if (e.data.WorkDate != undefined) {
+                //        //    if (e.data.WorkDate != null) {
+                //        //        SelectionViewDataGrid(e.data.WorkDate);
+                //        //    }
+                //        //}
+                //    }
+
+
+                //},
             });
 
         }

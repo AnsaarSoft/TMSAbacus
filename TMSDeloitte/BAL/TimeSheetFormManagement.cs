@@ -1348,7 +1348,7 @@ namespace TMSDeloitte.BAL
                 parm = new B1SP_Parameter();
                 parm.ParameterName = "WorkHours";
                 parm.ParameterValue = Convert.ToString(TimeSheetFormDetails.WorkHours);
-                parm.ParameterType = DBTypes.Int32.ToString();
+                parm.ParameterType = DBTypes.Double.ToString();
                 parmList.Add(parm);
 
                 parm = new B1SP_Parameter();

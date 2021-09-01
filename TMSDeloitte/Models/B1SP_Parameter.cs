@@ -18,6 +18,7 @@ namespace TMSDeloitte.Models
     {
         String,
         Bool,
-        Int32
+        Int32,
+        Double
     }
 }

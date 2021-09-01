@@ -123,5 +123,9 @@ namespace TMSDeloitte.Models
         [IgnorePropertyCompare]
         public bool isNewDocument { get; set; }
 
+        //Adde by Muhammad Maqbool
+        [IgnorePropertyCompare]
+        public string AppSetupID { get; set; } 
+
     }
 }

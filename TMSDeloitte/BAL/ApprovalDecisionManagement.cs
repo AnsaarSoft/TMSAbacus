@@ -379,7 +379,12 @@ namespace TMSDeloitte.BAL
                     approvalDecision.ID = Convert.ToInt32(dtRow["ID"]);
                     approvalDecision.CurrentAPPROVAL = Convert.ToString(dtRow["APPROVAL"]);
                     approvalDecision.CurrentREJECTION = Convert.ToString(dtRow["REJECTION"]);
-                    string EmployeeCode = approvalDecision.EMPLOYEECODE;
+
+                    //Added by Muhammad Maqbool
+                    approvalDecision.AppSetupID = Convert.ToString(dtRow["AppSetupID"]);
+
+
+                    string EmployeeCode = approvalDecision.EMPLOYEECODE; 
 
                     if (!string.IsNullOrEmpty(EmployeeCode))
                     {
@@ -571,7 +576,7 @@ namespace TMSDeloitte.BAL
         }
         string ApproverRequest = "";
 
-        private List<B1SP_Parameter> TranslateApprovalSetupChildChangeRemoveToParameterList(int UserID, string OriginatorUser)
+        private List<B1SP_Parameter> TranslateApprovalSetupChildChangeRemoveToParameterList(int UserID, string OriginatorUser,string ApprSetupID)
         {
             List<B1SP_Parameter> parmList = new List<B1SP_Parameter>();
             try
@@ -592,6 +597,12 @@ namespace TMSDeloitte.BAL
                 parm.ParameterName = "UpdateDate";
                 parm.ParameterValue = DateTime.Now.ToString("yyyy-MM-dd HH:MM:s");
                 parm.ParameterType = DBTypes.String.ToString();
+                parmList.Add(parm);
+
+                parm = new B1SP_Parameter();
+                parm.ParameterName = "AppSetupID";
+                parm.ParameterValue = ApprSetupID;
+                parm.ParameterType = DBTypes.Int32.ToString();
                 parmList.Add(parm);
             }
             catch (Exception ex)
@@ -677,8 +688,9 @@ namespace TMSDeloitte.BAL
                     ApprovalDecision1.CurrentREJECTION = Convert.ToString(rejection);
                     if (Convert.ToInt32(ApprovalDecision1.REJECTIONREQUIRED) == rejection)
                     {
-                        //msg = "Your " + docType + " document has successfully rejected.";
-                        msg = "Your " + docType + " document has been rejected. Login to view your timesheet detail.";
+                        
+                        //msg = "Your " + docType + " document has been rejected. Login to view your timesheet detail.";
+                        msg =  docType + " document has been rejected. Login to view your timesheet detail.";
                         DataTable dt_Decision = HANADAL.AddUpdateDataByStoredProcedure("UpdateDocumentViaApprovalDecision", TranslateApprovalDecisionToParameterList(DOCUMENT_ID, STATUS, UserID, docType), "ApprovalDecisionManagement");
 
                         if (dt_Decision.Rows.Count == 0)
@@ -687,8 +699,9 @@ namespace TMSDeloitte.BAL
                     }
                     else
                     {
-                        //msg = "Your " + docType + " document has successfully rejected. Need more to reject.";
-                        msg = "Your " + docType + " document has been rejected.";
+                        
+                        //msg = "Your " + docType + " document has been rejected.";
+                        msg =  docType + " document has been rejected.";
                     }
                 }
                 if (STATUS == 4)
@@ -698,19 +711,27 @@ namespace TMSDeloitte.BAL
                     if (Convert.ToInt32(ApprovalDecision1.APPROVALREQUIRED) == approval)
                     {
                         //msg = "Your " + docType + " document has successfully approved.";
-                        msg = "Your " + docType + " document has been approved.";
+                        //msg = "Your " + docType + " document has been approved.";
+                        msg = docType + " document has been approved.";
+
                         DataTable dt_Decision = HANADAL.AddUpdateDataByStoredProcedure("UpdateDocumentViaApprovalDecision", TranslateApprovalDecisionToParameterList(DOCUMENT_ID, STATUS, UserID, docType), "ApprovalDecisionManagement");
 
                         if (dt_Decision.Rows.Count == 0)
                             throw new Exception("Exception occured when UpdateTimeSheetViaApprovalDecision,  DOCUMENT CODE:" + DOCUMENT_ID + " , STATUS" + STATUS);
-
-                        if (ApprovalDecision1.DOCUMENT == "Timesheet")
+                        
+                        ///Belwo condition will execute if approval has changed employee id: chagneEmpID added by Muhammad Maqbool dated 1st September 2021
+                        string changeEmpID = Convert.ToString(dt_Decision.Rows[0]["CHANGETOEMPID"]); 
+                        //
+                        if (!string.IsNullOrEmpty(changeEmpID) && ApprovalDecision1.DOCUMENT == "Timesheet")
                         {
-                            DataTable dt_approvalSetup = HANADAL.AddUpdateDataByStoredProcedure("UpdateApprovalSetupforRemoveChange", TranslateApprovalSetupChildChangeRemoveToParameterList(UserID, ApprovalDecision1.USER_CODE), "ApprovalDecisionManagement");
+                            DataTable dt_approvalSetup = HANADAL.AddUpdateDataByStoredProcedure("UpdateApprovalSetupforRemoveChange", TranslateApprovalSetupChildChangeRemoveToParameterList(UserID, ApprovalDecision1.USER_CODE,ApprovalDecision1.AppSetupID), "ApprovalDecisionManagement");
                                 if (dt_approvalSetup.Rows.Count == 0)
                                     throw new Exception("Exception occured when UpdateDocumentViaApprovalDecision, ID:" + UserID + ", USER CODE" + ApprovalDecision1.USER_CODE);
 
                         }
+                        ///End
+                        
+
                         if (ApprovalDecision1.DOCUMENT == "Change Approver")
                         {
                             List<ChangeApproverChild> changeApproverChild = new List<ChangeApproverChild>();
@@ -815,7 +836,7 @@ namespace TMSDeloitte.BAL
                     {
                         // msg = "Your " + docType + " document has successfully approved. Need more to approve.";
                         //msg = "Your " + docType + " document has successfully approved.";
-                        msg = "Your " + docType + " document has been approved.";
+                        msg =  docType + " document has been approved.";
                     }
                 }
                 // Condition add krni hai stages code mai jakay dekhay ga kitne approvals required hai agr count pora tou status update krdy
